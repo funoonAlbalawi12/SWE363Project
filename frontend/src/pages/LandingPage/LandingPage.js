@@ -72,7 +72,7 @@ function LandingPage() {
         >
           <div className="carousel-slide">
             <EventCard
-              title="Gaming Marathon"
+              title="Gaming +"
               price="Free Ticket"
               date="Wednesday, February 24 | 07:00 PM"
               location="Dhahran, Saudi Arabia"

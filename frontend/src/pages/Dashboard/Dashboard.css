@@ -1,3 +1,5 @@
+/* dashboard navbar  */
+
 .dashboard-navbar {
   background-color: #FFE6E6;
   padding: 16px 40px;
@@ -112,12 +114,11 @@
   background-color: #FFE6E6;
 }
 
-
-
 .username {
   font-size: 14px;
   color: #111827;
 }
+
 
   /* Layout */
 .dashboard {
@@ -201,7 +202,7 @@
   }
 
 
-  
+  /* club card */
 
   .club-card {
     background-color: #FFE6E6;
@@ -227,15 +228,14 @@
     color: #555;
   }
   
-
   
- 
+/* carousel */
  
   
   .similar-carousel .carousel .slide {
     background: none;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   
   .similar-carousel .carousel .control-arrow {
@@ -250,7 +250,8 @@
   .similar-carousel .carousel-slide {
     padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 20px;
   }
   
   

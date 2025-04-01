@@ -14,7 +14,7 @@ function Dashboard() {
       <DashNavbar />
 
       <div className="dashboard-content">
-        <h2 className="greeting">Hello Khulud!</h2>
+        <h2 className="greeting">Hello!</h2>
 
         <div className="events-clubs-section">
           <div className="your-events">
@@ -25,6 +25,7 @@ function Dashboard() {
             <EventCard
               title="Meet ICS Dean"
               subtitle="Computer Club"
+              price="Free Ticket"
               date="Saturday, February 20 | 08:00 PM"
               location="Building 4, room 124"
             />
@@ -68,15 +69,15 @@ function Dashboard() {
                 title="Tech Talk: Cybersecurity"
                 subtitle="Computer Club"
                 date="Thursday, April 11 | 07:00 PM"
-                location="Auditorium A"
+                location="Building 24, Auditorium "
               />
             </div>
             <div className="carousel-slide">
               <EventCard
-                title="Design Sprint Bootcamp"
+                title="Design Bootcamp"
                 subtitle="Design Club"
                 date="Sunday, April 14 | 03:00 PM"
-                location="Studio B"
+                location="Building 22, room 124"
               />
             </div>
           </Carousel>

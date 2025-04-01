@@ -9,7 +9,6 @@ function DashNavbar() {
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   const handleLogout = () => {
-    // Example logout logic
     navigate("/");
   };
 

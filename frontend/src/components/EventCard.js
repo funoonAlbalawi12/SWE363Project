@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
-function EventCard({ title, price, date, location, img }) {
+function EventCard({ title, subtitle, price, date, location, img }) {
   return (
     <div className="event-card">
       <div className="event-image">
@@ -12,6 +12,7 @@ function EventCard({ title, price, date, location, img }) {
           <h3>{title}</h3>
           <p className="price">{price}</p>
         </div>
+        {subtitle && <p className="event-subtitle">{subtitle}</p>}
         <p>
           <FaCalendarAlt /> {date}
         </p>
