@@ -1,0 +1,256 @@
+.dashboard-navbar {
+  background-color: #FFE6E6;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Left side */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 40px;
+}
+
+
+.nav-tabs {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+}
+
+.nav-tabs button {
+  background: none;
+  border: none;
+  margin-right: 24px;
+  font-size: 15px;
+  color: #4b5563;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-tabs button.active {
+  color: #111827;
+  font-weight: bold;
+  border-color: #111827;
+}
+
+.nav-tabs button:hover {
+  color: #111827;
+}
+
+/* Right side */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon.bell {
+  font-size: 18px;
+  cursor: pointer;
+}
+.avatar {
+  background-color: #FFE6E6;
+  border-radius: 50%;
+  padding: 6px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #212121;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: #FFE6E6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.dropdown-menu button:hover {
+  background-color: #FFE6E6;
+}
+
+
+
+.username {
+  font-size: 14px;
+  color: #111827;
+}
+
+  /* Layout */
+.dashboard {
+    background-color: #FFE6E6; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-content {
+    padding: 40px 60px;
+    flex: 1;
+  }
+  
+  /* Greeting */
+  .greeting {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-left:0px;
+  }
+
+  .events-clubs-section {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    background-color: #FFE6E6;
+  }
+  
+  /* Your Events */
+  .your-events {
+    flex: 2;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .section-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .view-all-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #FFE6E6;
+    color: rgb(0, 0, 0);
+    border: 1px solid #212121;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Your Clubs */
+  .your-clubs {
+    flex: 1;
+    background-color: #FFE6E6;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+  }
+  
+  .your-clubs h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .view-more-clubs {
+    margin-top: 12px;
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: transparent;
+    color: #0c0c0c;
+    border: 1px solid #212121;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+
+  
+
+  .club-card {
+    background-color: #FFE6E6;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+  }
+  
+  .club-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .club-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .club-role {
+    font-size: 14px;
+    color: #555;
+  }
+  
+
+  
+ 
+ 
+  
+  .similar-carousel .carousel .slide {
+    background: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .similar-carousel .carousel .control-arrow {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+  }
+  
+  .similar-carousel .carousel .control-arrow:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .similar-carousel .carousel-slide {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
