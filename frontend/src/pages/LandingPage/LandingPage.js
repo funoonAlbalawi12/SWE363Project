@@ -7,6 +7,7 @@ import Hero from "../../components/Hero";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./LandingPage.css";
+import { FaCode, FaRunning, FaCamera, FaBriefcase, FaUniversity } from "react-icons/fa";
 
 function LandingPage() {
   return (
@@ -41,11 +42,11 @@ function LandingPage() {
         </div>
         <h2>Explore by Categories</h2>
         <div className="category-container">
-          <CategoryCard name="Coding" />
-          <CategoryCard name="Sport" />
-          <CategoryCard name="Exhibition" />
-          <CategoryCard name="Business" />
-          <CategoryCard name="Photography" />
+          <CategoryCard name="Coding" Icon={FaCode} />
+          <CategoryCard name="Sport" Icon={FaRunning}/>
+          <CategoryCard name="Exhibition" Icon={FaUniversity} />
+          <CategoryCard name="Business" Icon={FaBriefcase}/>
+          <CategoryCard name="Photography" Icon={FaCamera}/>
         </div>
 
         <h2>Upcoming in 24 Hours</h2>

@@ -178,6 +178,19 @@ body{
   
     
   }
+
+  .category-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #000000;
+  }
+
+  .category-card p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   h2{
     margin: 15px;
   }

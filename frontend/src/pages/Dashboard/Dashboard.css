@@ -235,7 +235,6 @@
   .similar-carousel .carousel .slide {
     background: none;
     display: flex;
-    justify-content: flex-start;
   }
   
   .similar-carousel .carousel .control-arrow {
@@ -250,7 +249,7 @@
   .similar-carousel .carousel-slide {
     padding: 10px;
     display: flex;
-    justify-content: flex-start;
+
     gap: 20px;
   }
   
