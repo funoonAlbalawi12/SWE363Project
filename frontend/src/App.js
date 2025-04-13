@@ -7,6 +7,9 @@ import Dashboard from "./pages/student/Dashboard/Dashboard";
 import { useLocation } from "react-router-dom";
 import Settings from "./pages/student/Settings/Settings";
 import Profile from "./pages/student/Profile/Profile";
+import ExploreClubs from "./pages/student/ExploreClubs/ExploreClubs";
+import Home from "./pages/student/Home/Home";
+import ClubProfile from "./pages/student/ClubProfile/ClubProfile";
 
 function AppRoutes() {
   const location = useLocation();
@@ -15,10 +18,13 @@ function AppRoutes() {
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/explore-clubs" element={<ExploreClubs />} />
+        <Route path="/clubs/:clubId" element={<ClubProfile />} />
       </Routes>
 
       {state?.backgroundLocation && (

@@ -61,7 +61,6 @@
 .role-buttons button {
   flex: 1;
   padding: 10px;
-  font-weight: bold;
   color: #ffffff;
   background-color: #2d5b63;
   border: 1px solid #ccc;
@@ -71,7 +70,7 @@
 }
 
 .role-buttons button:hover {
-  background-color: #e0e0e0;
+  background-color: #1f2937;
 }
 
 .login-btn {
@@ -84,7 +83,7 @@
   cursor: pointer;
 }
 .login-btn:hover {
-  background-color: #e0e0e0;
+  background-color: #1f2937;
 }
 
 .create-account {

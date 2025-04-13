@@ -51,7 +51,7 @@
 }
 
 .nav-tabs button:hover {
-  color: #111827;
+  color: #1f2937;
 }
 
 /* Right side */
@@ -111,7 +111,7 @@
 }
 
 .dropdown-menu button:hover {
-  background-color: #346972;
+  background-color: #1f2937;
 }
 
 .username {
@@ -204,7 +204,7 @@
 
   /* club card */
 
-  .club-card {
+  .user-club-card {
     background-color: #efefef;
     padding: 16px;
     border-radius: 8px;
@@ -213,17 +213,17 @@
     transition: transform 0.2s;
   }
   
-  .club-card:hover {
+  .user-club-card:hover {
     transform: translateY(-2px);
   }
   
-  .club-name {
+  .user-club-name {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 4px;
   }
   
-  .club-role {
+  .user-club-role {
     font-size: 14px;
     color: #555;
   }

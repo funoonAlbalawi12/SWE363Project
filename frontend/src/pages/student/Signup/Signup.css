@@ -60,6 +60,9 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.signup-btn:hover {
+  background-color: #1f3b3d;
+}
 
 .login-redirect {
   margin-top: 16px;

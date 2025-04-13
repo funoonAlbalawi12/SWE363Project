@@ -1,7 +1,7 @@
 import React from "react";
 
 import EventCard from "../../../components/EventCard";
-import ClubCard from "../../../components/ClubCard";
+import UserClubCard from "../../../components/UserClubCard";
 import Footer from "../../../components/Footer";
 import DashNavbar from "../../../components/DashNavbar";
 import { Carousel } from "react-responsive-carousel";
@@ -39,8 +39,8 @@ function Dashboard() {
 
           <div className="your-clubs">
             <h3>Your Clubs</h3>
-            <ClubCard name="Computer Club" role="Marketing team member" />
-            <ClubCard name="Visitation Club" role="Vice President" />
+            <UserClubCard name="Computer Club" role="Marketing team member" />
+            <UserClubCard name="Visitation Club" role="Vice President" />
             <button className="view-more-clubs">View more</button>
           </div>
         </div>
@@ -63,8 +63,6 @@ function Dashboard() {
                 date="Monday, April 8 | 06:30 PM"
                 location="Building 5, room 210"
               />
-            </div>
-            <div className="carousel-slide">
               <EventCard
                 title="Tech Talk: Cybersecurity"
                 subtitle="Computer Club"
@@ -72,6 +70,7 @@ function Dashboard() {
                 location="Building 24, Auditorium "
               />
             </div>
+            
             <div className="carousel-slide">
               <EventCard
                 title="Design Bootcamp"

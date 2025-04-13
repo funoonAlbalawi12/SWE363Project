@@ -1,0 +1,125 @@
+/* ExploreClubs.css */
+
+.explore-clubs-page {
+  padding: 40px 80px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f2f2f2;
+}
+
+.clubs-header {
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.clubs-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2d5b63;
+  margin-bottom: 10px;
+}
+
+.clubs-header p {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0 40px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 10px 18px;
+  border: none;
+  background-color: #2d5b63;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: #1f2937;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+/* ClubCard */
+
+.club-card {
+  background-color: #2d5b63;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+
+}
+
+
+.club-card:hover {
+  transform: translateY(-4px);
+}
+
+.club-image img{
+  background-color: #e5e7eb;
+  height: 160px;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+
+.club-info {
+  padding: 16px;
+  text-align: left;
+  color:white;
+}
+
+.club-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.club-info p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.profile-btn {
+  background-color: #111827;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-btn:hover {
+  background-color: #1f2937;
+}
