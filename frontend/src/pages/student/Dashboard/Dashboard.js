@@ -1,9 +1,9 @@
 import React from "react";
 
-import EventCard from "../../components/EventCard";
-import ClubCard from "../../components/ClubCard";
-import Footer from "../../components/Footer";
-import DashNavbar from "../../components/DashNavbar";
+import EventCard from "../../../components/EventCard";
+import ClubCard from "../../../components/ClubCard";
+import Footer from "../../../components/Footer";
+import DashNavbar from "../../../components/DashNavbar";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Dashboard.css";

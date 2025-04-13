@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FiBell, FiUser } from "react-icons/fi";
 
 function DashNavbar() {
+  const location = useLocation();
+
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -21,10 +23,40 @@ function DashNavbar() {
       </div>
 
       <div className="nav-tabs">
-        <button className="active">Dashboard</button>
-        <button onClick={() => navigate("/clubs")}>Explore Clubs</button>
-        <button onClick={() => navigate("/events")}>Explore Events</button>
-        <button onClick={() => navigate("/tickets")}>My tickets</button>
+        <button
+          className={location.pathname === "/home" ? "active" : ""}
+          onClick={() => navigate("/home")}
+        >
+          Home
+        </button>
+
+        <button
+          className={location.pathname === "/dashboard" ? "active" : ""}
+          onClick={() => navigate("/dashboard")}
+        >
+          Dashboard
+        </button>
+
+        <button
+          className={location.pathname === "/clubs" ? "active" : ""}
+          onClick={() => navigate("/clubs")}
+        >
+          Explore Clubs
+        </button>
+
+        <button
+          className={location.pathname === "/events" ? "active" : ""}
+          onClick={() => navigate("/events")}
+        >
+          Explore Events
+        </button>
+
+        <button
+          className={location.pathname === "/tickets" ? "active" : ""}
+          onClick={() => navigate("/tickets")}
+        >
+          My tickets
+        </button>
       </div>
 
       <div className="navbar-right">
@@ -33,7 +65,7 @@ function DashNavbar() {
           <div className="avatar">
             <FiUser />
           </div>
-          <span className="username">Khulud Alotaibi</span>
+          <span className="username">Khulud </span>
           <span className="dropdown">▾</span>
 
           {showDropdown && (

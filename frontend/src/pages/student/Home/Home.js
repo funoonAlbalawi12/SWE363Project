@@ -1,18 +1,23 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import CategoryCard from "../../components/CategoryCard";
-import EventCard from "../../components/EventCard";
-import Footer from "../../components/Footer";
-import Hero from "../../components/Hero";
+import DashNavbar from "../../../components/DashNavbar";
+import CategoryCard from "../../../components/CategoryCard";
+import EventCard from "../../../components/EventCard";
+import Footer from "../../../components/Footer";
+import Hero from "../../../components/Hero";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./LandingPage.css";
-import { FaCode, FaRunning, FaCamera, FaBriefcase, FaUniversity } from "react-icons/fa";
+import {
+  FaCode,
+  FaRunning,
+  FaCamera,
+  FaBriefcase,
+  FaUniversity,
+} from "react-icons/fa";
 
-function LandingPage() {
+function Home() {
   return (
     <body>
-      <Navbar />
+      <DashNavbar />
       <Hero />
       <div className="content">
         <div className="content-header">
@@ -43,10 +48,10 @@ function LandingPage() {
         <h2>Explore by Categories</h2>
         <div className="category-container">
           <CategoryCard name="Coding" Icon={FaCode} />
-          <CategoryCard name="Sport" Icon={FaRunning}/>
+          <CategoryCard name="Sport" Icon={FaRunning} />
           <CategoryCard name="Exhibition" Icon={FaUniversity} />
-          <CategoryCard name="Business" Icon={FaBriefcase}/>
-          <CategoryCard name="Photography" Icon={FaCamera}/>
+          <CategoryCard name="Business" Icon={FaBriefcase} />
+          <CategoryCard name="Photography" Icon={FaCamera} />
         </div>
 
         <h2>Upcoming in 24 Hours</h2>
@@ -100,4 +105,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Home;

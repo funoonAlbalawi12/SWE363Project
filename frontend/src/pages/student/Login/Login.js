@@ -15,6 +15,14 @@ function Login() {
     navigate("/dashboard");
   };
 
+  const handleAdminClick = () => {
+    navigate("/admin-associate");
+  };
+
+  const handleAdminClubClick = () => {
+    navigate("/admin-club-associate");
+  };
+
   return (
     <div className="login-wrapper">
       <div className="login-card">
@@ -28,6 +36,15 @@ function Login() {
 
           <label>Password</label>
           <input type="password" placeholder="Enter password" />
+
+          <div className="role-buttons">
+            <button type="button" onClick={handleAdminClick}>
+              Admin
+            </button>
+            <button type="button" onClick={handleAdminClubClick}>
+              Admin Club
+            </button>
+          </div>
 
           <button
             type="submit"
