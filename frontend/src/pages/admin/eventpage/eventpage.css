@@ -1,0 +1,183 @@
+/* EventPage.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .event-page {
+    background: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 16px 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-weight: bold;
+    margin-right: 40px;
+  }
+  
+  .nav-links a {
+    margin-right: 24px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .nav-links .active {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+  
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 50%;
+  }
+  
+  /* Greeting */
+  .greeting {
+    padding: 16px 24px;
+  }
+  
+  .greeting h1 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  /* Add New Event */
+  .add-event {
+    padding: 8px 24px;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  /* Card Grid */
+
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 3 cards per row on large screens */
+    gap: 20px; /* space between cards */
+    padding: 2rem;
+    justify-content: center;
+  }
+
+  
+  .event-card {
+    background: #2d5b63;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card-image {
+    height: 120px;
+    background: #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  
+  .placeholder-line {
+    height: 12px;
+    background: #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .placeholder-line.short {
+    width: 75%;
+  }
+  
+  .placeholder-line.shorter {
+    width: 50%;
+  }
+  
+  /* Card Actions */
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .btn-ghost-sm {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    transition:  0.2s;
+    
+  }
+  .btn-ghost-sm:hover {
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.375rem;
+  }
+  
+  .icon-sm {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 16px 24px;
+    background: white;
+    font-weight: 600;
+    border-top: 1px solid #eee;
+  }
+  

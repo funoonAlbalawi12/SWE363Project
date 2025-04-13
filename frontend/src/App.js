@@ -10,6 +10,7 @@ import Profile from "./pages/student/Profile/Profile";
 import ExploreClubs from "./pages/student/ExploreClubs/ExploreClubs";
 import Home from "./pages/student/Home/Home";
 import ClubProfile from "./pages/student/ClubProfile/ClubProfile";
+import EventPage from "./pages/admin/eventpage/eventpage";
 
 function AppRoutes() {
   const location = useLocation();
@@ -25,6 +26,8 @@ function AppRoutes() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/explore-clubs" element={<ExploreClubs />} />
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
+        <Route path="/eventpage" element={<EventPage />} />
+
       </Routes>
 
       {state?.backgroundLocation && (
