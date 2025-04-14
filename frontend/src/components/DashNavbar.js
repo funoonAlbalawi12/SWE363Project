@@ -45,8 +45,8 @@ function DashNavbar() {
           </button>
 
           <button
-            className={location.pathname === "/events" ? "active" : ""}
-            onClick={() => navigate("/events")}
+            className={location.pathname === "/explore-events" ? "active" : ""}
+            onClick={() => navigate("/explore-events")}
           >
             Explore Events
           </button>

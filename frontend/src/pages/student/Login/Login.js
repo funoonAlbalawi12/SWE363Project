@@ -20,7 +20,7 @@ function Login() {
   };
 
   const handleAdminClubClick = () => {
-    navigate("/admin-club-associate");
+    navigate("/admin-club-dashboard");
   };
 
   return (

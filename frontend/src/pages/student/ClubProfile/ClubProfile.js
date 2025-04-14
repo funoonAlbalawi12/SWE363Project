@@ -15,6 +15,7 @@ function ClubProfile() {
 
   const { clubId } = useParams();
   const club = clubs[clubId];
+  const { socialLinks = [] } = club;
 
   if (!club) {
     return (
@@ -125,9 +126,18 @@ function ClubProfile() {
         <div className="social-section">
           <h2>Follow us on</h2>
           <div className="social-icons">
-            <span>🎵</span>
-            <span>𝕏</span>
-            <span>💼</span>
+            {socialLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon"
+                title={link.name}
+              >
+                <img src={link.icon} alt={link.name} />
+              </a>
+            ))}
           </div>
         </div>
 

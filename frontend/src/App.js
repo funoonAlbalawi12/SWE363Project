@@ -11,6 +11,10 @@ import ExploreClubs from "./pages/student/ExploreClubs/ExploreClubs";
 import Home from "./pages/student/Home/Home";
 import ClubProfile from "./pages/student/ClubProfile/ClubProfile";
 import EventPage from "./pages/admin/eventpage/eventpage";
+import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
+import Tickets from "./pages/student/Tickets/Tickets";
+import ClubAdminDashboard from "./pages/clubAdmin/ClubAdminDashboard";
+
 
 function AppRoutes() {
   const location = useLocation();
@@ -28,8 +32,12 @@ function AppRoutes() {
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/eventpage" element={<EventPage />} />
 
-      </Routes>
+     
+        <Route path="/explore-events" element={<ExploreEvents />} />
+        <Route path="/tickets" element={<Tickets />} />
+        <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
 
+      </Routes>
       {state?.backgroundLocation && (
         <Routes>
           <Route path="/login" element={<Login />} />

@@ -248,14 +248,14 @@
   gap: 16px;
 }
 
-.social-icons span {
-  font-size: 24px;
-  background-color: #e5e7eb;
-  padding: 10px;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.social-icon img {
+ 
+  width: 36px;
+  height: 36px;
+  border-radius: 25%;
+  transition: transform 0.2s ease;
+
+}
+.social-icon:hover img {
+  transform: scale(1.1);
 }

@@ -28,12 +28,14 @@ function Dashboard() {
               price="Free Ticket"
               date="Saturday, February 20 | 08:00 PM"
               location="Building 4, room 124"
+              img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
             />
             <EventCard
               title="Chemical Engineering: Introduction"
               subtitle="Chemical Engineering Club"
               date="Wednesday, June 7 | 07:00 PM"
               location="Building 4, room 124"
+              img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
             />
           </div>
 
@@ -62,12 +64,14 @@ function Dashboard() {
                 subtitle="Innovation Club"
                 date="Monday, April 8 | 06:30 PM"
                 location="Building 5, room 210"
+                img ="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
               />
               <EventCard
                 title="Tech Talk: Cybersecurity"
                 subtitle="Computer Club"
                 date="Thursday, April 11 | 07:00 PM"
                 location="Building 24, Auditorium "
+                img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
               />
             </div>
             
@@ -77,6 +81,7 @@ function Dashboard() {
                 subtitle="Design Club"
                 date="Sunday, April 14 | 03:00 PM"
                 location="Building 22, room 124"
+                img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
               />
             </div>
           </Carousel>

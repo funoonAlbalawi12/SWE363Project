@@ -74,16 +74,7 @@ body{
   margin-bottom: 16px;
 
 }
-.btn-view-more {
-  padding: 6px 12px;
-  font-size: 14px;
-  background-color: #2d5b63;
-  color: white;
-  border: 1px solid #212121;
-  border-radius: 4px;
-  cursor: pointer;
-  margin:10px
-}
+
 
 /* Event Card Styles */
 .event-card {
@@ -98,7 +89,6 @@ body{
   overflow: hidden;
   width: 300px;
   color: white;
-
 }
 
 .event-card:hover {
@@ -142,6 +132,17 @@ body{
   color: white;
   font-size: 15px;
 }
+.btn-view-more {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #2d5b63;
+  color: white;
+  border: 1px solid #212121;
+  border-radius: 4px;
+  cursor: pointer;
+  margin:10px
+}
+
 
 .event-container {
   display: flex;
@@ -202,6 +203,7 @@ h2{
 .upcoming-container{
   display: flex;
   justify-content: center;
+  gap:16px;
 
 }
 
