@@ -1,0 +1,53 @@
+.edit-club-profile {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-club-profile h2 {
+    margin-bottom: 20px;
+    color: #1e1e1e;
+  }
+  
+  .edit-club-profile form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-club-profile label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .edit-club-profile input,
+  .edit-club-profile textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #345e5e;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .edit-club-profile button {
+    background-color: #345e5e;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .edit-club-profile button:hover {
+    background-color: #2a4c4c;
+  }
+  
+  .edit-club-profile .message {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+  }
+  

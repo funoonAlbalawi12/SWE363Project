@@ -1,0 +1,52 @@
+.manage-members-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .manage-members-container h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .message {
+    margin: 1rem 0;
+    font-weight: bold;
+    color: green;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  .remove-btn {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .remove-btn:hover {
+    background-color: #a82020;
+  }
+  
+  select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  

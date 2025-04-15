@@ -1,0 +1,48 @@
+.membership-requests {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+  }
+  
+  .request-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .request-card h3 {
+    margin: 0 0 0.5rem;
+  }
+  
+  .actions button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .approve {
+    background-color: #2e7d32;
+  }
+  
+  .reject {
+    background-color: #c62828;
+  }
+  
+  .status {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .status.approved {
+    color: green;
+  }
+  
+  .status.rejected {
+    color: red;
+  }
+  
