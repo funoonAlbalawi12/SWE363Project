@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
-import events from "../../../data/EventData";
+
 import "./Tickets.css";
+import { FiUser } from "react-icons/fi";
 
 function Tickets() {
   const navigate = useNavigate();
@@ -41,50 +42,54 @@ function Tickets() {
     <>
       <DashNavbar />
       <div className="tickets-page">
-        <div className="ticket-header">
-          <div className="profile-card">
-            <img className="avatar" src="/images/avatar.png" alt="User" />
-            <h3>User Name</h3>
-            <p>user@email.com</p>
+        <div className="profile-card">
+          <div className="profile-avatar">
+            <FiUser />
           </div>
+          <h3>{user.name}</h3>
+          <p>{user.email}</p>
+        </div>
 
-          <div className="ticket-list">
-            <h2>My Tickets</h2>
-            <div className="ticket-tabs">
-              <button className="active">Upcoming</button>
-              <button>Used</button>
-            </div>
-
+        <div className="ticket-list">
+          <div className="ticket-list-header">
+            <p className="ticket-count">{myTickets.length} events</p>
             <input
               className="search-ticket"
               type="text"
               placeholder="Search by name"
             />
+          </div>
 
-            <div className="tickets-grid">
-              {events.map((event, idx) => (
-                <div
-                  className="ticket-card"
-                  key={idx}
-                  onClick={() => handleTicketClick(event)}
-                >
-                  <img src={event.img} alt={event.title} />
-                  <div className="ticket-info">
-                    <h3>{event.title}</h3>
-                    <p>{event.date}</p>
-                    <p>{event.location}</p>
-                  </div>
+          <h2>My Tickets</h2>
+          <div className="ticket-tabs">
+            <button className="active">Upcoming</button>
+            <button>Used</button>
+          </div>
+
+          <div className="tickets-card-grid">
+            {myTickets.map((event, idx) => (
+              <div
+                className="ticket-card"
+                key={idx}
+                onClick={() => handleTicketClick(event)}
+              >
+                <img src={event.img} alt={event.title} />
+                <div className="ticket-info">
+                  <h3>{event.title}</h3>
+                  <p>{event.date}</p>
+                  <p>{event.location}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <h3>Recommended for you</h3>
-        <div className="recommendation-carousel">
-          {/* Insert EventCards here */}
-        </div>
       </div>
+
+      <h3>Recommended for you</h3>
+      <div className="recommendation-carousel">
+        {/* Insert EventCards here */}
+      </div>
+
       <Footer />
     </>
   );

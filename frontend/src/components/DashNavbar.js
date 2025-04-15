@@ -63,7 +63,12 @@ function DashNavbar() {
         </button>
 
         <button
-          className={location.pathname === "/tickets" ? "active" : ""}
+          className={
+            location.pathname === "/tickets" ||
+            location.pathname.startsWith("/ticket")
+              ? "active"
+              : ""
+          }
           onClick={() => navigate("/tickets")}
         >
           My tickets

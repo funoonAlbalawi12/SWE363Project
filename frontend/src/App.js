@@ -21,7 +21,7 @@ import ClubAdminDashboard from "./pages/clubAdmin/Dashboard/ClubAdminDashboard";
 import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
 import MembershipRequests from "./pages/clubAdmin/Membership/MembershipRequests";
 import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEvents";
-import ClubAdminDashboard from "./pages/clubAdmin/ClubAdminDashboard";
+
 import EventDetails from "./pages/student/EventDetails/EventDetails";
 import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
