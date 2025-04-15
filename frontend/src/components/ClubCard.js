@@ -1,23 +1,19 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
-
-function ClubCard({ id ,name, description , img}) {
-  const navigate = useNavigate();
-
+function ClubCard({ id, name, description, img }) {
   return (
-    <div className="club-card">
+    <Link to={`/clubs/${id}`} className="club-card-link">
+      <div className="club-card">
         <div className="club-image">
-        <img src={img} alt={name} />
+          <img src={img} alt={name} />
+        </div>
+        <div className="club-info">
+          <h3>{name}</h3>
+          <p>{description}</p>
+        </div>
       </div>
-      <div className="club-info">
-        <h3>{name}</h3>
-        <p>{description}</p>
-        <button onClick={() => navigate(`/clubs/${id}`)} className="profile-btn">
-          Check Club Profile
-        </button>
-      </div>
-    </div>
+    </Link>
   );
 }
 

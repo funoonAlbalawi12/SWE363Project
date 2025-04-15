@@ -13,7 +13,7 @@ const EventPage = () => {
     { id: 3, title: "Tech Expo 2025", description: "Description 3" },
     { id: 4, title: "AI Symposium", description: "Description 4" },
     { id: 5, title: "Innovation Week", description: "Description 5" },
-    { id: 6, title: "Robotics Showdown", description: "Description 6" }
+    { id: 6, title: "Robotics Showdown", description: "Description 6" },
   ];
 
   const handleCardClick = (id) => {
@@ -31,11 +31,29 @@ const EventPage = () => {
   };
 
   return (
-
     <div className="event-page">
       {/* Navbar */}
       <Navbar />
 
+      <nav className="admin-navbar">
+        <div className="admin-navbar-left">
+          <div className="logo">Kfupm Activity Network</div>
+          <div className="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Clubs</a>
+            <a href="#" className="active">
+              Event
+            </a>
+          </div>
+        </div>
+        <div className="admin-navbar-right">
+          <Bell className="icon" />
+          <div className="user-info">
+            <div className="user-avatar" />
+            <span>User Name</span>
+          </div>
+        </div>
+      </nav>
 
       {/* Greeting */}
       <div className="greeting">
@@ -53,7 +71,11 @@ const EventPage = () => {
       {/* Event Cards */}
       <div className="card-grid">
         {events.map((event) => (
-          <div key={event.id} className="event-card clickable" onClick={() => handleCardClick(event.id)}>
+          <div
+            key={event.id}
+            className="event-card clickable"
+            onClick={() => handleCardClick(event.id)}
+          >
             <div className="card-image">Image</div>
             <h2>{event.title}</h2>
             <div className="placeholder-line short" />
@@ -61,14 +83,14 @@ const EventPage = () => {
 
             {/* Admin Options */}
             <div className="card-actions">
-              <button 
+              <button
                 className="btn-ghost-sm"
                 onClick={(e) => handleRemove(e, event.id)}
               >
                 <Trash2 className="icon-sm" />
                 <span>Remove</span>
               </button>
-              <button 
+              <button
                 className="btn-ghost-sm"
                 onClick={(e) => handleEdit(e, event.id)}
               >
@@ -81,7 +103,7 @@ const EventPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="admin-footer">
         <div>Kfupm Activity Network</div>
       </footer>
     </div>

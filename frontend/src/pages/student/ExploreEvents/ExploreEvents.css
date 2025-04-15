@@ -1,4 +1,4 @@
-/* Page base */
+
 .explore-events-page {
     padding: 40px;
     background-color: #f2f2f2;
@@ -12,7 +12,7 @@
     color: #111827;
   }
   
-  /* Search bar */
+
   .search-bar-container {
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     border: 1px solid #ccc;
     border-radius: 6px 0 0 6px;
     outline: none;
-    background-color: white;
+    background-color: #f2f2f2;
   }
   
   .search-btn {
@@ -38,7 +38,7 @@
     cursor: pointer;
   }
   
-  /* Content layout */
+
   .events-content {
     display: flex;
     gap: 30px;
@@ -47,7 +47,7 @@
   /* Sidebar */
   .filters-sidebar {
     width: 250px;
-    background-color: white;
+    background-color: #f2f2f2;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -101,16 +101,11 @@
     color: white;
   }
   
-  /* Event results */
+
   .event-results {
     flex: 1;
   }
-  
-  .results-count {
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: #6b7280;
-  }
+
   
   .event-results .event-card {
     margin-bottom: 20px;
@@ -118,8 +113,14 @@
   .event-grid {
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr; /* 1 column by default */
+    grid-template-columns: 1fr; 
   }
+  .no-results {
+    color: #6b7280;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
   
   /* 2 columns on screens >= 920px */
   @media (min-width: 920px) {

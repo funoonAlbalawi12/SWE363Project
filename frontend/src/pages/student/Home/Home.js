@@ -1,20 +1,35 @@
 import React from "react";
 import DashNavbar from "../../../components/DashNavbar";
-import CategoryCard from "../../../components/CategoryCard";
+// import CategoryCard from "../../../components/CategoryCard";
 import EventCard from "../../../components/EventCard";
 import Footer from "../../../components/Footer";
 import Hero from "../../../components/Hero";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {
-  FaCode,
-  FaRunning,
-  FaCamera,
-  FaBriefcase,
-  FaUniversity,
-} from "react-icons/fa";
+import events from "../../../data/EventData";
+// import {
+//   FaCode,
+//   FaRunning,
+//   FaCamera,
+//   FaBriefcase,
+//   FaUniversity,
+// } from "react-icons/fa";
 
 function Home() {
+  const today = new Date();
+  const next24h = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+
+  const parseEventDateTime = (dateStr) => {
+    const [datePart, timePart] = dateStr.split("|").map((str) => str.trim());
+    const fullDateStr = `${datePart}, ${new Date().getFullYear()} ${timePart}`;
+    return new Date(fullDateStr);
+  };
+
+  // Filter: Events starting within the next 24 hours
+  const next24hEvents = events.filter((event) => {
+    const eventDate = parseEventDateTime(event.date);
+    return eventDate >= today && eventDate <= next24h;
+  });
   return (
     <body>
       <DashNavbar />
@@ -22,49 +37,45 @@ function Home() {
       <div className="content">
         <div className="content-header">
           <h2>New Events in KFUPM</h2>
-          <button className="btn-view-more">View More</button>
         </div>
         <div className="event-container">
-          <EventCard
-            title="Gaming +"
-            price="50 SR/Ticket"
-            date="Monday, March 6 | 06:00 AM"
-            location="Dhahran, Saudi Arabia"
-            img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-          />
-          <EventCard
-            title="Marathon"
-            price="Free Ticket"
-            date="Wednesday, February 24 | 07:00 PM"
-            location="Dhahran, Saudi Arabia"
-            img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-          />
-          <EventCard
-            title="GSR"
-            price="10 SR/Ticket"
-            date="Monday, February 6 | 04:00 PM"
-            location="Dhahran, Saudi Arabia"
-            img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-          />
+          {events.slice(0, 3).map((event, index) => (
+            <EventCard
+              key={index}
+              title={event.title}
+              price={event.price}
+              date={event.date}
+              location={event.location}
+              img={event.img}
+            />
+          ))}
         </div>
-        <h2>Explore by Categories</h2>
+
+        {/* <h2>Explore by Categories</h2>
         <div className="category-container">
           <CategoryCard name="Coding" Icon={FaCode} />
           <CategoryCard name="Sport" Icon={FaRunning} />
           <CategoryCard name="Exhibition" Icon={FaUniversity} />
           <CategoryCard name="Business" Icon={FaBriefcase} />
           <CategoryCard name="Photography" Icon={FaCamera} />
-        </div>
+        </div> */}
 
         <h2>Upcoming in 24 Hours</h2>
         <div className="upcoming-container">
-          <EventCard
-            title="GSR"
-            date="Monday, February 6 | 04:00 PM"
-            location="Dhahran, Saudi Arabia"
-            price="10 SR/Ticket"
-            img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-          />
+          {next24hEvents.length > 0 ? (
+            next24hEvents.map((event, index) => (
+              <EventCard
+                key={index}
+                title={event.title}
+                price={event.price}
+                date={event.date}
+                location={event.location}
+                img={event.img}
+              />
+            ))
+          ) : (
+            <p>No events in the next 24 hours.</p>
+          )}
         </div>
 
         <h2>Highlights This Week</h2>
@@ -79,31 +90,24 @@ function Home() {
           // centerMode={true}
           centerSlidePercentage={45}
         >
-          <div className="carousel-slide">
-            <EventCard
-              title="Gaming +"
-              price="Free Ticket"
-              date="Wednesday, February 24 | 07:00 PM"
-              location="Dhahran, Saudi Arabia"
-              img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-            />
-            <EventCard
-              title="Photography Workshop"
-              price="50 SR"
-              date="Wednesday, March 7 | 06:00 PM"
-              location="Dhahran, Saudi Arabia"
-              img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-            />
-          </div>
-          <div className="carousel-slide">
-            <EventCard
-              title="Business Talk"
-              price="Free Ticket"
-              date="Friday, March 9 | 05:00 PM"
-              location="Dhahran, Saudi Arabia"
-              img="https://gaming.kfupm.org/wp-content/uploads/2024/11/Home-page.png"
-            />
-          </div>
+          {Array.from({ length: Math.ceil(events.length / 2) }).map(
+            (_, groupIndex) => (
+              <div className="carousel-slide" key={groupIndex}>
+                {events
+                  .slice(groupIndex * 2, groupIndex * 2 + 2)
+                  .map((event, i) => (
+                    <EventCard
+                      key={i}
+                      title={event.title}
+                      price={event.price}
+                      date={event.date}
+                      location={event.location}
+                      img={event.img}
+                    />
+                  ))}
+              </div>
+            )
+          )}
         </Carousel>
       </div>
       <Footer />

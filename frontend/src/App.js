@@ -15,12 +15,17 @@ import EventPage from "./pages/admin/eventpage/eventpage";
 import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
 import Tickets from "./pages/student/Tickets/Tickets";
 
-import ManageMembers from './pages/clubAdmin/Members/ManageMembers';
-import SendMessage from './pages/clubAdmin/Messaging/SendMessage';
-import ClubAdminDashboard from './pages/clubAdmin/Dashboard/ClubAdminDashboard';
-import EditProfile from './pages/clubAdmin/Profile/EditProfile';
-import MembershipRequests from './pages/clubAdmin/Membership/MembershipRequests';
-import AnnouncementsEvents from './pages/clubAdmin/Announcements/AnnouncementsEvents';
+import ManageMembers from "./pages/clubAdmin/Members/ManageMembers";
+import SendMessage from "./pages/clubAdmin/Messaging/SendMessage";
+import ClubAdminDashboard from "./pages/clubAdmin/Dashboard/ClubAdminDashboard";
+import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
+import MembershipRequests from "./pages/clubAdmin/Membership/MembershipRequests";
+import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEvents";
+import ClubAdminDashboard from "./pages/clubAdmin/ClubAdminDashboard";
+import EventDetails from "./pages/student/EventDetails/EventDetails";
+import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
+import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
+import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 
 function AppRoutes() {
   const location = useLocation();
@@ -33,10 +38,16 @@ function AppRoutes() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/clubadmin/dashboard" element={<ClubAdminDashboard />} />
-        <Route path="/clubadmin/announcements-events" element={<AnnouncementsEvents />} />
+        <Route
+          path="/clubadmin/announcements-events"
+          element={<AnnouncementsEvents />}
+        />
         <Route path="/clubadmin/messages" element={<SendMessage />} />
         <Route path="/clubadmin/club-members" element={<ManageMembers />} />
-        <Route path="/clubadmin/membership-requests" element={<MembershipRequests />} />
+        <Route
+          path="/clubadmin/membership-requests"
+          element={<MembershipRequests />}
+        />
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
@@ -44,10 +55,18 @@ function AppRoutes() {
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/eventpage" element={<EventPage />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
-        <Route path="/tickets" element={<Tickets />} />
+
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
+
+        <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/explore-events" element={<ExploreEvents />} />
+        <Route path="/tickets" element={<Tickets />} />
+
+        <Route path="/purchase/:id" element={<PurchaseTicket />} />
+        <Route path="/ticket-success" element={<TicketSuccess />} />
+        <Route path="ticket/:id" element={<TicketDetails />} />
       </Routes>
-      
+
       {state?.backgroundLocation && (
         <Routes>
           <Route path="/login" element={<Login />} />

@@ -1,0 +1,226 @@
+.ticket-page {
+    padding: 40px;
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .back-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .ticket-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  /* LEFT: Form Section */
+  .ticket-form {
+    flex: 2;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ticket-form h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #111827;
+  }
+  
+  .ticket-form h2,
+  .ticket-form h3,
+  .ticket-form h4 {
+    margin: 20px 0 10px;
+    color: #111827;
+    font-size: 18px;
+  }
+  
+  .ticket-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #fafafa;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 20px;
+  }
+  
+  .quantity-control button {
+    padding: 6px 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2d5b63;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .quantity-control span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .attendees-section .attendee {
+    margin-bottom: 20px;
+  }
+  
+  .submit-btn {
+    margin-top: 24px;
+    padding: 12px 20px;
+    background-color: #2d5b63;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* RIGHT: Summary Box */
+  .ticket-summary {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ticket-summary h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #111827;
+  }
+  
+  .ticket-summary p {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #374151;
+  }
+  
+  .ticket-summary hr {
+    margin: 16px 0;
+  }
+  
+  .ticket-summary h3 {
+    font-size: 18px;
+    color: #111827;
+  }
+  
+  .ticket-summary .note {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 12px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .ticket-layout {
+      flex-direction: column;
+    }
+  }
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal Card */
+.modal-content {
+  background-color: #ffffff;
+  padding: 32px;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.25s ease-in;
+}
+
+.modal-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.modal-content p {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.modal-actions button {
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary Action */
+.modal-actions button:first-child {
+  background-color: #635bff;
+  color: white;
+}
+
+.modal-actions button:first-child:hover {
+  background-color: #5145cd;
+}
+
+/* Cancel Action */
+.cancel-btn {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.cancel-btn:hover {
+  background-color: #e5e7eb;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+.submit-btn:disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+
