@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./eventpage.css";
+import Navbar from "../../../components/Navbar-users";
 import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 
 const EventPage = () => {
@@ -30,25 +31,11 @@ const EventPage = () => {
   };
 
   return (
+
     <div className="event-page">
       {/* Navbar */}
-      <nav className="navbar">
-        <div className="navbar-left">
-          <div className="logo">Kfupm Activity Network</div>
-          <div className="nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">Clubs</a>
-            <a href="#" className="active">Event</a>
-          </div>
-        </div>
-        <div className="navbar-right">
-          <Bell className="icon" />
-          <div className="user-info">
-            <div className="user-avatar" />
-            <span>User Name</span>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
+
 
       {/* Greeting */}
       <div className="greeting">
