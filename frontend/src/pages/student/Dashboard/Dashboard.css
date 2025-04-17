@@ -18,12 +18,12 @@
   align-items: center;
 }
 
-.navbar-logo {
-  font-weight: 700;
-  font-size: 18px;
-  margin-right: 40px;
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
 }
-
 
 .nav-tabs {
   position: absolute;

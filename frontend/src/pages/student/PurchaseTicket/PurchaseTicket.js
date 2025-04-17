@@ -60,6 +60,13 @@ function PurchaseTicket() {
     e.preventDefault();
     setShowModal(true); // open mock payment
   };
+  const handlePayment = () => {
+    if (event.price > 0) {
+      navigate("ticket-success", { state: { event } });
+    } else {
+      navigate("/ticket-success", { state: { event } });
+    }
+  };
   if (!event) return <p>Event not found</p>;
 
   return (
@@ -163,8 +170,21 @@ function PurchaseTicket() {
             <button
               className="submit-btn"
               onClick={() => {
+                if (!isFormValid()) return;
+
                 if (isFree) {
-                  setPaymentSuccess(true);
+                  navigate("/ticket-success", {
+                    state: {
+                      event,
+                      contactInfo,
+                      attendees,
+                      quantity,
+                      total,
+                      paymentMethod: "Free Registration",
+                      date: new Date().toLocaleDateString("en-GB"),
+                      codeBase: Math.floor(100000 + Math.random() * 900000),
+                    },
+                  });
                 } else {
                   setShowModal(true);
                 }
@@ -173,6 +193,7 @@ function PurchaseTicket() {
             >
               {isFree ? "Register Now" : `Pay Now - ${total} SR`}
             </button>
+
             {!isFormValid() && (
               <p className="error-tooltip">
                 Please fill in all contact and attendee fields correctly.

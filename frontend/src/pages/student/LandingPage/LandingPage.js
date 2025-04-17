@@ -86,12 +86,11 @@ function LandingPage() {
         <Carousel
           showThumbs={false}
           showStatus={false}
+          showIndicators={true}
           infiniteLoop={true}
           autoPlay={false}
-          interval={4000}
-          showArrows={true}
+          showArrows={false}
           className="highlight-carousel"
-          centerSlidePercentage={45}
         >
           {Array.from({ length: Math.ceil(events.length / 2) }).map(
             (_, groupIndex) => (

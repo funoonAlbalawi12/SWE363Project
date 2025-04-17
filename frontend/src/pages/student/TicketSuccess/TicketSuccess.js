@@ -27,7 +27,7 @@ function TicketSuccess() {
     <>
       <DashNavbar />
       <div className="ticket-success-page">
-        <div className="success-banner">Successful payment!</div>
+        <div className="success-banner">Successfully Registred!</div>
 
         <h1>{event.title}</h1>
 
