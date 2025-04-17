@@ -15,6 +15,17 @@ import EventPage from "./pages/admin/eventpage/eventpage";
 import ClubsPage from "./pages/admin/clubpage/clubpage";
 import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
 import Tickets from "./pages/student/Tickets/Tickets";
+<<<<<<< HEAD
+
+import ManageMembers from './pages/clubAdmin/Members/ManageMembers';
+import SendMessage from './pages/clubAdmin/Messaging/SendMessage';
+import ClubAdminDashboard from './pages/clubAdmin/Dashboard/ClubAdminDashboard';
+import EditProfile from './pages/clubAdmin/Profile/EditProfile';
+import MembershipRequests from './pages/clubAdmin/Membership/MembershipRequests';
+import AnnouncementsEvents from './pages/clubAdmin/Announcements/AnnouncementsEvents';
+//import Events from "./pages/clubAdmin/Events/Events";
+
+=======
 import ManageMembers from "./pages/clubAdmin/Members/ManageMembers";
 import SendMessage from "./pages/clubAdmin/Messaging/SendMessage";
 import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
@@ -25,6 +36,7 @@ import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
 import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 import ClubAdminDashboard from "./pages/clubAdmin/ClubAdminDashboard";
+>>>>>>> c4411bcab1b6af3934f38e2b0b95b86ac855f800
 function AppRoutes() {
   const location = useLocation();
   const state = location.state;
@@ -55,9 +67,14 @@ function AppRoutes() {
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/tickets" element={<Tickets />} />
+<<<<<<< HEAD
+        <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
+        
+=======
         <Route path="/purchase/:id" element={<PurchaseTicket />} />
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="ticket/:id" element={<TicketDetails />} />
+>>>>>>> c4411bcab1b6af3934f38e2b0b95b86ac855f800
       </Routes>
       {state?.backgroundLocation && (
         <Routes>
