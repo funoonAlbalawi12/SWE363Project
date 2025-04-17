@@ -21,6 +21,7 @@ import ClubAdminDashboard from './pages/clubAdmin/Dashboard/ClubAdminDashboard';
 import EditProfile from './pages/clubAdmin/Profile/EditProfile';
 import MembershipRequests from './pages/clubAdmin/Membership/MembershipRequests';
 import AnnouncementsEvents from './pages/clubAdmin/Announcements/AnnouncementsEvents';
+//import Events from "./pages/clubAdmin/Events/Events";
 
 function AppRoutes() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function AppRoutes() {
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
+        
       </Routes>
       
       {state?.backgroundLocation && (
