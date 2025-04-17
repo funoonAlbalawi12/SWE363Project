@@ -15,7 +15,7 @@ function EventCard({ title, subtitle, price, date, location, img }) {
         <div className="event-info">
           <div className="event-header">
             <h3>{title}</h3>
-            <p className="price">{price}</p>
+            <p className="price">{price || "Free"}</p>
           </div>
           {subtitle && <p className="event-subtitle">{subtitle}</p>}
           <p>

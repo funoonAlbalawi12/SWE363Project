@@ -13,7 +13,7 @@ import {
   FaTicketAlt,
 } from "react-icons/fa";
 
-function EventPage() {
+function EventDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const handleBack = () => {
@@ -116,4 +116,4 @@ function EventPage() {
   );
 }
 
-export default EventPage;
+export default EventDetails;

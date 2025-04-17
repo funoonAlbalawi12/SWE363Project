@@ -61,7 +61,7 @@ body{
 }
 
 
-
+/* 
 .event-card {
   padding:10px;
   margin:10px;
@@ -73,61 +73,86 @@ body{
   transition: box-shadow 0.3s;
   overflow: hidden;
   width: 300px;
-  color: white;
-} 
 
-.event-card-link{
-  text-decoration: none;
-  color: inherit;
-  display: block;
+  color: white;
+}  */
+
+.event-card {
+  width: 300px;
+  background-color: #2d5b63;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  
 }
 
 .event-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-.event-subtitle {
-  font-size: 14px;
-  color: white;
-
-}
-.event-image {
-  width: 100%;
-  height: 120px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .event-image img {
   width: 100%;
-  height: 100%;
-  /* object-fit: cover; */
+  height: 150px;
+  object-fit: contain;
+  background-color: #2d5b63;
 }
+
 .event-info {
   padding: 16px;
-  text-align: left;
-}
-.event-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start; /* ✅ left-align everything */
+  gap: 8px;
+  color:#f2f2f2;
+  text-align: left; /* ✅ ensure text is not centered */
+}
+
+.event-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* ✅ push title left, price right */
   align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
 }
 
 .event-header h3 {
+  font-size: 20px;
+  font-weight: 700;
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-  flex: 1;
 }
 
 .price {
-  font-weight: bold;
-  margin: 0;
-  color: white;
   font-size: 15px;
+  font-weight: 600;
+  color:#f2f2f2;
+  white-space: nowrap;
 }
+
+.event-info p {
+  font-size: 14px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color:#f2f2f2;
+}
+
+.event-info svg {
+  margin-right: 6px;
+  font-size: 14px;
+  color:#f2f2f2;
+}
+.event-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
 .btn-view-more {
   padding: 6px 12px;
   font-size: 14px;
@@ -144,6 +169,11 @@ body{
   display: flex;
   gap: 16px;
   justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  margin-bottom: 32px;
+
+
 }
 
 .view-more {
@@ -194,50 +224,37 @@ h2{
   margin: 16px;
 
 }
-/* 
+
 .upcoming-container{
   display: flex;
   justify-content: center;
   gap:16px;
 
+
 }
 
- .carousel-slide {
+
+
+.highlight-carousel .carousel-slide {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  align-items: stretch;
+  gap: 20px;
 }
-
-.highlight-carousel .carousel .slide {
-  padding: 0;
-}
-
-.highlight-carousel .carousel .control-arrow {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-}
-
-.highlight-carousel .carousel .control-arrow:hover {
-  background: rgba(0, 0, 0, 0.4);
-} */
 
 
 
 .highlight-carousel .carousel .slide {
-  padding: 0;
+  display: flex;
 }
 
 .carousel-slide {
   display: flex;
   gap: 20px;
   justify-content: center;
+
 }
 
-/* .carousel-slide .event-card {
-  width: 300px;
-  min-height: 400px;
-  flex-shrink: 0;
-} */
 
 /* Hide Arrows */
 .carousel .control-prev,
@@ -273,19 +290,20 @@ h2{
 
 /* Responsive */
 @media (max-width: 768px) {
-
-  .carousel-slide {
+ 
+  .highlight-carousel .carousel-slide {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
-
   .carousel .control-dots {
     flex-direction: row;
     bottom: 10px;
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%);
+    transform: none;
     padding: 0;
+    position: static;
+    justify-content: center;
+    margin-top: 12px;
   }
 }
 

@@ -9,7 +9,7 @@ const events = [
   {
     title: "Gaming +",
     price: "10SR / Ticket",
-    date: "Wednesday, April 20 | 07:00 PM",
+    date: "Wednesday, February 16 | 07:00 PM",
     location: "Building 54, KFUPM ",
     img: "/images/gamingPlus.svg",
   },
@@ -20,7 +20,6 @@ const events = [
     location: "Building 57, KFUPM ",
     img: "/images/Cite.png",
   },
-
 ];
 
 export default events;

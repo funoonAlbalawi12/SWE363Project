@@ -161,30 +161,30 @@
     text-align: center;
   }
   
-  .recommended-carousel {
+    
+  .recommended-carousel .carousel .slide {
+    background: none;
     display: flex;
+  }
+  
+  
+  
+  .recommended-carousel .carousel-slide {
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+
+  
+@media (max-width: 768px) {
+  .recommended-carousel .carousel-slide {
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
   }
+
   
-  .carousel-cards {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  
-  
-  .recommended-carousel .carousel .slide {
-    padding: 0;
-  }
-  
-  .recommended-carousel .carousel .control-arrow {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-  }
-  
-  .recommended-carousel .carousel .control-arrow:hover {
-    background: rgba(0, 0, 0, 0.4);
-  }
-  
+}

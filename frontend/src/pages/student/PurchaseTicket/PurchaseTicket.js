@@ -26,6 +26,9 @@ function PurchaseTicket() {
   const isFree = event.price.toLowerCase().includes("free");
   const price = isFree ? 0 : parseFloat(event.price.match(/\d+/)?.[0] || "0");
   const total = quantity * price;
+  const [codeBase] = useState(() =>
+    Math.floor(100000 + Math.random() * 900000)
+  );
 
   const handleQuantityChange = (val) => {
     const newQuantity = Math.max(1, quantity + val);
@@ -60,13 +63,7 @@ function PurchaseTicket() {
     e.preventDefault();
     setShowModal(true); // open mock payment
   };
-  const handlePayment = () => {
-    if (event.price > 0) {
-      navigate("ticket-success", { state: { event } });
-    } else {
-      navigate("/ticket-success", { state: { event } });
-    }
-  };
+
   if (!event) return <p>Event not found</p>;
 
   return (
@@ -182,7 +179,7 @@ function PurchaseTicket() {
                       total,
                       paymentMethod: "Free Registration",
                       date: new Date().toLocaleDateString("en-GB"),
-                      codeBase: Math.floor(100000 + Math.random() * 900000),
+                      codeBase,
                     },
                   });
                 } else {
@@ -221,7 +218,7 @@ function PurchaseTicket() {
                       total,
                       paymentMethod: "Visa •••• 5987", // or a dynamic value
                       date: new Date().toLocaleDateString("en-GB"),
-                      codeBase: Math.floor(100000 + Math.random() * 900000), // for unique code per ticket
+                      codeBase,
                     },
                   });
                 }}

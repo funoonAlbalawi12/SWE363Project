@@ -244,40 +244,35 @@
     display: flex;
   }
   
-  .similar-carousel .carousel .control-arrow {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-  }
   
-  .similar-carousel .carousel .control-arrow:hover {
-    background: rgba(0, 0, 0, 0.3);
-  }
   
   .similar-carousel .carousel-slide {
 
     display: flex;
     justify-content: center;
     align-items: stretch;
-
     gap: 20px;
   }
 
+
   .carousel-slide .event-card {
     width: 300px;
-    min-height: 400px;
+    height: 300px;
+    max-height: 400px;
     flex-shrink: 0;
   }
   
-  
-  @media (max-width: 768px) {
-    .carousel-slide {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .carousel-slide .event-card {
-      width: 100%;
-      max-width: 360px;
-    }
+@media (max-width: 768px) {
+  .similar-carousel .carousel-slide {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  
+}
+
+  
+  
+    
 

@@ -1,80 +1,93 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
 import QRCode from "react-qr-code";
 import "./TicketDetails.css";
 
 function TicketDetails() {
-  const { id } = useParams();
+  const { state } = useLocation();
+  const { event } = state || {};
 
-  const ticket = {
-    title: "GSR - Global Student Research",
-    date: "Tuesday, February 06 | 10:00 AM",
-    location: "Building 60, KFUPM, Saudi Arabia",
-    tickets: [
-      {
-        name: "user",
-        email: "user@email.com",
-        phone: "+966 50 000 0000",
-        code: "MRCE-94812",
-      },
-      {
-        name: "user2",
-        email: "user2@email.com",
-        phone: "+966 50 000 0001",
-        code: "MRCE-94813",
-      },
-    ],
-    total: "20SR",
-    image: "/images/gsr-banner.jpg",
-  };
+  if (!event) return <p>No ticket info found.</p>;
 
   return (
     <>
       <DashNavbar />
+
       <div className="ticket-details-page">
         <button className="back-btn" onClick={() => window.history.back()}>
           ← Back
         </button>
 
-        <h2>{ticket.title}</h2>
-        <img src={ticket.image} alt={ticket.title} className="ticket-banner" />
+        <button className="print-btn" onClick={() => window.print()}>
+          🖨️ Print Ticket
+        </button>
 
-        <div className="event-details">
-          <p>
-            <strong>Date:</strong> {ticket.date}
-          </p>
-
-          <p>
-            <strong>Location:</strong> {ticket.location}
-          </p>
-          <p>
-            <strong>Tickets:</strong> {ticket.tickets.length} Email Tickets
-          </p>
-        </div>
-
-        <h3>Total: {ticket.total}</h3>
-
-        {ticket.tickets.map((t, idx) => (
-          <div key={idx} className="ticket-entry">
-            <div>
-              <p>
-                <strong>Ticket {idx + 1}</strong>
+        {/* Event Overview */}
+        <div className="event-details-summary">
+          <div className="event-info">
+            <img src={event.img} alt={event.title} className="event-banner" />
+            <div className="meta">
+              <h1>{event.title}</h1>
+              <p className="meta-item">
+                📅 <strong>Date and Time:</strong> {event.date}
               </p>
-              <p>Name: {t.name}</p>
-              <p>Email: {t.email}</p>
-              <p>Phone: {t.phone}</p>
-            </div>
-            <div>
-              <p>Code: {t.code}</p>
-              <QRCode value={t.code} size={64} />
+              <p className="meta-item">
+                📍 <strong>Location:</strong> {event.location}
+              </p>
+              <p className="meta-item">
+                ⏱️ <strong>Duration:</strong> 10 Hours
+              </p>
+              <p className="meta-item">
+                🎫 <strong>1 Ticket</strong> (Email Ticket)
+              </p>
+              <button className="view-event-btn">View event details</button>
             </div>
           </div>
-        ))}
+        </div>
 
-        <Footer />
+        {/* Printable Ticket */}
+        <div className="printable-ticket">
+          <div className="ticket-left">
+            <span className="ticket-type">TICKET</span>
+          </div>
+
+          <div className="ticket-main">
+            <h1 className="ticket-title">{event.title}</h1>
+
+            <div className="ticket-fields">
+              <div>
+                <p className="label">Name</p>
+                <p className="value">{event.name || "N/A"}</p>
+              </div>
+              <div>
+                <p className="label">Date</p>
+                <p className="value">{event.date}</p>
+              </div>
+            </div>
+
+            <div className="ticket-address">
+              <p className="label">Event Address</p>
+              <p className="value">{event.location}</p>
+            </div>
+          </div>
+
+          <div className="ticket-right">
+            <p className="qr-label">Scan to check in</p>
+            <QRCode value={event.qrCode || "N/A"} size={96} />
+            <p className="ticket-id">ID {event.id}</p>
+          </div>
+        </div>
+
+        {/* Recommended */}
+        <div className="recommended-events">
+          <h3>Recommended for you</h3>
+          {/* Insert EventCards or carousel here */}
+        </div>
       </div>
+
+      <Footer />
     </>
   );
 }

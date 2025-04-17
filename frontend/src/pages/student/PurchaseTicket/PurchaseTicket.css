@@ -195,12 +195,12 @@
 
 /* Primary Action */
 .modal-actions button:first-child {
-  background-color: #635bff;
+  background-color: #2d5b63;
   color: white;
 }
 
 .modal-actions button:first-child:hover {
-  background-color: #5145cd;
+  background-color: #2d5b63;
 }
 
 /* Cancel Action */

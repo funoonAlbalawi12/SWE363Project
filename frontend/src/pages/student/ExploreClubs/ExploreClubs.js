@@ -7,26 +7,6 @@ import clubs from "../../../data/ClubData";
 
 function ExploreClubs() {
   const clubEntries = Object.entries(clubs);
-  // const clubs = [
-  //   {
-  //     id: "ieom",
-  //     name: "IEOM KFUPM CHAPTER",
-  //     description: "Professional chapter focused on industrial engineering.",
-  //     img:"https://pbs.twimg.com/profile_images/1701546490278154240/6SuJ7TE2_400x400.jpg"
-  //   },
-  //   {
-  //     id: "computer",
-  //     name: "Computer Club",
-  //     description: "For developers, programmers, and software enthusiasts.",
-  //     img:"https://pbs.twimg.com/profile_images/1841840900747526144/hOvU26N3_400x400.jpg"
-  //   },
-  //   {
-  //     id: "sustainability",
-  //     name: "Sustainability Club",
-  //     description: "Promoting sustainability through student-led initiatives",
-  //     img:"https://pbs.twimg.com/profile_images/1831752309023338496/7Ub8sC9L_400x400.jpg"
-  //   },
-  // ];
 
   return (
     <>

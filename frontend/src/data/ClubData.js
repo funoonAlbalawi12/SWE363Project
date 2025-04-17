@@ -7,7 +7,7 @@ const clubs = {
     mission:
       "To prepare future leaders in Industrial Engineering and Operations Management...",
     description: "Professional chapter focused on industrial engineering.",
-    img: "https://pbs.twimg.com/profile_images/1701546490278154240/6SuJ7TE2_400x400.jpg",
+    img: "ieom-logo.jpg.jpg",
     albumImages: [1, 2, 3, 4, 5],
     events: [
       {

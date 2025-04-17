@@ -18,7 +18,7 @@ function DashNavbar() {
     <nav className="dashboard-navbar">
       <div className="navbar-left">
         <div className="navbar-logo" onClick={() => navigate("/dashboard")}>
-          <img src="/images/logo.jpg" />
+          <img src="/images/logo2.png" />
         </div>
       </div>
 
