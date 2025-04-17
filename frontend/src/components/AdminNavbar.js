@@ -1,80 +1,69 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { FiBell, FiUser } from "react-icons/fi";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Bell } from "lucide-react";
 
-function DashNavbar() {
-  const location = useLocation();
+function AdminNavbar() {
   const navigate = useNavigate();
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
-
-  const handleLogout = () => {
-    navigate("/");
-  };
 
   return (
-    <nav className="dashboard-navbar">
-      <div className="navbar-left">
-        <div className="navbar-logo" onClick={() => navigate("/admin/dashboard")}>
-          KAN
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "12px 24px",
+        backgroundColor: "#f9fafb",
+        borderBottom: "1px solid #e5e7eb",
+      }}
+    >
+      {/* شعار و روابط */}
+      <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+        <div style={{ fontWeight: "bold", fontSize: "18px" }}>KAN</div>
+        <div style={{ display: "flex", gap: "24px" }}>
+          <button
+            onClick={() => navigate("/eventpage")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#4f46e5",
+              fontWeight: "600",
+              cursor: "pointer",
+              fontSize: "14px",
+            }}
+          >
+            Events
+          </button>
+          <button
+            onClick={() => navigate("/clubpage")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#059669",
+              fontWeight: "600",
+              cursor: "pointer",
+              fontSize: "14px",
+            }}
+          >
+            Clubs
+          </button>
         </div>
       </div>
 
-      <div className="nav-tabs">
-        <button
-          className={location.pathname === "/admin/dashboard" ? "active" : ""}
-          onClick={() => navigate("/admin/dashboard")}
-        >
-          Dashboard
-        </button>
-
-        <button
-          className={
-            location.pathname === "/events" ||
-            location.pathname.startsWith("/events") 
-        
-              ? "active"
-              : ""
-          }
-          onClick={() => navigate("/events")}
-        >
-          Events
-        </button>
-
-        <button
-          className={
-            location.pathname === "/explore-clubs" ||
-            location.pathname.startsWith("/clubs")
-              ? "active"
-              : ""
-          }
-          onClick={() => navigate("/explore-clubs")}
-        >
-          Clubs
-        </button>
+      {/* التنبيهات واسم المستخدم */}
+      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <Bell size={18} style={{ color: "#4b5563" }} />
+        <div
+          style={{
+            width: "24px",
+            height: "24px",
+            backgroundColor: "#d1d5db",
+            borderRadius: "50%",
+          }}
+        />
+        <span style={{ fontSize: "14px", color: "#4b5563" }}>User Name</span>
       </div>
-
-      <div className="navbar-right">
-        <FiBell className="icon bell" />
-        <div className="profile" onClick={toggleDropdown}>
-          <div className="avatar">
-            <FiUser />
-          </div>
-          <span className="username">Khulud </span>
-          <span className="dropdown">▾</span>
-
-          {showDropdown && (
-            <div className="dropdown-menu">
-              <button onClick={() => navigate("/profile")}>Profile</button>
-              <button onClick={() => navigate("/settings")}>Settings</button>
-              <button onClick={handleLogout}>Log out</button>
-            </div>
-          )}
-        </div>
-      </div>
-    </nav>
+    </div>
   );
 }
 
-export default DashNavbar;
+export default AdminNavbar;

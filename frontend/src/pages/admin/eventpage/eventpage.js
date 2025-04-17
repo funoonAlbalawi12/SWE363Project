@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./eventpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
-
 import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 
 const EventPage = () => {
@@ -34,7 +33,14 @@ const EventPage = () => {
   return (
     <div className="event-page">
       {/* Navbar */}
-      <AdminNavbar />
+      <AdminNavbar/>
+      
+
+      {/* Greeting */}
+      <div className="greeting">
+        <h1>Hello User!</h1>
+      </div>
+
       {/* Add New Event */}
       <div className="add-event">
         <button className="add-button">
@@ -48,7 +54,7 @@ const EventPage = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-card-clickable"
+            className="event-card clickable"
             onClick={() => handleCardClick(event.id)}
           >
             <div className="card-image">Image</div>

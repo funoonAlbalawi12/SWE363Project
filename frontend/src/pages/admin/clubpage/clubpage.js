@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
-import AdminHeader from "../../../components/AdminHeader";
-import { Plus, Trash2, Pencil } from "lucide-react";
+import AdminNavbar from "../../../components/AdminNavbar";
+
+import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 
 const ClubsPage = () => {
   const navigate = useNavigate();
@@ -17,27 +18,30 @@ const ClubsPage = () => {
   ];
 
   const handleCardClick = (id) => {
-    navigate(`/club/${id}`);
+    navigate(`/club/${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleEdit = (e, id) => {
     e.stopPropagation();
-    alert(`Edit club with ID: ${id}`);
+    alert(`Edit club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleRemove = (e, id) => {
     e.stopPropagation();
-    alert(`Remove club with ID: ${id}`);
+    alert(`Remove club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   return (
     <div className="clubs-page">
-      <AdminHeader />
+      {/* Admin Navigation */}
+      <AdminNavbar />
 
+      {/* Greeting */}
       <div className="greeting">
         <h1>Hello Admin!</h1>
       </div>
 
+      {/* Add New Club */}
       <div className="add-club">
         <button className="add-button">
           <span>Add new club</span>
@@ -45,6 +49,7 @@ const ClubsPage = () => {
         </button>
       </div>
 
+      {/* Club Cards */}
       <div className="card-grid">
         {clubs.map((club) => (
           <div
@@ -57,6 +62,7 @@ const ClubsPage = () => {
             <div className="placeholder-line short" />
             <div className="placeholder-line shorter" />
 
+            {/* Admin Options */}
             <div className="card-actions">
               <button
                 className="btn-ghost-sm"
@@ -77,6 +83,7 @@ const ClubsPage = () => {
         ))}
       </div>
 
+      {/* Footer */}
       <footer className="footer">
         <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
       </footer>
