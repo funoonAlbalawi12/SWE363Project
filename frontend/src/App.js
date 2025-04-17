@@ -4,7 +4,7 @@ import LandingPage from "./pages/student/LandingPage/LandingPage";
 import Login from "./pages/student/Login/Login";
 import Signup from "./pages/student/Signup/Signup";
 import Dashboard from "./pages/student/Dashboard/Dashboard";  // Student Dashboard
-import AdminDashboard from "./pages/admin/dashboardpage/dashboard";  // Admin Dashboard
+import AdminDashboard from "./pages/admin/dashboard/dashboard";  // Admin Dashboard
 import { useLocation } from "react-router-dom";
 import Settings from "./pages/student/Settings/Settings";
 import Profile from "./pages/student/Profile/Profile";
@@ -34,12 +34,14 @@ function AppRoutes() {
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/dashboardpage" element={<AdminDashboard/>} />  {/* Ensure this route points to AdminDashboard */}
+        <Route path="/dashboard" element={<AdminDashboard/>} />  {/* Ensure this route points to AdminDashboard */}
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard/>} />
         {/* Admin Routes */}
         <Route path="/eventpage" element={<EventPage />} />
         <Route path="/clubpage" element={<ClubsPage/>} />
+        <Route path="/dashboard" element={<AdminDashboard/>} />  {/* Ensure this route points to AdminDashboard */}
+
         {/* Club Admin Routes */}
         <Route path="/clubadmin/announcements-events" element={<AnnouncementsEvents />} />
         <Route path="/clubadmin/messages" element={<SendMessage />} />
