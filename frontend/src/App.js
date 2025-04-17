@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/student/LandingPage/LandingPage";
 import Login from "./pages/student/Login/Login";
 import Signup from "./pages/student/Signup/Signup";
-import Dashboard from "./pages/student/Dashboard/Dashboard";
+import Dashboard from "./pages/student/Dashboard/Dashboard";  // Student Dashboard
+import AdminDashboard from "./pages/admin/dashboardpage/dashboard";  // Admin Dashboard
 import { useLocation } from "react-router-dom";
 import Settings from "./pages/student/Settings/Settings";
 import Profile from "./pages/student/Profile/Profile";
@@ -23,7 +24,7 @@ import EventDetails from "./pages/student/EventDetails/EventDetails";
 import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
 import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
-
+import ClubAdminDashboard from "./pages/clubAdmin/ClubAdminDashboard";
 function AppRoutes() {
   const location = useLocation();
   const state = location.state;
@@ -31,35 +32,30 @@ function AppRoutes() {
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-
-        <Route
-          path="/clubadmin/announcements-events"
-          element={<AnnouncementsEvents />}
-        />
+        <Route path="/home" element={<Home />} />
+        <Route path="/dashboardpage" element={<AdminDashboard/>} />  {/* Ensure this route points to AdminDashboard */}
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/admin-club-dashboard" element={<ClubAdminDashboard/>} />
+        {/* Admin Routes */}
+        <Route path="/eventpage" element={<EventPage />} />
+        <Route path="/clubpage" element={<ClubsPage/>} />
+        {/* Club Admin Routes */}
+        <Route path="/clubadmin/announcements-events" element={<AnnouncementsEvents />} />
         <Route path="/clubadmin/messages" element={<SendMessage />} />
         <Route path="/clubadmin/club-members" element={<ManageMembers />} />
-        <Route
-          path="/clubadmin/membership-requests"
-          element={<MembershipRequests />}
-        />
-
-        <Route path="/eventpage" element={<EventPage />} />
-        <Route path="/clubpage" element={<ClubsPage/>}/>
-        <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
+        <Route path="/clubadmin/membership-requests" element={<MembershipRequests />} />
+        <Route path="/clubadmin/Profile" element={<EditProfile />} />
+        {/* Other Routes */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/explore-clubs" element={<ExploreClubs />} />
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
-        <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/purchase/:id" element={<PurchaseTicket />} />
         <Route path="/ticket-success" element={<TicketSuccess />} />
-        <Route path="ticket/:id" element={<TicketDetails/>} />
+        <Route path="ticket/:id" element={<TicketDetails />} />
       </Routes>
       {state?.backgroundLocation && (
         <Routes>
@@ -70,6 +66,7 @@ function AppRoutes() {
     </>
   );
 }
+
 function App() {
   return (
     <Router>
