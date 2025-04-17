@@ -48,27 +48,29 @@
     color: green;
   }
   
-  .event-card {
-    background-color: #ffffff;
+  .clubAdmin-event-card {
+    background-color: #2a4c4c;
     border-radius: 10px;
     padding: 1rem;
     margin-top: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: left;
-    color: #1e1e1e;
+    color: white;
   }
   
-  .event-card h4 {
+  .clubAdmin-event-card h4 {
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
     font-weight: bold;
+    color:white;
   }
   
-  .event-card p {
+  .clubAdmin-event-card p {
     margin: 0.2rem 0;
+    
   }
   
-  .event-card p strong {
+  .clubAdmin-event-card p strong {
     font-weight: 600;
   }
   

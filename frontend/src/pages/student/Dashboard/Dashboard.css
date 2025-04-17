@@ -1,10 +1,5 @@
 /* dashboard navbar  */
 
-.dashboard{
-background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
 .dashboard-navbar {
   background-color: #f2f2f2;
   padding: 16px 40px;
@@ -143,19 +138,42 @@ background-color: var(--bg-color);
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 30px;
-    margin-left:0px;
+    margin-left:-23px;
   }
 
   .events-clubs-section {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 50px;
     background-color: #f2f2f2;
+    align-items: flex-start;
+    
   }
   
   /* Your Events */
   .your-events {
-    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex:2;
+    flex-wrap: wrap;
+    order: 1;
+    justify-content: flex-start;
+
+  }
+
+  @media (min-width: 768px) {
+    .your-events {
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+    }
+
+    .your-events .event-card {
+      flex: 1 1 calc(50% - 1rem); /* two per row */
+
+    }
   }
   
   .section-header {
@@ -163,6 +181,8 @@ background-color: var(--bg-color);
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    margin-left:8px;
+    
   }
   
   .section-header h3 {
@@ -170,40 +190,22 @@ background-color: var(--bg-color);
     font-weight: bold;
   }
   
-  .view-all-btn {
-    padding: 6px 12px;
-    font-size: 14px;
-    background-color: #2d5b63;
-    color: white;
-    border: 1px solid #212121;
-    border-radius: 4px;
-    cursor: pointer;
-  }
   
   /* Your Clubs */
   .your-clubs {
     flex: 1;
     background-color: #f2f2f2;
     padding: 20px;
+    order: 2;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     height: fit-content;
+    min-width: 260px;
   }
   
   .your-clubs h3 {
     font-size: 18px;
     margin-bottom: 16px;
-  }
-  
-  .view-more-clubs {
-    margin-top: 12px;
-    padding: 6px 12px;
-    font-size: 14px;
-    background-color: #2d5b63;
-    color: white;
-    border: 1px solid #212121;
-    border-radius: 4px;
-    cursor: pointer;
   }
 
 
@@ -252,11 +254,30 @@ background-color: var(--bg-color);
   }
   
   .similar-carousel .carousel-slide {
-    padding: 10px;
+
     display: flex;
+    justify-content: center;
+    align-items: stretch;
 
     gap: 20px;
   }
+
+  .carousel-slide .event-card {
+    width: 300px;
+    min-height: 400px;
+    flex-shrink: 0;
+  }
   
   
+  @media (max-width: 768px) {
+    .carousel-slide {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .carousel-slide .event-card {
+      width: 100%;
+      max-width: 360px;
+    }
+  }
 

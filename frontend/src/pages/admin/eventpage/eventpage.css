@@ -98,7 +98,7 @@ body {
   }
 
   
-  .event-card {
+  .event-card-clickable{
     background: #2d5b63;
     border-radius: 8px;
     padding: 16px;

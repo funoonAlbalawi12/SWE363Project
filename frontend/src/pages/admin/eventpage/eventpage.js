@@ -35,10 +35,6 @@ const EventPage = () => {
     <div className="event-page">
       {/* Navbar */}
       <AdminNavbar />
-
-
- 
-
       {/* Add New Event */}
       <div className="add-event">
         <button className="add-button">
@@ -52,7 +48,7 @@ const EventPage = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-card clickable"
+            className="event-card-clickable"
             onClick={() => handleCardClick(event.id)}
           >
             <div className="card-image">Image</div>

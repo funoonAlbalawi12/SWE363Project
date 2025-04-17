@@ -51,8 +51,6 @@ body{
   color: #2d5b63;
 }
 
-
-
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -62,7 +60,7 @@ body{
 }
 
 
-/* Event Card Styles */
+
 .event-card {
   padding:10px;
   margin:10px;
@@ -75,7 +73,8 @@ body{
   overflow: hidden;
   width: 300px;
   color: white;
-}
+} 
+
 .event-card-link{
   text-decoration: none;
   color: inherit;
@@ -90,10 +89,18 @@ body{
   color: white;
 
 }
+.event-image {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
 .event-image img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: 100%;
+  /* object-fit: cover; */
 }
 .event-info {
   padding: 16px;

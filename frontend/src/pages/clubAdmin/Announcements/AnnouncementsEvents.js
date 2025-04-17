@@ -67,7 +67,7 @@ function AnnouncementsEvents() {
         <p>No announcements yet.</p>
       ) : (
         announcements.map((item) => (
-          <div className="event-card" key={item.id}>
+          <div className="clubAdmin-event-card" key={item.id}>
             <h4>{item.title}</h4>
             <p>{item.description}</p>
             <p><strong>Date:</strong> {item.date}</p>
