@@ -1,5 +1,5 @@
 import React from "react";
-import "./dashboard.css"; // تأكد من أن الملف موجود في نفس المسار
+import "./dashboard.css"; 
 import AdminNavbar from "../../../components/AdminNavbar";
 
 function AdminDashboard() {
