@@ -91,7 +91,7 @@ function ClubProfile() {
 
         <div className="apply-section">
           <p>Join us now and be part of an exciting community!</p>
-          <button className="apply-btn" onClick={() => setShowForm(true)}>
+          <button className="membership-btn" onClick={() => setShowForm(true)}>
             Apply for membership
           </button>
         </div>

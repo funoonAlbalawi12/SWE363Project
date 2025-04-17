@@ -3,6 +3,7 @@
   background-color: #f2f2f2;
   font-family: "Segoe UI", sans-serif;
 }
+
 .club-header-actions {
     display: flex;
     justify-content: flex-start;
@@ -215,7 +216,7 @@
     color: #6b7280;
   }
 
-.apply-btn {
+.membership-btn {
   background-color: #2d5b63;
   color: white;
   padding: 10px 26px;
@@ -227,7 +228,7 @@
   transition: background-color 0.2s ease;
 }
 
-.apply-btn:hover {
+.membership-btn:hover {
   background-color: #1f2937;
 }
 

@@ -1,64 +1,64 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./eventpage.css";
+import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
+
 import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 
-const EventPage = () => {
+const ClubsPage = () => {
   const navigate = useNavigate();
 
-  const events = [
+  const clubs = [
     { id: 1, title: "IEOM KFUPM CHAPTER", description: "Description 1" },
-    { id: 2, title: "Coding Marathon", description: "Description 2" },
-    { id: 3, title: "Tech Expo 2025", description: "Description 3" },
-    { id: 4, title: "AI Symposium", description: "Description 4" },
-    { id: 5, title: "Innovation Week", description: "Description 5" },
-    { id: 6, title: "Robotics Showdown", description: "Description 6" },
+    { id: 2, title: "Coding Club", description: "Description 2" },
+    { id: 3, title: "Tech Club", description: "Description 3" },
+    { id: 4, title: "AI Club", description: "Description 4" },
+    { id: 5, title: "Innovation Club", description: "Description 5" },
+    { id: 6, title: "Robotics Club", description: "Description 6" },
   ];
 
   const handleCardClick = (id) => {
-    navigate(`/event/${id}`);
+    navigate(`/club/${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleEdit = (e, id) => {
     e.stopPropagation();
-    alert(`Edit event with ID: ${id}`);
+    alert(`Edit club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleRemove = (e, id) => {
     e.stopPropagation();
-    alert(`Remove event with ID: ${id}`);
+    alert(`Remove club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   return (
-    <div className="event-page">
-      {/* Navbar */}
-      <AdminNavbar/>
-      
+    <div className="clubs-page">
+      {/* Admin Navigation */}
+      <AdminNavbar />
 
       {/* Greeting */}
       <div className="greeting">
-        <h1>Hello User!</h1>
+        <h1>Hello Admin!</h1>
       </div>
 
-      {/* Add New Event */}
-      <div className="add-event">
+      {/* Add New Club */}
+      <div className="add-club">
         <button className="add-button">
-          <span>Add new event</span>
+          <span>Add new club</span>
           <Plus className="icon" />
         </button>
       </div>
 
-      {/* Event Cards */}
+      {/* Club Cards */}
       <div className="card-grid">
-        {events.map((event) => (
+        {clubs.map((club) => (
           <div
-            key={event.id}
-            className="event-card clickable"
-            onClick={() => handleCardClick(event.id)}
+            key={club.id}
+            className="club-card clickable"
+            onClick={() => handleCardClick(club.id)}
           >
             <div className="card-image">Image</div>
-            <h2>{event.title}</h2>
+            <h2>{club.title}</h2>
             <div className="placeholder-line short" />
             <div className="placeholder-line shorter" />
 
@@ -66,14 +66,14 @@ const EventPage = () => {
             <div className="card-actions">
               <button
                 className="btn-ghost-sm"
-                onClick={(e) => handleRemove(e, event.id)}
+                onClick={(e) => handleRemove(e, club.id)}
               >
                 <Trash2 className="icon-sm" />
                 <span>Remove</span>
               </button>
               <button
                 className="btn-ghost-sm"
-                onClick={(e) => handleEdit(e, event.id)}
+                onClick={(e) => handleEdit(e, club.id)}
               >
                 <Pencil className="icon-sm" />
                 <span>Edit</span>
@@ -84,11 +84,11 @@ const EventPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="admin-footer">
-        <div>Kfupm Activity Network</div>
+      <footer className="footer">
+        <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
       </footer>
     </div>
   );
 };
 
-export default EventPage;
+export default ClubsPage;
