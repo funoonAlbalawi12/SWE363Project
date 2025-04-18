@@ -30,13 +30,16 @@ import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 
 function AppRoutes() {
   const location = useLocation();
-  const state = location.state;
+  const background = location.state?.background;
 
   return (
     <>
-      <Routes location={state?.backgroundLocation || location}>
+      <Routes location={background || location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
 
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
@@ -69,7 +72,6 @@ function AppRoutes() {
         <Route path="/clubpage" element={<ClubsPage />} />
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
 
-        <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/events/:id" element={<EventDetails />} />
@@ -81,10 +83,12 @@ function AppRoutes() {
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="/ticket/:id" element={<TicketDetails />} />
       </Routes>
-      {state?.backgroundLocation && (
+      {background && (
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       )}
     </>

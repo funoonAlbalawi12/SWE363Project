@@ -18,7 +18,7 @@ const defaultEvents = [
 
   defaultEvents.forEach((event) => {
     const exists = merged.some(
-      (e) => e.id === event.id && e.status === event.status
+      (e) => e.title === event.title && e.status === event.status
     );
     if (!exists) merged.push(event);
   });
@@ -33,6 +33,9 @@ export const addEventToMyEvents = (event) => {
   if (!alreadyExists) {
     existing.push(event);
     localStorage.setItem("my_events", JSON.stringify(existing));
+    return { success: true };
+  } else {
+    return { success: false, message: "You already registered for this event" };
   }
 };
 

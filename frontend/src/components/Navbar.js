@@ -6,11 +6,11 @@ function Navbar() {
   const location = useLocation();
 
   const handleLoginClick = () => {
-    navigate("/login", { state: { backgroundLocation: location } });
+    navigate("/login", { state: { background: location } });
   };
 
   const handleSignupClick = () => {
-    navigate("/signup", { state: { backgroundLocation: location } });
+    navigate("/signup", { state: { background: location } });
   };
 
   return (

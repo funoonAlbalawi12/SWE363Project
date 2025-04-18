@@ -155,6 +155,12 @@
   flex-wrap: wrap;
 
 }
+.ticket-print-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 
 .event-banner {
   width: 280px;

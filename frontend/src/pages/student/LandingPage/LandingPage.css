@@ -61,22 +61,6 @@ body{
 }
 
 
-/* 
-.event-card {
-  padding:10px;
-  margin:10px;
-  display: flex;
-  flex-direction: column;
-  background-color: #2d5b63;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s;
-  overflow: hidden;
-  width: 300px;
-
-  color: white;
-}  */
-
 .event-card {
   width: 300px;
   background-color: #2d5b63;
@@ -107,16 +91,16 @@ body{
   padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* ✅ left-align everything */
+  align-items: flex-start; 
   gap: 8px;
   color:#f2f2f2;
-  text-align: left; /* ✅ ensure text is not centered */
+  text-align: left; 
 }
 
 .event-header {
   width: 100%;
   display: flex;
-  justify-content: space-between; /* ✅ push title left, price right */
+  justify-content: space-between; 
   align-items: center;
 }
 

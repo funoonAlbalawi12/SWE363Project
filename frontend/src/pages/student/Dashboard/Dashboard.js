@@ -8,11 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Dashboard.css";
 import events from "../../../data/EventData";
-import {
-  getUpcomingEvents,
-  getUsedEvents,
-  addEventToMyEvents,
-} from "../../../data/MyEvents";
+import { getUpcomingEvents } from "../../../data/MyEvents";
 
 function Dashboard() {
   const myEvents = getUpcomingEvents();

@@ -86,8 +86,20 @@ function DashNavbar() {
 
           {showDropdown && (
             <div className="dropdown-menu">
-              <button onClick={() => navigate("/profile")}>Profile</button>
-              <button onClick={() => navigate("/settings")}>Settings</button>
+              <button
+                onClick={() =>
+                  navigate("/profile", { state: { background: location } })
+                }
+              >
+                Profile
+              </button>
+              <button
+                onClick={() =>
+                  navigate("/settings", { state: { background: location } })
+                }
+              >
+                Settings
+              </button>
               <button onClick={handleLogout}>Log out</button>
             </div>
           )}

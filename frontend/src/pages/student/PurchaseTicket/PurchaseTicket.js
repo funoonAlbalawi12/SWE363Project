@@ -14,6 +14,8 @@ function PurchaseTicket() {
   const [showModal, setShowModal] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const navigate = useNavigate();
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+  const [registerMessage, setRegisterMessage] = useState("");
 
   const [quantity, setQuantity] = useState(1);
   const [contactInfo, setContactInfo] = useState({
@@ -61,8 +63,27 @@ function PurchaseTicket() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowModal(true); // open mock payment
+    setShowModal(true);
   };
+
+  React.useEffect(() => {
+    const existing = JSON.parse(localStorage.getItem("my_events")) || [];
+    const alreadyExists = attendees.some((attendee) =>
+      existing.some(
+        (e) => e.title === event.title && e.email === attendee.email
+      )
+    );
+
+    if (alreadyExists) {
+      setAlreadyRegistered(true);
+      setRegisterMessage(
+        "One or more attendees are already registered for this event."
+      );
+    } else {
+      setAlreadyRegistered(false);
+      setRegisterMessage("");
+    }
+  }, [attendees, event.title]);
 
   if (!event) return <p>Event not found</p>;
 
@@ -169,6 +190,8 @@ function PurchaseTicket() {
               onClick={() => {
                 if (!isFormValid()) return;
 
+                if (alreadyRegistered) return; // block if already registered
+
                 if (isFree) {
                   navigate("/ticket-success", {
                     state: {
@@ -186,14 +209,16 @@ function PurchaseTicket() {
                   setShowModal(true);
                 }
               }}
-              disabled={!isFormValid()}
+              disabled={!isFormValid() || alreadyRegistered}
             >
               {isFree ? "Register Now" : `Pay Now - ${total} SR`}
             </button>
 
-            {!isFormValid() && (
+            {(!isFormValid() || alreadyRegistered) && (
               <p className="error-tooltip">
-                Please fill in all contact and attendee fields correctly.
+                {!isFormValid()
+                  ? "Please fill in all contact and attendee fields correctly."
+                  : registerMessage}
               </p>
             )}
           </div>
@@ -235,7 +260,6 @@ function PurchaseTicket() {
           </div>
         </div>
       )}
-
       <Footer />
     </>
   );

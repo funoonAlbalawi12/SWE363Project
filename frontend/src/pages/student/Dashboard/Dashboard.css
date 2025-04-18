@@ -50,9 +50,9 @@
   border-color: #111827;
 }
 
-.nav-tabs button:hover {
-  color: #1f2937;
-}
+ .nav-tabs button:hover {
+  color: #f2f2f2;
+} 
 
 /* Right side */
 .navbar-right {
