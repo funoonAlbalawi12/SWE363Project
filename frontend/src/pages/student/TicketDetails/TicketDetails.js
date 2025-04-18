@@ -27,7 +27,6 @@ function TicketDetails() {
   return (
     <>
       <DashNavbar />
-
       <div className="ticket-details-page">
         <button className="back-btn" onClick={() => window.history.back()}>
           ← Back
@@ -37,7 +36,6 @@ function TicketDetails() {
           🖨️ Print Ticket
         </button>
 
-        {/* Event Overview */}
         <div className="event-details-summary">
           <div className="event-info">
             <img src={event.img} alt={event.title} className="event-banner" />

@@ -19,7 +19,7 @@ function ExploreEvents() {
       <DashNavbar />
       <div className="explore-events-page">
         <h1 className="page-title">Explore Event</h1>
-        <div className="search-bar-container">
+        <div className="search-bar">
           <input
             type="text"
             placeholder="Enter the event name"
@@ -27,6 +27,7 @@ function ExploreEvents() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
           <button className="search-btn">Search</button>
         </div>
 

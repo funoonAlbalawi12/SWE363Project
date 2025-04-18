@@ -101,12 +101,6 @@
   background-color: #2d5b63;
 }
 
-.back-btn:hover{
-  color:white;
-  background-color: #2d5b63;
-}
-
-
 
 @media print {
   .back-btn,

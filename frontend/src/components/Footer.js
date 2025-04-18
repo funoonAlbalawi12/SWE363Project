@@ -9,25 +9,6 @@ function Footer() {
           <p>Connecting you to the best activities at KFUPM.</p>
         </div>
         <div className="main-footer-section">
-          <h4>Categories</h4>
-          <ul>
-            <li>All</li>
-            <li>Coding</li>
-            <li>Sport</li>
-            <li>Exhibition</li>
-            <li>Business</li>
-            <li>Photography</li>
-          </ul>
-        </div>
-        <div className="main-footer-section">
-          <h4>Resources</h4>
-          <ul>
-            <li>User Guides</li>
-            <li>Help Center</li>
-            <li>Partners</li>
-          </ul>
-        </div>
-        <div className="main-footer-section">
           <h4>Stay in the loop</h4>
           <input type="email" placeholder="Your email" />
           <button className="btn">Subscribe</button>

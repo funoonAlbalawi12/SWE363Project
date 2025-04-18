@@ -21,11 +21,9 @@ function DashNavbar() {
   }, [darkMode]);
 
   return (
-    <nav className="dashboard-navbar">
-      <div className="navbar-left">
-        <div className="navbar-logo" onClick={() => navigate("/dashboard")}>
-          <img src="/images/logo2.png" />
-        </div>
+    <nav className="navbar">
+      <div onClick={() => navigate("/dashboard")}>
+        <div className="navbar-logo">KAN</div>
       </div>
 
       <div className="nav-tabs">

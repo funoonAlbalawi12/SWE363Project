@@ -1,290 +1,180 @@
-/* dashboard navbar  */
+:root {
+  --primary: #1B1F23; /*text */
+  --secondary: #557ba5; /* avatar background + logo color*/
+  --accent: #AEB8FE;
+  --hover: #253547; /* hover button*/
 
-.dashboard-navbar {
-  background-color: #f2f2f2;
-  padding: 16px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  --bg: #F4F8FB; /*background */
+  --surface: #4a6c90; /* event card */
+  --text-primary: #1B1F23; /*small texts */
+  --text-secondary: #ffffff; /* texts on cards*/
+  --border: #D5E0EB;
+
+  --success: #5ADBB0;
+  --info: #4CBEFF;
+  --error: #FF6B6B;
 }
 
-/* Left side */
-.navbar-left {
-  display: flex;
-  align-items: center;
+body.dark {
+  --primary: #E4E8EC; /*text */
+  --secondary: #4d6f95; /* avatar background + logo color */
+  --accent: #BFC8FF;
+  --hover: #253547; /* hover button*/
+
+  --bg: #121A25;  /*background */
+  --surface: #1E2A38; /* event card */
+  --text-primary: #E4E8EC; /*small texts */
+  --text-secondary: #A6B1C3; /* texts on cards*/
+  --border: #2E3B4D;
+
+  --success: #75E7C1;
+  --info: #6FD3FF;
+  --error: #FF8F8F;
 }
 
-.navbar-logo img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  cursor: pointer;
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
 }
-
-.nav-tabs {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 24px;
-}
-
-.nav-tabs button {
-  background: none;
-  border: none;
-  margin-right: 24px;
-  font-size: 15px;
-  color: #4b5563;
-  cursor: pointer;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-}
-
-.nav-tabs button.active {
-  color: #111827;
-  font-weight: bold;
-  border-color: #111827;
-}
-
- .nav-tabs button:hover {
-  color: #f2f2f2;
-} 
-
-/* Right side */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.icon.bell {
-  font-size: 18px;
-  cursor: pointer;
-}
-.avatar {
-  background-color: #2d5b63;
-  border-radius: 50%;
-  padding: 6px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #212121;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  position: relative;
-}
-
-
-.dropdown-menu {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  background-color: #2d5b63;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-width: 160px;
-  z-index: 10;
-}
-
-.dropdown-menu button {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  color: white;
-  transition: background 0.2s;
-}
-
-.dropdown-menu button:hover {
-  background-color: #1f2937;
-}
-
-.username {
-  font-size: 14px;
-  color: #111827;
-}
-
 
 
 .dashboard {
-    background-color: #f2f2f2; 
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dashboard-content {
-    padding: 40px 60px;
-    flex: 1;
-  }
-  
-  /* Greeting */
-  .greeting {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    margin-left:-23px;
-  }
+  background-color: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  .events-clubs-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 50px;
-    background-color: #f2f2f2;
-    align-items: flex-start;
-    
-  }
-  
-  /* Your Events */
+.dashboard-content {
+  padding: 40px 60px;
+  flex: 1;
+}
+
+.greeting {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-left: -23px;
+}
+
+.events-clubs-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+
+.your-events {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 2;
+  order: 1;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
   .your-events {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex:2;
+    flex-direction: row;
     flex-wrap: wrap;
-    order: 1;
-    justify-content: flex-start;
-
   }
 
-  @media (min-width: 768px) {
-    .your-events {
-      flex-direction: row;
-      flex-wrap: wrap;
-      
-    }
+  .your-events .event-card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
 
-    .your-events .event-card {
-      flex: 1 1 calc(50% - 1rem); /* two per row */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-left: 8px;
+}
 
-    }
-  }
-  
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    margin-left:8px;
-    
-  }
-  
-  .section-header h3 {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  
-  /* Your Clubs */
-  .your-clubs {
-    flex: 1;
-    background-color: #f2f2f2;
-    padding: 20px;
-    order: 2;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    height: fit-content;
-    min-width: 260px;
-  }
-  
-  .your-clubs h3 {
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
+.section-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
 
+.your-clubs {
+  flex: 1;
+  background-color: var(--surface);
+  padding: 20px;
+  order: 2;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  min-width: 260px;
+  color:var(--text-secondary) ;
+}
 
-  /* club card */
+.your-clubs h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
 
-  .user-club-card {
-    background-color: #efefef;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s;
-  }
-  
-  .user-club-card:hover {
-    transform: translateY(-2px);
-  }
-  
-  .user-club-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
-  
-  .user-club-role {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  
-/* carousel */
- 
-  
-  .similar-carousel .carousel .slide {
-    background: none;
-    display: flex;
-  }
-  
-  
-  
-  .similar-carousel .carousel-slide {
+.user-club-card {
+  background-color: var(--bg);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+  color: var(--text-primary);
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 20px;
-  }
+.user-club-card:hover {
+  transform: translateY(-2px);
+}
 
+.user-club-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
 
-  .carousel-slide .event-card {
-    width: 300px;
-    height: 300px;
-    max-height: 400px;
-    flex-shrink: 0;
-  }
-  
+.user-club-role {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.similar-carousel .carousel .slide {
+  background: none;
+  display: flex;
+}
+
+.similar-carousel .carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.carousel-slide .event-card {
+  width: 300px;
+  height: 300px;
+  max-height: 400px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
   .similar-carousel .carousel-slide {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-
-  
 }
 
 .dark-toggle {
   margin-left: auto;
   background: none;
-  color:#4b5563;
+  color: var(--text-secondary);
   border: none;
-  /* font-size: 1.2rem; */
   cursor: pointer;
 }
-
-
-  
-/* dark mode toggle component*/
-    
 
 .toggle-switch {
   position: relative;
