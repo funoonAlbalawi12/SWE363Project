@@ -5,7 +5,6 @@ const defaultEvents = [
     date: "Sunday, February 16 | 05:00 PM",
     location: "Building 22, KFUPM",
     img: "/images/gamingPlus.svg",
-
     status: "used",
     qrCode: "GMPL-00123",
     name: "Khulud Alotaibi",

@@ -26,7 +26,7 @@ function Tickets() {
   };
 
   return (
-    <>
+    <div className="tickets">
       <DashNavbar />
       <div className="tickets-page">
         <div className="profile-card">
@@ -96,11 +96,8 @@ function Tickets() {
         </div>
       </div>
 
-      <h3>Recommended for you</h3>
-      <div className="recommendation-carousel"></div>
-
       <Footer />
-    </>
+    </div>
   );
 }
 

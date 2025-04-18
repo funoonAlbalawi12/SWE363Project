@@ -24,7 +24,6 @@ function TicketDetails() {
           🖨️ Print Ticket
         </button>
 
-        {/* Event Overview */}
         <div className="event-details-summary">
           <div className="event-info">
             <img src={event.img} alt={event.title} className="event-banner" />

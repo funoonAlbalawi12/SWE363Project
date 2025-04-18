@@ -36,6 +36,7 @@ function ExploreClubs() {
               name={club.name}
               description={club.description}
               img={club.img}
+              className="custom-club-card"
             />
           ))}
         </div>

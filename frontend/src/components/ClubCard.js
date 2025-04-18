@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function ClubCard({ id, name, description, img }) {
   return (
-    <Link to={`/clubs/${id}`} className="club-card-link">
-      <div className="club-card">
+    <Link to={`/clubs/${id}`} className="custom-club-card-link">
+      <div className="custom-club-card">
         <div className="club-image">
           <img src={img} alt={name} />
         </div>
