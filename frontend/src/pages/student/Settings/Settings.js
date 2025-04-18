@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
 
-function Settings() {
+function Settings({ setDarkMode }) {
   const navigate = useNavigate();
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkModeState] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+
+  const setDarkModeStorage = (value) => {
+    localStorage.setItem("darkMode", value);
+  };
+
   const [notifications, setNotifications] = useState(true);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleCancel = () => {
-    navigate(-1); // close modal
+    navigate(-1);
   };
 
   const handleSave = () => {
-    // Save logic here
     console.log("Saved settings:", {
       darkMode,
       notifications,
@@ -34,7 +40,12 @@ function Settings() {
             <input
               type="checkbox"
               checked={darkMode}
-              onChange={() => setDarkMode((prev) => !prev)}
+              onChange={(e) => {
+                const checked = e.target.checked;
+                setDarkMode(checked);
+                setDarkModeStorage(checked);
+                setDarkModeState("darkMode", checked);
+              }}
             />
             Enable Dark Mode
           </label>

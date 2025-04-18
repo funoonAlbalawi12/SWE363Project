@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/student/LandingPage/LandingPage";
 import Login from "./pages/student/Login/Login";
@@ -32,7 +32,7 @@ import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
 import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 
-function AppRoutes() {
+function AppRoutes({ setDarkMode }) {
   const location = useLocation();
   const background = location.state?.background;
 
@@ -76,7 +76,10 @@ function AppRoutes() {
         <Route path="/clubpage" element={<ClubsPage />} />
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
 
-        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/settings"
+          element={<Settings setDarkMode={setDarkMode} />}
+        />
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
@@ -97,7 +100,10 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/settings"
+            element={<Settings setDarkMode={setDarkMode} />}
+          />
         </Routes>
       )}
     </>
@@ -105,9 +111,17 @@ function AppRoutes() {
 }
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+  useEffect(() => {
+    document.body.classList.toggle("dark", darkMode);
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
+
   return (
     <Router>
-      <AppRoutes />
+      <AppRoutes setDarkMode={setDarkMode} />
     </Router>
   );
 }

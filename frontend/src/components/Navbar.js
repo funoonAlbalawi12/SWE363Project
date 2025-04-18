@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -14,15 +15,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">KAN</div>
-      <div className="navbar-buttons">
+    <nav className="main-navbar">
+      <div className="main-navbar-logo">KAN</div>
+      <div className="main-navbar-buttons">
         <button className="btn" onClick={handleLoginClick}>
           Log in
         </button>
         <button className="btn" onClick={handleSignupClick}>
           Sign up
         </button>
+        <DarkModeToggle />
       </div>
     </nav>
   );

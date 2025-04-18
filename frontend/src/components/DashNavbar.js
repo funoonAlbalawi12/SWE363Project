@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiBell, FiUser } from "react-icons/fi";
+import DarkModeToggle from "./DarkModeToggle";
 
 function DashNavbar() {
   const location = useLocation();
-
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
-
   const toggleDropdown = () => setShowDropdown(!showDropdown);
-
   const handleLogout = () => {
     navigate("/");
   };
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", darkMode);
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
 
   return (
     <nav className="dashboard-navbar">
@@ -104,6 +110,7 @@ function DashNavbar() {
             </div>
           )}
         </div>
+        <DarkModeToggle />
       </div>
     </nav>
   );
