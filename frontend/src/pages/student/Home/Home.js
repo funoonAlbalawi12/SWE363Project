@@ -1,19 +1,11 @@
 import React from "react";
 import DashNavbar from "../../../components/DashNavbar";
-// import CategoryCard from "../../../components/CategoryCard";
 import EventCard from "../../../components/EventCard";
 import Footer from "../../../components/Footer";
 import Hero from "../../../components/Hero";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import events from "../../../data/EventData";
-// import {
-//   FaCode,
-//   FaRunning,
-//   FaCamera,
-//   FaBriefcase,
-//   FaUniversity,
-// } from "react-icons/fa";
 
 function Home() {
   const today = new Date();
@@ -25,11 +17,11 @@ function Home() {
     return new Date(fullDateStr);
   };
 
-  // Filter: Events starting within the next 24 hours
   const next24hEvents = events.filter((event) => {
     const eventDate = parseEventDateTime(event.date);
     return eventDate >= today && eventDate <= next24h;
   });
+
   return (
     <body>
       <DashNavbar />
@@ -38,6 +30,7 @@ function Home() {
         <div className="content-header">
           <h2>New Events in KFUPM</h2>
         </div>
+        <div className="event-container"></div>
         <div className="event-container">
           {events.slice(0, 3).map((event, index) => (
             <EventCard
@@ -50,15 +43,6 @@ function Home() {
             />
           ))}
         </div>
-
-        {/* <h2>Explore by Categories</h2>
-        <div className="category-container">
-          <CategoryCard name="Coding" Icon={FaCode} />
-          <CategoryCard name="Sport" Icon={FaRunning} />
-          <CategoryCard name="Exhibition" Icon={FaUniversity} />
-          <CategoryCard name="Business" Icon={FaBriefcase} />
-          <CategoryCard name="Photography" Icon={FaCamera} />
-        </div> */}
 
         <h2>Upcoming in 24 Hours</h2>
         <div className="upcoming-container">
@@ -82,13 +66,11 @@ function Home() {
         <Carousel
           showThumbs={false}
           showStatus={false}
+          showIndicators={true}
           infiniteLoop={true}
           autoPlay={false}
-          interval={4000}
-          showArrows={true}
+          showArrows={false}
           className="highlight-carousel"
-          // centerMode={true}
-          centerSlidePercentage={45}
         >
           {Array.from({ length: Math.ceil(events.length / 2) }).map(
             (_, groupIndex) => (

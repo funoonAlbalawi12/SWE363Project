@@ -1,37 +1,3 @@
-:root {
-  --primary: #1B1F23; /*text */
-  --secondary: #557ba5; /* avatar background + logo color*/
-  --accent: #AEB8FE;
-  --hover: #253547; /* hover button*/
-
-  --bg: #F4F8FB; /*background */
-  --surface: #4a6c90; /* event card */
-  --text-primary: #1B1F23; /*small texts */
-  --text-secondary: #ffffff; /* texts on cards*/
-  --border: #D5E0EB;
-
-  --success: #5ADBB0;
-  --info: #4CBEFF;
-  --error: #FF6B6B;
-}
-
-body.dark {
-  --primary: #E4E8EC; /*text */
-  --secondary: #4d6f95; /* avatar background + logo color */
-  --accent: #BFC8FF;
-  --hover: #253547; /* hover button*/
-
-  --bg: #121A25;  /*background */
-  --surface: #1E2A38; /* event card */
-  --text-primary: #E4E8EC; /*small texts */
-  --text-secondary: #A6B1C3; /* texts on cards*/
-  --border: #2E3B4D;
-
-  --success: #75E7C1;
-  --info: #6FD3FF;
-  --error: #FF8F8F;
-}
-
 body {
   background-color: var(--bg);
   color: var(--text-primary);
