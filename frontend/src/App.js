@@ -11,8 +11,9 @@ import Profile from "./pages/student/Profile/Profile";
 import ExploreClubs from "./pages/student/ExploreClubs/ExploreClubs";
 import Home from "./pages/student/Home/Home";
 import ClubProfile from "./pages/student/ClubProfile/ClubProfile";
-import EventPage from "./pages/admin/eventpage/eventpage";
 import ClubsPage from "./pages/admin/clubpage/clubpage";
+import EventPage from "./pages/admin/eventpage/eventpage";
+
 import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
 import Tickets from "./pages/student/Tickets/Tickets";
 
@@ -22,6 +23,9 @@ import ClubAdminDashboard from "./pages/clubAdmin/Dashboard/ClubAdminDashboard";
 import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
 import MembershipRequests from "./pages/clubAdmin/Membership/MembershipRequests";
 import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEvents";
+
+
+
 
 import EventDetails from "./pages/student/EventDetails/EventDetails";
 import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
@@ -44,9 +48,9 @@ function AppRoutes() {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
         {/* Admin Routes */}
-        <Route path="/eventpage" element={<EventPage />} />
         <Route path="/clubpage" element={<ClubsPage />} />
-        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/events" element={<EventPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
         {/* Club Admin Routes */}
         <Route
@@ -82,6 +86,11 @@ function AppRoutes() {
         <Route path="/purchase/:id" element={<PurchaseTicket />} />
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="/ticket/:id" element={<TicketDetails />} />
+        <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
+        
+        <Route path="/purchase/:id" element={<PurchaseTicket />} />
+        <Route path="/ticket-success" element={<TicketSuccess />} />
+        <Route path="ticket/:id" element={<TicketDetails />} />
       </Routes>
       {background && (
         <Routes>

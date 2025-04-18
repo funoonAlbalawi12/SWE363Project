@@ -1,94 +1,104 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./eventpage.css";
-import AdminNavbar from "../../../components/AdminNavbar";
-import { Plus, Bell, Trash2, Pencil } from "lucide-react";
+import AdminNavbar2 from "../../../components/AdminNavbar2";
+import eventsData from "../../../data/EventData";
+import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
-const EventPage = () => {
+
+
+
+import { Plus, Trash2, Pencil } from "lucide-react";
+
+const EventsPage = () => {
   const navigate = useNavigate();
 
-  const events = [
-    { id: 1, title: "IEOM KFUPM CHAPTER", description: "Description 1" },
-    { id: 2, title: "Coding Marathon", description: "Description 2" },
-    { id: 3, title: "Tech Expo 2025", description: "Description 3" },
-    { id: 4, title: "AI Symposium", description: "Description 4" },
-    { id: 5, title: "Innovation Week", description: "Description 5" },
-    { id: 6, title: "Robotics Showdown", description: "Description 6" },
-  ];
+  const events = Object.entries(eventsData).map(([key, event], index) => ({
+    id: key,
+    title: event.title,
+    date: event.date,
+    location: event.location,
+    img: event.img,
+    price: event.price,
+  }));
 
   const handleCardClick = (id) => {
-    navigate(`/event/${id}`);
+    navigate(`/club/${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleEdit = (e, id) => {
     e.stopPropagation();
-    alert(`Edit event with ID: ${id}`);
+    alert(`Edit club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleRemove = (e, id) => {
     e.stopPropagation();
-    alert(`Remove event with ID: ${id}`);
+    alert(`Remove club with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   return (
-    <div className="event-page">
-      {/* Navbar */}
-      <AdminNavbar/>
-      
+    <div className="events-page">
+      {/* Admin Navigation */}
+      <AdminNavbar2 />
+      <div className="page-content">
+        {/* Greeting */}
+        <div className="greeting">
+          <h1>Hello Admin!</h1>
+        </div>
 
-      {/* Greeting */}
-      <div className="greeting">
-        <h1>Hello User!</h1>
-      </div>
+        {/* Add New Club */}
+        <div className="add-event">
+          <button className="add-button">
+            <span>Add new club</span>
+            <Plus className="icon" />
+          </button>
+        </div>
 
-      {/* Add New Event */}
-      <div className="add-event">
-        <button className="add-button">
-          <span>Add new event</span>
-          <Plus className="icon" />
-        </button>
-      </div>
+        {/* Club Cards */}
+        <div className="eventcard-grid">
+          {events.map((event) => (
+            <div
+              key={event.id}
+              className="event-card clickable"
+              onClick={() => handleCardClick(event.id)}
+            >
+              <div className="card-image">Image</div>
+              <h2>{event.title}</h2>
+              <p className="price">{event.price || "Free"}</p>
+              <p>
+                <FaCalendarAlt /> {event.date}
+              </p>
+              <p>
+                <FaMapMarkerAlt /> {event.location}
+              </p>
 
-      {/* Event Cards */}
-      <div className="card-grid">
-        {events.map((event) => (
-          <div
-            key={event.id}
-            className="event-card clickable"
-            onClick={() => handleCardClick(event.id)}
-          >
-            <div className="card-image">Image</div>
-            <h2>{event.title}</h2>
-            <div className="placeholder-line short" />
-            <div className="placeholder-line shorter" />
-
-            {/* Admin Options */}
-            <div className="card-actions">
-              <button
-                className="btn-ghost-sm"
-                onClick={(e) => handleRemove(e, event.id)}
-              >
-                <Trash2 className="icon-sm" />
-                <span>Remove</span>
-              </button>
-              <button
-                className="btn-ghost-sm"
-                onClick={(e) => handleEdit(e, event.id)}
-              >
-                <Pencil className="icon-sm" />
-                <span>Edit</span>
-              </button>
+              {/* Admin Options */}
+              <div className="card-actions">
+                <button
+                  className="btn-ghost-sm"
+                  onClick={(e) => handleRemove(e, event.id)}
+                >
+                  <Trash2 className="icon-sm" />
+                  <span>Remove</span>
+                </button>
+                <button
+                  className="btn-ghost-sm"
+                  onClick={(e) => handleEdit(e, event.id)}
+                >
+                  <Pencil className="icon-sm" />
+                  <span>Edit</span>
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
       {/* Footer */}
-      <footer className="admin-footer">
-        <div>Kfupm Activity Network</div>
+      <footer className="footer">
+        <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
       </footer>
     </div>
   );
 };
 
-export default EventPage;
+export default EventsPage;

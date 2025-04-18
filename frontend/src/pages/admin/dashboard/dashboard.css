@@ -1,9 +1,5 @@
 /* dashboard.css */
-.dashboard-container {
-    background-color: #f9f9f9;
-    padding: 2rem;
-    min-height: 100vh;
-  }
+
   
   .summary-cards {
     display: flex;

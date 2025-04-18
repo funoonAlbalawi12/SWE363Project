@@ -1,6 +1,7 @@
 import React from "react";
 import "./dashboard.css"; 
-import AdminNavbar from "../../../components/AdminNavbar";
+import AdminNavbar2 from "../../../components/AdminNavbar2";
+
 
 function AdminDashboard() {
   const summaryData = [
@@ -68,9 +69,8 @@ function AdminDashboard() {
 
   return (
     <div className="dashboard-container">
-      <AdminNavbar>
-        
-      </AdminNavbar>
+        <AdminNavbar2 />
+
       <h1>System Dashboard</h1>
 
       <div className="summary-cards">

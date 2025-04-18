@@ -1,92 +1,78 @@
 /* clubpage.css */
 
-.clubs-page {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  min-height: 100vh;
+.page-content{
+  margin: 2rem;
 }
+  
+  .greeting {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .add-event {
+    margin-bottom: 2rem;
+  }
+  
+  .add-button {
+    background-color: #374151;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .eventcard-grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 
-.greeting {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
+  }
 
-.add-club {
-  margin-bottom: 2rem;
-}
-
-.add-button {
-  background-color: #1e1ed9;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.club-card {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
-}
-
-.club-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.card-image {
-  background-color: #e5e7eb;
-  height: 140px;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.placeholder-line {
-  height: 8px;
-  border-radius: 6px;
-  background-color: #d1d5db;
-  margin-top: 0.5rem;
-}
-
-.placeholder-line.short {
-  width: 80%;
-}
-
-.placeholder-line.shorter {
-  width: 60%;
-}
-
-.btn-ghost-sm {
-  background: none;
-  border: none;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #374151;
-  cursor: pointer;
-}
+  .event-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-image {
+    background-color: #e5e7eb;
+    height: 140px;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  
+  .btn-ghost-sm {
+    border: none;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+        color: white;
+    background-color: #374151;
+  }
+  

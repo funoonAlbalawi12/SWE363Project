@@ -16,7 +16,7 @@ function Login() {
   };
 
   const handleAdminClick = () => {
-    navigate("/eventpage");
+    navigate("/admin-dashboard");
   };
 
   const handleAdminClubClick = () => {
