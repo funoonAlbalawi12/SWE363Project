@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiBell, FiUser } from "react-icons/fi";
-
+import DarkModeToggle from "./DarkModeToggle";
 function DashNavbar() {
   const location = useLocation();
 
@@ -15,16 +15,12 @@ function DashNavbar() {
   };
 
   return (
-    <nav className="dashboard-navbar">
-      <div className="navbar-left">
-        <div className="navbar-logo" onClick={() => navigate("/dashboard")}>
-          <img src="/images/logo2.png" />
-        </div>
+    <nav className="navbar">
+      <div onClick={() => navigate("/dashboard")}>
+        <div className="navbar-logo">KAN</div>
       </div>
 
       <div className="nav-tabs">
-        
-
         <button
           className={location.pathname === "/admin-dashboard" ? "active" : ""}
           onClick={() => navigate("/admin-dashboard")}
@@ -47,7 +43,7 @@ function DashNavbar() {
         <button
           className={
             location.pathname === "/eventpage" ||
-            location.pathname.startsWith("/events") 
+            location.pathname.startsWith("/events")
               ? "active"
               : ""
           }
@@ -55,8 +51,6 @@ function DashNavbar() {
         >
           Events
         </button>
- 
-        
       </div>
 
       <div className="navbar-right">
@@ -88,6 +82,7 @@ function DashNavbar() {
             </div>
           )}
         </div>
+        <DarkModeToggle />
       </div>
     </nav>
   );
