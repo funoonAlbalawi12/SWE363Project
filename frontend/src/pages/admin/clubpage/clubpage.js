@@ -4,6 +4,7 @@ import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
 import { Plus, Trash2, Pencil } from "lucide-react";
 import clubsData from "../../../data/ClubData";
+import Footer from "../../../components/Footer";
 
 const ClubsPage = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const ClubsPage = () => {
       <AdminNavbar />
       <div className="page-content">
         <div className="greeting">
-          <h1>Hello Admin!</h1>
+          <h1>Hello Khulud!</h1>
         </div>
 
         <div className="add-club">
@@ -143,9 +144,7 @@ const ClubsPage = () => {
           ))}
         </div>
       </div>
-      <footer className="footer">
-        <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };
