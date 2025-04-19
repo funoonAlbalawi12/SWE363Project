@@ -43,7 +43,14 @@ function ClubAdminDashboard() {
     <div className="club-admin-dashboard">
       <ClubAdminNavBar />
       <div className="dashboard-content">
+      <div className="header-container">
+        <img
+          src="/ieom-logo.jpg.jpg"
+          alt="IEOM Logo"
+          className="club-logo"
+        />
         <h2 className="greeting">Hello, IEOM KFUPM Chapter Admin!</h2>
+      </div>
 
         {/* Recent Events */}
         <div className="section">

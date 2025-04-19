@@ -19,14 +19,25 @@
   gap: 12px;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* space between image and text */
+  }
+  
 .club-logo {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  margin-right: 8px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    object-fit: cover;
+  }
+  
+.greeting {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
 
 .app-name {
   font-weight: bold;
