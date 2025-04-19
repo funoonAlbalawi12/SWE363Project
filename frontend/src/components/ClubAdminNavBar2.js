@@ -15,11 +15,11 @@ function ClubAdminNavBar() {
   };
 
   return (
-    <nav className="dashboard-navbar">
+    <nav className="navbar">
       <div className="navbar-left">
-        <div className="navbar-logo" onClick={() => navigate("/clubadmin/dashboard")}>
-          <img src="/images/logo2.png" alt="Logo" />
-        </div>
+      <div onClick={() => navigate("/dashboard")}>
+        <div className="navbar-logo">KAN</div>
+      </div>
       </div>
 
       <div className="nav-tabs">
