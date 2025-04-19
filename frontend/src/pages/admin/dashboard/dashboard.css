@@ -127,13 +127,13 @@
 }
 
 .status-active {
-  background-color: #dcfce7;
-  color: #15803d;
+  background-color: var(--success);
+  color: #ffffff;
 }
 
 .status-inactive {
-  background-color: #fee2e2;
-  color: #b91c1c;
+  background-color: var(--error);
+  color: #ffffff;
 }
 
 
