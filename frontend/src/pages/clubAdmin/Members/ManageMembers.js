@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import './ManageMembers.css';
+import initialMembers from '../../../data/membersData';
 
 function ManageMembers() {
   const currentAdminId = 1; // Simulating the logged-in admin ID
 
-  const [members, setMembers] = useState([
-    { id: 1, name: 'Sami AlDossari', role: 'Admin' },
-    { id: 2, name: 'Fatimah AlYami', role: 'Member' },
-    { id: 3, name: 'Abdullah AlSalem', role: 'Member' },
-  ]);
-
+  const [members, setMembers] = useState(initialMembers); // use imported data
   const [message, setMessage] = useState('');
 
   const handleRemove = (id) => {
@@ -52,7 +48,7 @@ function ManageMembers() {
               <td>{member.name}</td>
               <td>{member.role}</td>
               <td>
-                {member.id !== currentAdminId && (
+                {member.id !== currentAdminId ? (
                   <select
                     value={member.role}
                     onChange={(e) => handleRoleChange(member.id, e.target.value)}
@@ -60,8 +56,9 @@ function ManageMembers() {
                     <option value="Member">Member</option>
                     <option value="Admin">Admin</option>
                   </select>
+                ) : (
+                  <span>—</span>
                 )}
-                {member.id === currentAdminId && <span>—</span>}
               </td>
               <td>
                 {member.id !== currentAdminId ? (

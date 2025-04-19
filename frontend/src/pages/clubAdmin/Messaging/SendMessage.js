@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
-import './SendMessage.css';
 
-function SendMessage() {
-  const [members] = useState([
-    { id: 1, name: 'Sami AlDossari' },
-    { id: 2, name: 'Fatimah AlYami' },
-    { id: 3, name: 'Abdullah AlSalem' },
-  ]);
-
+function SendMessageForm({ members }) {
   const [selectedMembers, setSelectedMembers] = useState([]);
   const [message, setMessage] = useState('');
   const [confirmation, setConfirmation] = useState('');
+  const [selectAll, setSelectAll] = useState(false);
 
   const handleCheckboxChange = (id) => {
     setSelectedMembers((prev) =>
       prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
     );
+  };
+
+  const handleSelectAll = () => {
+    if (selectAll) {
+      setSelectedMembers([]);
+    } else {
+      setSelectedMembers(members.map((m) => m.id));
+    }
+    setSelectAll(!selectAll);
   };
 
   const handleSend = () => {
@@ -33,6 +36,7 @@ function SendMessage() {
     setConfirmation('✅ Message sent successfully!');
     setMessage('');
     setSelectedMembers([]);
+    setSelectAll(false);
   };
 
   return (
@@ -41,6 +45,15 @@ function SendMessage() {
 
       <div className="member-list">
         <p>Select Recipients:</p>
+        <label className="checkbox-item">
+          <input
+            type="checkbox"
+            checked={selectAll}
+            onChange={handleSelectAll}
+          />
+          Select All
+        </label>
+
         {members.map((member) => (
           <label key={member.id} className="checkbox-item">
             <input
@@ -66,4 +79,4 @@ function SendMessage() {
   );
 }
 
-export default SendMessage;
+export default SendMessageForm;
