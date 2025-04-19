@@ -38,7 +38,7 @@ Make sure you have the following installed:
 
 3. **Install additional libraries**:
    ```bash
-   npm install react-interactions
+   npm install react-scripts
    ```
 
 4. **Run the application**:
