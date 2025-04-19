@@ -21,8 +21,24 @@
 .header-container {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 16px;  /* space between image and text */
 }
+
+
+  
+.club-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    object-fit: cover;
+  }
+  
+.greeting {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
 
 .club-logo {
   width: 64px;
@@ -212,14 +228,89 @@
   background-color: var(--hover);
 }
 
-.footer {
-  background-color: var(--surface);
-  padding: 1rem;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin-top: 3rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+  .section-header button {
+    background-color: #345e5e;
+    color: white;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .section-header button:hover {
+    background-color: #2a4c4c;
+  }
+  
+  /* ===== Cards ===== */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  }
+  
+  .card-body h4 {
+    margin-bottom: 4px;
+    color: #222;
+  }
+  
+  .card-body p {
+    margin: 3px 0;
+    color: #444;
+  }
+  
+  .card-body .sub {
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  /* ===== Tool Cards ===== */
+  .tool-card-list {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .tool-card {
+    flex: 1 1 280px;
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tool-card h4 {
+    margin-bottom: 0.5rem;
+    color: #1e1e1e;
+  }
+  
+  .tool-card p {
+    margin-bottom: 1rem;
+    color: #444;
+    font-size: 0.95rem;
+  }
+  
+  .tool-card button {
+    background-color: #345e5e;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .tool-card button:hover {
+    background-color: #2a4c4c;
+  }
+  
+

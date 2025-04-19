@@ -1,7 +1,5 @@
 .page-content {
   margin: 2rem;
-
-
 }
 
 /* Summary Cards Section */
@@ -143,13 +141,8 @@
   color: #ffffff;
 }
 
-/* Footer */
-.footer {
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--text-primary);
-}
+
+
   
   .summary-cards {
     display: flex;
