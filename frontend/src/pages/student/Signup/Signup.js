@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 function Signup() {
   const navigate = useNavigate();
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation || location;
+  const background = location.state?.background || location;
 
   const handleCloseClick = () => {
     navigate("/");
@@ -41,11 +41,7 @@ function Signup() {
         </form>
         <p className="login-redirect">
           Already have an account?{" "}
-          <Link
-            to="/login"
-            state={{ backgroundLocation }}
-            className="signup-link"
-          >
+          <Link to="/login" state={{ background }} className="signup-link">
             Log in
           </Link>
         </p>

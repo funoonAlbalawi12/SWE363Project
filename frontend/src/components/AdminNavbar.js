@@ -66,14 +66,18 @@ function DashNavbar() {
             <div className="dropdown-menu">
               <button
                 onClick={() =>
-                  navigate("/profile", { state: { background: location } })
+                  navigate("/profile", {
+                    state: { background: location },
+                  })
                 }
               >
                 Profile
               </button>
               <button
                 onClick={() =>
-                  navigate("/settings", { state: { background: location } })
+                  navigate("/settings", {
+                    state: { background: location },
+                  })
                 }
               >
                 Settings
