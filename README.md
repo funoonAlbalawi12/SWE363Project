@@ -7,12 +7,12 @@ The KFUPM Activity Network is a web platform designed to help students discover 
 
 # Setup and installation instructions: 
 # Usage instructions and examples:
-# Team member names and roles: 
--Funoon Albalawi
--Budoor Alshehri
--Khulud Alotaibi
--Zahra Alhadab
--Rahf Altwairqi
+# Team Members and Roles:
+- **Funoon Albalawi**  
+- **Budoor Alshehri**  
+- **Khulud Alotaibi**  
+- **Zahra Alhadab**  
+- **Rahf Altwairqi**  
 
 
 
