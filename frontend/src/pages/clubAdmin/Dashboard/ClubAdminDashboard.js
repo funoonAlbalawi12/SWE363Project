@@ -43,7 +43,7 @@ function ClubAdminDashboard() {
     <div className="club-admin-dashboard">
       <ClubAdminNavBar />
       <div className="dashboard-content">
-        <h2 className="greeting">Hello, IEOM KFUPM Chapter!</h2>
+        <h2 className="greeting">Hello, IEOM KFUPM Chapter Admin!</h2>
 
         {/* Recent Events */}
         <div className="section">
@@ -58,8 +58,8 @@ function ClubAdminDashboard() {
                 <div className="card-body">
                   <h4>{event.title}</h4>
                   <p className="sub">{event.club}</p>
-                  <p>📅 {event.date}</p>
-                  <p>📍 {event.location}</p>
+                  <p>{event.date}</p>
+                  <p>{event.location}</p>
                 </div>
               </div>
             ))}
@@ -79,7 +79,7 @@ function ClubAdminDashboard() {
                 <div className="card-body">
                   <h4>{member.name}</h4>
                   <p className="sub">{member.club}</p>
-                  <p>👤 Joined: {member.joined}</p>
+                  <p>Joined: {member.joined}</p>
                 </div>
               </div>
             ))}
@@ -94,33 +94,33 @@ function ClubAdminDashboard() {
 
           <div className="tool-card-list">
             <div className="tool-card">
-              <h4>🏷️ Manage Club Profile</h4>
+              <h4>Manage Club Profile</h4>
               <p>Edit club name, logo, description, and contact info.</p>
               <button onClick={() => navigate("/clubadmin/profile/edit")}>Go to Profile</button>
             </div>
 
             <div className="tool-card">
-              <h4>✅ Membership Requests</h4>
+              <h4>Membership Requests</h4>
               <p>Approve or reject student applications to your club.</p>
-              <button onClick={() => navigate("/clubadmin/members",{ state: { scrollTo: "membership" } })}>Manage Requests</button>
+              <button onClick={() => navigate("/clubadmin/members", { state: { scrollTo: "membership" } })}>Manage Requests</button>
             </div>
 
             <div className="tool-card">
-              <h4>📢 Manage Events</h4>
+              <h4>Manage Events</h4>
               <p>Schedule upcoming events.</p>
               <button onClick={() => navigate("/clubadmin/Events", { state: { scrollToManage: true } })}>
-                    Create / View Events
+                Create / View Events
               </button>
             </div>
 
             <div className="tool-card">
-              <h4>👥 Manage Club Members</h4>
+              <h4>Manage Club Members</h4>
               <p>View all active members, remove, or assign admin roles.</p>
               <button onClick={() => navigate("/clubadmin/members", { state: { scrollToManage: true } })}>Manage Members</button>
             </div>
 
             <div className="tool-card">
-              <h4>✉️ Messaging & Announcements</h4>
+              <h4>Messaging & Announcements</h4>
               <p>Send a custom message or announcement to your club members.</p>
               <button onClick={() => navigate("/clubadmin/messages")}>Send Message</button>
             </div>
