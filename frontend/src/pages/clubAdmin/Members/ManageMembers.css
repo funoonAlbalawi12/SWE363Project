@@ -1,57 +1,68 @@
-.members-page {
-  background-color: #f9f9fc;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.members-content {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.page-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.page-subtitle {
-  text-align: center;
-  color: #666;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-.section {
-  margin-bottom: 3rem;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.section-header h3 {
-  font-size: 1.5rem;
-  color: #222;
-}
-
-.divider {
-  border: none;
-  border-top: 2px solid #e0e0e0;
-  margin: 3rem 0;
-}
-
-/* Optional: add spacing between the MembershipRequests and ManageMembers cards */
-.membership-requests,
 .manage-members-container {
-  background-color: #fff;
-  padding: 1.5rem;
+  background-color: var(--surface);
+  padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.manage-members-container h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg);
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.members-table th,
+.members-table td {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.members-table th {
+  background-color: var(--accent);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.members-table tr:last-child td {
+  border-bottom: none;
+}
+
+.members-table select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: white;
+  font-size: 14px;
+}
+
+.remove-btn {
+  background-color: var(--error);
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: #e85a5a;
 }

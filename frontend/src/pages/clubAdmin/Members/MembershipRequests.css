@@ -1,48 +1,67 @@
 .membership-requests {
-    max-width: 700px;
-    margin: 3rem auto;
-    padding: 2rem;
-  }
-  
-  .request-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .request-card h3 {
-    margin: 0 0 0.5rem;
-  }
-  
-  .actions button {
-    padding: 8px 16px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .approve {
-    background-color: #2e7d32;
-  }
-  
-  .reject {
-    background-color: #c62828;
-  }
-  
-  .status {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .status.approved {
-    color: green;
-  }
-  
-  .status.rejected {
-    color: red;
-  }
-  
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 16px;
+  color: var(--text-secondary);
+}
+
+.membership-requests h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.request-card {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.request-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.request-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.approve {
+  background-color: var(--success);
+  border: none;
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reject {
+  background-color: var(--error);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.status {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.status.approved {
+  color: var(--success);
+}
+
+.status.rejected {
+  color: var(--error);
+}

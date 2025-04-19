@@ -19,7 +19,6 @@ function MembershipRequests() {
   return (
     <div className="membership-requests">
       <h2>Membership Requests</h2>
-
       {requests.length === 0 ? (
         <p>No requests found.</p>
       ) : (
@@ -27,7 +26,6 @@ function MembershipRequests() {
           <div className="request-card" key={req.id}>
             <h3>{req.name}</h3>
             <p>Major: {req.major}</p>
-
             {req.status === 'pending' ? (
               <div className="actions">
                 <button className="approve" onClick={() => handleAction(req.id, 'approved')}>
@@ -39,9 +37,7 @@ function MembershipRequests() {
               </div>
             ) : (
               <p className={`status ${req.status}`}>
-                {req.status === 'approved'
-                  ? '✅ Approved'
-                  : '❌ Rejected'}
+                {req.status === 'approved' ? 'Approved' : 'Rejected'}
               </p>
             )}
           </div>

@@ -1,5 +1,5 @@
 .members-page {
-  background-color: #f9f9fc;
+  background-color: var(--bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,14 +14,14 @@
 
 .page-title {
   font-size: 2.4rem;
-  color: #333;
+  color: var(--primary);
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .page-subtitle {
   text-align: center;
-  color: #666;
+  color: var(--info);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -39,25 +39,23 @@
 
 .section-header h3 {
   font-size: 1.8rem;
-  color: #222;
+  color: var(--primary);
 }
 
 .divider {
   border: none;
-  border-top: 2px solid #e0e0e0;
+  border-top: 2px solid var(--border);
   margin: 3rem 0;
 }
 
-
 .membership-requests,
 .manage-members-container {
-  background-color: #fff;
+  background-color: var(--surface);
   padding: 2rem;
   border-radius: 18px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease-in-out;
 }
-
 
 @media (max-width: 768px) {
   .members-content {

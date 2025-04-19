@@ -12,10 +12,8 @@ function MembersPage() {
   const manageRef = useRef(null);
 
   useEffect(() => {
-    
     if (location.state && location.state.scrollTo) {
       const { scrollTo } = location.state;
-
       if (scrollTo === 'membership' && membershipRef.current) {
         membershipRef.current.scrollIntoView({ behavior: 'smooth' });
       } else if (scrollTo === 'manage' && manageRef.current) {
@@ -28,7 +26,7 @@ function MembersPage() {
     <div className="members-page">
       <ClubAdminNavBar />
       <div className="members-content">
-        <h2 className="page-title">👥 Club Members Management</h2>
+        <h2 className="page-title">Club Members Management</h2>
         <p className="page-subtitle">Review membership requests and manage your current members.</p>
       </div>
 
