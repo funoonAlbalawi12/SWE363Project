@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ClubAdminNavBar from "../../../components/ClubAdminNavBar2";
 import Footer from "../../../components/Footer";
 import "./ClubAdminDashboard.css";
+import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 function ClubAdminDashboard() {
   const navigate = useNavigate();
@@ -65,8 +66,8 @@ function ClubAdminDashboard() {
                 <div className="card-body">
                   <h4>{event.title}</h4>
                   <p className="sub">{event.club}</p>
-                  <p>{event.date}</p>
-                  <p>{event.location}</p>
+                  <p><FaCalendarAlt /> {event.date}</p>
+                  <p><FaMapMarkerAlt /> {event.location}</p>
                 </div>
               </div>
             ))}

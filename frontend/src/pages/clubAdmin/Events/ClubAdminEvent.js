@@ -5,6 +5,7 @@ import './Events.css';
 import { getEvents } from '../../../data/ClubEvents';
 import AnnouncementsEvents from '../Announcements/AnnouncementsEvents';
 import { useLocation } from 'react-router-dom';
+import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 function EventsPage() {
   const [events, setEvents] = useState(getEvents()); 
@@ -38,7 +39,7 @@ function EventsPage() {
               {events.map(event => (
                 <div key={event.id} className="event-card">
                   <h4>{event.title}</h4>
-                  <p className="event-sub">{event.date} | {event.location}</p>
+                  <p><FaCalendarAlt /> {event.date}</p>  <p><FaMapMarkerAlt /> {event.location}</p>
                   <p>{event.description}</p>
                 </div>
               ))}
