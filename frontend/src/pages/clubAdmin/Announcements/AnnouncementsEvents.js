@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './AnnouncementsEvents.css';
+import { addEvent } from '../../../data/ClubEvents';
 
 function AnnouncementsEvents() {
-  const [announcements, setAnnouncements] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -25,7 +25,7 @@ function AnnouncementsEvents() {
       return;
     }
 
-    const newAnnouncement = {
+    const newEvent = {
       id: Date.now(),
       title,
       description,
@@ -33,7 +33,7 @@ function AnnouncementsEvents() {
       location,
     };
 
-    setAnnouncements([newAnnouncement, ...announcements]);
+    addEvent(newEvent);
     setMessage('✅ Event scheduled successfully!');
     setTitle('');
     setDescription('');
@@ -43,7 +43,7 @@ function AnnouncementsEvents() {
 
   return (
     <div className="announcements-events">
-      <h2>Create New Announcement / Event</h2>
+      <h2>Create New Event</h2>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -61,20 +61,6 @@ function AnnouncementsEvents() {
       </form>
 
       {message && <p className="message">{message}</p>}
-
-      <h3>Posted Announcements & Events</h3>
-      {announcements.length === 0 ? (
-        <p>No announcements yet.</p>
-      ) : (
-        announcements.map((item) => (
-          <div className="clubAdmin-event-card" key={item.id}>
-            <h4>{item.title}</h4>
-            <p>{item.description}</p>
-            <p><strong>Date:</strong> {item.date}</p>
-            <p><strong>Location:</strong> {item.location}</p>
-          </div>
-        ))
-      )}
     </div>
   );
 }

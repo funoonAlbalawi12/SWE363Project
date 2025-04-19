@@ -1,52 +1,57 @@
+.members-page {
+  background-color: #f9f9fc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.members-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h3 {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #e0e0e0;
+  margin: 3rem 0;
+}
+
+/* Optional: add spacing between the MembershipRequests and ManageMembers cards */
+.membership-requests,
 .manage-members-container {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 2rem;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .manage-members-container h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .message {
-    margin: 1rem 0;
-    font-weight: bold;
-    color: green;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  th {
-    background-color: #f0f0f0;
-  }
-  
-  .remove-btn {
-    background-color: #c62828;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .remove-btn:hover {
-    background-color: #a82020;
-  }
-  
-  select {
-    padding: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}

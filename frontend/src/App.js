@@ -17,12 +17,13 @@ import EventPage from "./pages/admin/eventpage/eventpage";
 import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
 import Tickets from "./pages/student/Tickets/Tickets";
 
-import ManageMembers from "./pages/clubAdmin/Members/ManageMembers";
-import SendMessage from "./pages/clubAdmin/Messaging/SendMessage";
+
+import SendMessagePage from "./pages/clubAdmin/Messaging/SendMessagePage";
 import ClubAdminDashboard from "./pages/clubAdmin/Dashboard/ClubAdminDashboard";
 import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
-import MembershipRequests from "./pages/clubAdmin/Membership/MembershipRequests";
 import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEvents";
+import EventsPage from "./pages/clubAdmin/Events/ClubAdminEvent.js"
+import MembersPage from "./pages/clubAdmin/Members/Members.js";
 
 
 
@@ -53,29 +54,18 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
         {/* Club Admin Routes */}
-        <Route
-          path="/clubadmin/announcements-events"
-          element={<AnnouncementsEvents />}
-        />
-        <Route path="/clubadmin/messages" element={<SendMessage />} />
-        <Route path="/clubadmin/club-members" element={<ManageMembers />} />
-
-        <Route
-          path="/clubadmin/membership-requests"
-          element={<MembershipRequests />}
-        />
+        <Route path="/clubadmin/announcements-events" element={<AnnouncementsEvents />}/>
+        <Route path="/clubadmin/messages" element={<SendMessagePage />} />
+        <Route path="/clubadmin/members" element={<MembersPage />} />
         <Route path="/clubadmin/Profile" element={<EditProfile />} />
-        {/* Other Routes */}
-
-        <Route
-          path="/clubadmin/membership-requests"
-          element={<MembershipRequests />}
-        />
-        <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
+        <Route path="/clubadmin/dashboard" element={<ClubAdminDashboard />} />
+        <Route path="/clubadmin/Events" element={<EventsPage />} />
         <Route path="/eventpage" element={<EventPage />} />
         <Route path="/clubpage" element={<ClubsPage />} />
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
 
+        
+        
         <Route
           path="/settings"
           element={<Settings setDarkMode={setDarkMode} />}

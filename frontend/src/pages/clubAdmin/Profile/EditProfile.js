@@ -1,52 +1,97 @@
 import React, { useState } from 'react';
+import ClubAdminNavbar from '../../../components/ClubAdminNavBar2';
+import Footer from '../../../components/Footer';
 import './EditProfile.css';
 
 function EditProfile() {
-  const [clubName, setClubName] = useState('');
-  const [description, setDescription] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [clubName, setClubName] = useState('IEOM KFUPM Chapter');
+  const [description, setDescription] = useState('A club focusing on industrial engineering and operations management at KFUPM.');
+  const [email, setEmail] = useState('ieom@kfupm.edu.sa');
+  const [phone, setPhone] = useState('013-860-1234');
   const [logo, setLogo] = useState(null);
   const [message, setMessage] = useState('');
 
+  const [editField, setEditField] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!clubName || !description) {
-      setMessage('Please fill all required fields.');
-      return;
-    }
-
-    if (logo && !['image/png', 'image/jpeg'].includes(logo.type)) {
-      setMessage('Logo must be a PNG or JPEG file.');
-      return;
-    }
-
     setMessage('Club details updated successfully!');
+    setEditField('');
   };
 
+  const handleEdit = (field) => setEditField(field);
+
   return (
-    <div className="edit-club-profile">
-      <h2>Edit Club Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Club Logo:</label>
-        <input type="file" accept="image/png, image/jpeg" onChange={(e) => setLogo(e.target.files[0])} />
+    <div className="edit-profile-container">
+      <ClubAdminNavbar />
 
-        <label>Club Name *</label>
-        <input type="text" value={clubName} onChange={(e) => setClubName(e.target.value)} required />
+      <div className="edit-profile-content">
+        <h2>Edit Club Profile</h2>
+        <form onSubmit={handleSubmit}>
+          {/* Club Logo */}
+          <div className="edit-row">
+            <label>Club Logo:</label>
+            <input type="file" accept="image/png, image/jpeg" onChange={(e) => setLogo(e.target.files[0])} />
+          </div>
 
-        <label>Description *</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
+          {/* Club Name */}
+          <div className="edit-row">
+            <label>Club Name:</label>
+            {editField === 'clubName' ? (
+              <input type="text" value={clubName} onChange={(e) => setClubName(e.target.value)} />
+            ) : (
+              <div className="display-field">
+                <span>{clubName}</span>
+                <button type="button" onClick={() => handleEdit('clubName')}>Edit</button>
+              </div>
+            )}
+          </div>
 
-        <label>Contact Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {/* Description */}
+          <div className="edit-row">
+            <label>Description:</label>
+            {editField === 'description' ? (
+              <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+            ) : (
+              <div className="display-field">
+                <span>{description}</span>
+                <button type="button" onClick={() => handleEdit('description')}>Edit</button>
+              </div>
+            )}
+          </div>
 
-        <label>Contact Phone:</label>
-        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+          {/* Email */}
+          <div className="edit-row">
+            <label>Contact Email:</label>
+            {editField === 'email' ? (
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            ) : (
+              <div className="display-field">
+                <span>{email}</span>
+                <button type="button" onClick={() => handleEdit('email')}>Edit</button>
+              </div>
+            )}
+          </div>
 
-        <button type="submit">Save Changes</button>
-        {message && <p className="message">{message}</p>}
-      </form>
+          {/* Phone */}
+          <div className="edit-row">
+            <label>Contact Phone:</label>
+            {editField === 'phone' ? (
+              <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            ) : (
+              <div className="display-field">
+                <span>{phone}</span>
+                <button type="button" onClick={() => handleEdit('phone')}>Edit</button>
+              </div>
+            )}
+          </div>
+
+          <button type="submit" className="save-button">Save Changes</button>
+          {message && <p className="message">{message}</p>}
+        </form>
+      </div>
+
+      <Footer />
     </div>
   );
 }
