@@ -92,7 +92,7 @@ function PurchaseTicket() {
       <DashNavbar />
       <div className="ticket-page">
         <button className="back-btn" onClick={() => window.history.back()}>
-          ← Back
+          ←
         </button>
 
         <div className="ticket-layout">

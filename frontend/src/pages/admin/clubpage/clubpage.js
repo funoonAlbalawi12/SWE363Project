@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
-import { Plus, Trash2, Pencil } from "lucide-react";
+import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 import clubsData from "../../../data/ClubData";
 import Footer from "../../../components/Footer";
 
@@ -96,8 +96,16 @@ const ClubsPage = () => {
               />
 
               <div className="form-actions">
-                <button type="submit" className="login-btn">Submit</button>
-                <button type="button" className="login-btn" onClick={toggleForm}>Cancel</button>
+                <button type="submit" className="login-btn">
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className="login-btn"
+                  onClick={toggleForm}
+                >
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
@@ -144,7 +152,7 @@ const ClubsPage = () => {
           ))}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

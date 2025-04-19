@@ -10,8 +10,8 @@
   --text-secondary: #ffffff; /* texts on cards*/
   --border: #D5E0EB;
 
-  --success: #5ADBB0;
-  --info: #4CBEFF;
+  --success: #A6B1C3; /* extra color for text */
+  --info: #a4a4a4;
   --error: #FF6B6B;
 }
 
@@ -27,8 +27,8 @@ body.dark {
   --text-secondary: #A6B1C3; /* texts on cards*/
   --border: #2E3B4D;
 
-  --success: #75E7C1;
-  --info: #6FD3FF;
+  --success: #A6B1C3; /* extra color for text */
+  --info: #3d4140; 
   --error: #FF8F8F;
 }
 
@@ -216,60 +216,3 @@ h2 {
   }
 }
 
-/* Footer */
-.main-footer {
-  color: var(--text-primary);
-  background-color: var(--bg);
-  padding: 32px;
-  text-align: center;
-  margin: 20px 0px 0px 0px;
-}
-
-.main-footer-content {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 16px;
-}
-
-.main-footer-section {
-  margin: 8px;
-}
-
-.main-footer-section h4 {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-}
-
-.main-footer-section ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.main-footer-section li {
-  margin: 4px 0;
-  color: var(--text-primary);
-}
-
-.main-footer input {
-  padding: 8px;
-  margin: 8px 0;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  width: 80%;
-  background-color: var(--bg);
-  color: var(--text-primary);
-}
-
-.main-footer .btn {
-  padding: 8px 16px;
-  background-color: var(--secondary);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.main-footer-copyright {
-  margin-top: 16px;
-  color: var(--text-secondary);
-}

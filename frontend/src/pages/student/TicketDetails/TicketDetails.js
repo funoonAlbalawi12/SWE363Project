@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
 import QRCode from "react-qr-code";
@@ -7,6 +7,7 @@ import "./TicketDetails.css";
 
 function TicketDetails() {
   const { state } = useLocation();
+  const navigate = useNavigate();
   let event, attendees, codeBase;
 
   if (state) {
@@ -29,7 +30,7 @@ function TicketDetails() {
       <DashNavbar />
       <div className="ticket-details-page">
         <button className="back-btn" onClick={() => window.history.back()}>
-          ← Back
+          ←
         </button>
 
         <button className="print-btn" onClick={() => window.print()}>
@@ -54,7 +55,19 @@ function TicketDetails() {
                 🎫 <strong>{attendees?.length || 1} Ticket</strong> (Email
                 Ticket)
               </p>
-              <button className="view-event-btn">View event details</button>
+              <button
+                className="view-event-btn"
+                onClick={() =>
+                  navigate(
+                    `/events/${event.title.toLowerCase().replace(/\s+/g, "-")}`,
+                    {
+                      state: { event },
+                    }
+                  )
+                }
+              >
+                View event details
+              </button>
             </div>
           </div>
         </div>

@@ -51,7 +51,14 @@ const EventsPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Event submitted:", formData);
-    setFormData({ title: "", date: "", location: "", priceType: "free", price: "", img: null });
+    setFormData({
+      title: "",
+      date: "",
+      location: "",
+      priceType: "free",
+      price: "",
+      img: null,
+    });
     setShowForm(false);
   };
 
@@ -75,13 +82,28 @@ const EventsPage = () => {
             <form className="event-form" onSubmit={handleSubmit}>
               <h2>Add Event</h2>
               <label>Title</label>
-              <input type="text" name="title" required onChange={handleFormChange} />
+              <input
+                type="text"
+                name="title"
+                required
+                onChange={handleFormChange}
+              />
 
               <label>Date & Time</label>
-              <input type="datetime-local" name="date" required onChange={handleFormChange} />
+              <input
+                type="datetime-local"
+                name="date"
+                required
+                onChange={handleFormChange}
+              />
 
               <label>Location</label>
-              <input type="text" name="location" required onChange={handleFormChange} />
+              <input
+                type="text"
+                name="location"
+                required
+                onChange={handleFormChange}
+              />
 
               <label>Image</label>
               <input type="file" accept="image/*" onChange={handleFormChange} />
@@ -95,13 +117,25 @@ const EventsPage = () => {
               {formData.priceType === "paid" && (
                 <>
                   <label>Price (SAR)</label>
-                  <input type="number" name="price" onChange={handleFormChange} />
+                  <input
+                    type="number"
+                    name="price"
+                    onChange={handleFormChange}
+                  />
                 </>
               )}
 
               <div className="form-actions">
-                <button type="submit" className="login-btn">Submit</button>
-                <button type="button" className="login-btn" onClick={toggleForm}>Cancel</button>
+                <button type="submit" className="login-btn">
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className="login-btn"
+                  onClick={toggleForm}
+                >
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
@@ -109,20 +143,36 @@ const EventsPage = () => {
 
         <div className="eventcard-grid">
           {events.map((event) => (
-            <div key={event.id} className="event-cardAdmin" onClick={() => handleCardClick(event.id)}>
+            <div
+              key={event.id}
+              className="event-cardAdmin"
+              onClick={() => handleCardClick(event.id)}
+            >
               <div className="card-image">
                 <img src={event.img} alt={event.title} />
-              </div>              <h2>{event.title}</h2>
+              </div>{" "}
+              <h2>{event.title}</h2>
               <p className="price">{event.price || "Free"}</p>
-              <p><FaCalendarAlt /> {event.date}</p>
-              <p><FaMapMarkerAlt /> {event.location}</p>
-
+              <p>
+                <FaCalendarAlt /> {event.date}
+              </p>
+              <p>
+                <FaMapMarkerAlt /> {event.location}
+              </p>
               <div className="card-actions">
-                <button className="btn-ghost-sm" onClick={(e) => handleRemove(e, event.id)}>
-                  <Trash2 className="icon-sm" /><span>Remove</span>
+                <button
+                  className="btn-ghost-sm"
+                  onClick={(e) => handleRemove(e, event.id)}
+                >
+                  <Trash2 className="icon-sm" />
+                  <span>Remove</span>
                 </button>
-                <button className="btn-ghost-sm" onClick={(e) => handleEdit(e, event.id)}>
-                  <Pencil className="icon-sm" /><span>Edit</span>
+                <button
+                  className="btn-ghost-sm"
+                  onClick={(e) => handleEdit(e, event.id)}
+                >
+                  <Pencil className="icon-sm" />
+                  <span>Edit</span>
                 </button>
               </div>
             </div>
@@ -130,7 +180,7 @@ const EventsPage = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

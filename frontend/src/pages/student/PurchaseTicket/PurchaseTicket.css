@@ -1,143 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+
 .ticket-page {
-    padding: 40px;
-    background-color: #f9f9f9;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  /* .back-btn {
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #555;
-    cursor: pointer;
-    margin-bottom: 20px;
-  } */
-  
+  padding: 40px;
+  background-color: var(--bg);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+}
+
+.ticket-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* LEFT: Form Section */
+.ticket-form {
+  flex: 2;
+  min-width: 300px;
+  background: var(--surface);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+}
+
+.ticket-form h1,
+.ticket-form h2,
+.ticket-form h3,
+.ticket-form h4 {
+  color: var(--text-secondary);
+}
+
+.ticket-form h1 {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.ticket-form h2,
+.ticket-form h3,
+.ticket-form h4 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+}
+
+.ticket-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.ticket-form input::placeholder {
+  color: var(--text-primary);
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 20px;
+}
+
+.quantity-control button {
+  padding: 6px 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.quantity-control span {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-secondary);
+}
+
+.attendees-section .attendee {
+  margin-bottom: 20px;
+}
+
+/* RIGHT: Summary Box */
+.ticket-summary {
+  flex: 1;
+  min-width: 250px;
+  background-color: var(--surface);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+}
+
+.ticket-summary h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.ticket-summary p {
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.ticket-summary hr {
+  margin: 16px 0;
+  border-color: var(--border);
+}
+
+.ticket-summary h3 {
+  font-size: 18px;
+}
+
+.ticket-summary .note {
+  font-size: 12px;
+  color: var(--success);
+  margin-top: 12px;
+}
+
+/* Submit Button */
+.submit-btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background-color: var(--secondary);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--hover);
+}
+
+.submit-btn:disabled {
+  background-color: #555a5f;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Tooltip */
+.error-tooltip {
+  color: var(--error);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .ticket-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: flex-start;
+    flex-direction: column;
   }
-  
-  /* LEFT: Form Section */
+
+  .ticket-summary,
   .ticket-form {
-    flex: 2;
-    min-width: 300px;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .ticket-form h1 {
-    font-size: 24px;
-    margin-bottom: 24px;
-    color: #111827;
-  }
-  
-  .ticket-form h2,
-  .ticket-form h3,
-  .ticket-form h4 {
-    margin: 20px 0 10px;
-    color: #111827;
-    font-size: 18px;
-  }
-  
-  .ticket-form input {
-    display: block;
     width: 100%;
-    margin-bottom: 12px;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    background-color: #fafafa;
   }
-  
-  .quantity-control {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 10px 0 20px;
-  }
-  
-  .quantity-control button {
-    padding: 6px 12px;
-    font-size: 18px;
-    border: none;
-    border-radius: 4px;
-    background-color: #2d5b63;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .quantity-control span {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .attendees-section .attendee {
-    margin-bottom: 20px;
-  }
-  
-  /* .submit-btn {
-    margin-top: 24px;
-    padding: 12px 20px;
-    background-color: #2d5b63;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-  } */
-  
-  /* RIGHT: Summary Box */
-  .ticket-summary {
-    flex: 1;
-    min-width: 250px;
-    background-color: white;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .ticket-summary h2 {
-    font-size: 20px;
-    margin-bottom: 16px;
-    color: #111827;
-  }
-  
-  .ticket-summary p {
-    font-size: 14px;
-    margin: 8px 0;
-    color: #374151;
-  }
-  
-  .ticket-summary hr {
-    margin: 16px 0;
-  }
-  
-  .ticket-summary h3 {
-    font-size: 18px;
-    color: #111827;
-  }
-  
-  .ticket-summary .note {
-    font-size: 12px;
-    color: #6b7280;
-    margin-top: 12px;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .ticket-layout {
-      flex-direction: column;
-    }
-  }
+}
+
 /* Overlay */
 .modal-overlay {
   position: fixed;
@@ -154,7 +186,7 @@
 
 /* Modal Card */
 .modal-content {
-  background-color: #ffffff;
+  background-color: var(--surface);
   padding: 32px;
   width: 90%;
   max-width: 420px;
@@ -162,18 +194,17 @@
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   animation: fadeIn 0.25s ease-in;
+  color: var(--text-secondary);
 }
 
 .modal-content h2 {
   font-size: 22px;
   font-weight: 600;
-  color: #1f2937;
   margin-bottom: 12px;
 }
 
 .modal-content p {
   font-size: 15px;
-  color: #4b5563;
   margin-bottom: 24px;
 }
 
@@ -195,37 +226,175 @@
 
 /* Primary Action */
 .modal-actions button:first-child {
-  background-color: #2d5b63;
-  color: white;
+  background-color: var(--secondary);
+  color: var(--text-secondary);
 }
 
 .modal-actions button:first-child:hover {
-  background-color: #2d5b63;
+  background-color: var(--hover);
 }
 
 /* Cancel Action */
 .cancel-btn {
-  background-color: #f3f4f6;
-  color: #1f2937;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
 }
 
 .cancel-btn:hover {
-  background-color: #e5e7eb;
+  background-color: var(--surface);
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
 }
-.submit-btn:disabled {
-  background-color: #d1d5db;
-  color: #6b7280;
-  cursor: not-allowed;
+
+
+@media (max-width: 768px) {
+  .ticket-page {
+    padding: 20px;
+  }
+
+  .ticket-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ticket-form,
+  .ticket-summary {
+    width: 100%;
+    max-width: 700;
+    padding: 20px;
+    margin:10px
+    
+  }
+
+  .ticket-form h1 {
+    font-size: 20px;
+  }
+
+  .ticket-form h2,
+  .ticket-form h3,
+  .ticket-form h4 {
+    font-size: 16px;
+  }
+
+  .ticket-form input,
+  .attendees-section input {
+    font-size: 14px;
+  }
+
+  .quantity-control {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .ticket-summary h2,
+  .ticket-summary h3,
+  .ticket-summary p {
+    text-align: center;
+  }
+
+  .modal-content {
+    padding: 24px;
+    max-width: 90%;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .back-btn {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
 }
+@media (max-width: 768px) {
+  .ticket-page {
+    padding: 24px;
+  }
 
+  .ticket-layout {
+    flex-direction: column;
+    gap: 32px;
+  }
 
-.error-tooltip {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
+  .ticket-form,
+  .ticket-summary {
+    width: 100%;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .ticket-form h1 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .ticket-form h2,
+  .ticket-form h3,
+  .ticket-form h4 {
+    font-size: 16px;
+    margin: 16px 0 8px;
+  }
+
+  .ticket-form input {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 14px;
+  }
+
+  .quantity-control {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .quantity-control button {
+    padding: 6px 14px;
+  }
+
+  .ticket-summary {
+    text-align: left;
+  }
+
+  .ticket-summary h2,
+  .ticket-summary h3,
+  .ticket-summary p {
+    text-align: left;
+  }
+
+  .submit-btn {
+    margin-top: 24px;
+  }
+
+  .attendees-section .attendee {
+    margin-bottom: 16px;
+  }
+
+  .modal-content {
+    padding: 24px;
+    max-width: 95%;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .back-btn {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
 }

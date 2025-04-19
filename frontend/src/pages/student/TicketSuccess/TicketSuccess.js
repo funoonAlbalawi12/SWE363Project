@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
 import QRCode from "react-qr-code";
-import { addEventToMyEvents, getUpcomingEvents } from "../../../data/MyEvents";
+import { addEventToMyEvents } from "../../../data/MyEvents";
 import "./TicketSuccess.css";
 
 function TicketSuccess() {
@@ -20,8 +20,6 @@ function TicketSuccess() {
     date,
     codeBase,
   } = state || {};
-
-  const myTickets = getUpcomingEvents();
 
   useEffect(() => {
     if (!state || !attendees || !event) return;
@@ -64,45 +62,52 @@ function TicketSuccess() {
         <div className="success-banner">Successfully Registered!</div>
 
         <h1>{event.title}</h1>
+        <div className="info-sections">
+          <div className="ticket-info">
+            <h2>Ticket Information</h2>
+            <div>
+              <strong>Date and Time:</strong> {event.date}
+            </div>
+            <div>
+              <strong>Place:</strong> {event.location}
+            </div>
+            <div>
+              <strong>Tickets:</strong> {quantity} Email Ticket(s)
+            </div>
+          </div>
 
-        <div className="ticket-info">
-          <div>
-            <strong>Date and Time:</strong> {event.date}
-          </div>
-          <div>
-            <strong>Place:</strong> {event.location}
-          </div>
-          <div>
-            <strong>Tickets:</strong> {quantity} Email Ticket(s)
-          </div>
+          <section className="purchase-summary">
+            <h2>Purchase Information</h2>
+            <div>
+              <strong>Code:</strong> #{codeBase}
+            </div>
+            <div>
+              <strong>Date:</strong> {date}
+            </div>
+            <div>
+              <strong>Total:</strong> {total} SR
+            </div>
+            <div>
+              <strong>Payment Method:</strong> {paymentMethod}
+            </div>
+          </section>
+
+          <section className="contact-info">
+            <h2>Contact Information</h2>
+            <div>
+              <strong>Name:</strong> {contactInfo.name}
+            </div>
+            <div>
+              <strong>Email:</strong> {contactInfo.email}
+            </div>
+            <div>
+              <strong>Phone:</strong> {contactInfo.phone}
+            </div>
+          </section>
         </div>
-
-        <section className="purchase-summary">
-          <h2>Purchase Information</h2>
-          <div>
-            <strong>Code:</strong> #{codeBase}
-          </div>
-          <div>
-            <strong>Date:</strong> {date}
-          </div>
-          <div>
-            <strong>Total:</strong> {total} SR
-          </div>
-          <div>
-            <strong>Payment Method:</strong> {paymentMethod}
-          </div>
-        </section>
-
-        <section className="contact-info">
-          <h2>Contact Information</h2>
-          <p>Name: {contactInfo.name}</p>
-          <p>Email: {contactInfo.email}</p>
-          <p>Phone: {contactInfo.phone}</p>
-        </section>
-
         <section className="tickets-list">
           <h2>
-            Ticket ({quantity}) Total: {total} SR
+            ({quantity}) Ticket with Total: {total} SR
           </h2>
 
           <div className="success-tickets-container">

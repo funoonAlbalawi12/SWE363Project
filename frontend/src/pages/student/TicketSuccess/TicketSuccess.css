@@ -1,110 +1,140 @@
 .ticket-success-page {
-    padding: 32px;
-    background: #f2f2f2;
-  }
-  
-  .success-banner {
-    background: #ecfdf5;
-    color: #065f46;
-    padding: 12px;
-    text-align: center;
-    font-weight: 600;
-    border: 1px solid #d1fae5;
-    border-radius: 6px;
-    margin-bottom: 20px;
-  }
-  
-  .ticket-info {
-    margin: 20px 0;
-    padding: 16px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    
-  }
+  padding: 32px;
+  background: var(--bg);
+  color: var(--text-primary);
+}
 
-  .purchase-summary {
-    margin: 20px 0;
-    padding: 16px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  }
+.success-banner {
+  background: var(--info);
+  color: var(--text-primary);
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
 
-  .contact-info {
-    margin: 20px 0;
-    padding: 16px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  }
-  
-  
-  .tickets-list .ticket-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f2f2f2;
-    margin-bottom: 12px;
-    padding: 16px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    width:400px;
-  }
-  
-  .qr-section {
-    text-align: center;
-  }
-  
-  .go-tickets-btn {
-    margin-top: 24px;
-    padding: 10px 20px;
-    background: #1e3a8a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .success-tickets-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    margin-top: 24px;
-  }
-  
-  .success-ticket-card {
-    background-color: #2d5b63;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .ticket-details {
-    text-align: center;
-    color: white;
-  }
-  
-  .ticket-details h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-  
-  .ticket-details p {
-    margin: 4px 0;
-    font-size: 0.9rem;
-  }
-  
-.success-ticket-card .ticket-img {
+.ticket-success-page h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.info-sections {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.ticket-info,
+.purchase-summary,
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+  max-width: 320px;
+  background: var(--surface);
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ticket-info h2,
+.purchase-summary h2,
+.contact-info h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+
+}
+
+/* Go to My Tickets Button */
+.go-tickets-btn {
+  margin-top: 32px;
+  padding: 12px 24px;
+  background: var(--secondary);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.3s ease;
+}
+
+.go-tickets-btn:hover {
+  background: var(--hover);
+}
+
+/* Ticket Cards Container */
+.success-tickets-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Individual Ticket Card */
+.success-ticket-card {
+  background-color: var(--surface);
+  border-radius: 12px;
+  padding: 16px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.success-ticket-card:hover {
+  transform: translateY(-4px);
+}
+
+.ticket-img {
   width: 100%;
   height: 160px;
   object-fit: contain;
   border-radius: 12px;
-  background-color: #2d5b63;
+  background-color: var(--surface);
+}
+
+/* Ticket Content */
+.ticket-details {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+.ticket-details h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.ticket-details p {
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ticket-success-page {
+    padding: 20px;
+  }
+
+  .success-ticket-card {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .go-tickets-btn {
+    width: 100%;
+    max-width: 360px;
+  }
 }

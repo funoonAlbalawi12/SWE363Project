@@ -44,7 +44,7 @@ function Settings({ setDarkMode }) {
                 const checked = e.target.checked;
                 setDarkMode(checked);
                 setDarkModeStorage(checked);
-                setDarkModeState("darkMode", checked);
+                setDarkModeState(checked);
               }}
             />
             Enable Dark Mode

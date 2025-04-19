@@ -1,4 +1,4 @@
-.modal-overlay {
+/* .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,12 +42,6 @@
     margin-right: 0.5rem;
   }
   
-  input[type="password"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-  }
   
   .button-group {
     display: flex;
@@ -72,5 +66,123 @@
     padding: 0.5rem 1rem;
     border-radius: 6px;
     cursor: pointer;
+  }
+   */
+
+
+
+
+   :root {
+    --modal-width: 600px;
+  }
+  
+  /* Overlay */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  /* Modal Card */
+  .settings-modal {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: var(--modal-width);
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  .settings-modal h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Items */
+  .setting-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  
+  .setting-item label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+  
+  .setting-item input[type="text"],
+  .setting-item input[type="password"] {
+    padding: 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    outline: none;
+  }
+  
+  .setting-item input[type="checkbox"] {
+    accent-color: var(--secondary);
+    transform: scale(1.1);
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  /* Buttons */
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .cancel-btn {
+    background-color: transparent;
+    color: var(--error);
+    border: 1px solid var(--error);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cancel-btn:hover {
+    background-color: var(--error);
+    color: white;
+  }
+  
+  .save-btn {
+    background-color: var(--secondary);
+    color: var(--text-secondary);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-btn:hover {
+    background-color: var(--hover);
+  }
+  
+  /* Mobile */
+  @media (max-width: 500px) {
+    .settings-modal {
+      padding: 1.5rem;
+    }
+  
+    .button-group {
+      justify-content: center;
+    }
   }
   

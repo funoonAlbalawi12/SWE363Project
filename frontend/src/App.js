@@ -26,9 +26,6 @@ import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEv
 import EventsPage from "./pages/clubAdmin/Events/ClubAdminEvent.js"
 import MembersPage from "./pages/clubAdmin/Members/Members.js";
 
-
-
-
 import EventDetails from "./pages/student/EventDetails/EventDetails";
 import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
@@ -36,15 +33,16 @@ import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 
 function AppRoutes({ setDarkMode }) {
   const location = useLocation();
-  const background = location.state?.background;
+  const state = location.state;
 
   return (
     <>
-      <Routes location={background || location}>
+      <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/Dashboard" element={<Dashboard />} />
@@ -71,6 +69,7 @@ function AppRoutes({ setDarkMode }) {
           path="/settings"
           element={<Settings setDarkMode={setDarkMode} />}
         />
+
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
@@ -81,12 +80,13 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="/ticket/:id" element={<TicketDetails />} />
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
-        
+
         <Route path="/purchase/:id" element={<PurchaseTicket />} />
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="ticket/:id" element={<TicketDetails />} />
       </Routes>
-      {background && (
+
+      {state?.backgroundLocation && (
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

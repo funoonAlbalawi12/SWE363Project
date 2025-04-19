@@ -157,7 +157,9 @@ function AdminDashboard() {
                       className="action-btn"
                       style={{
                         backgroundColor:
-                          club.status === "Active" ? "action-btn" : "action-btn",
+                          club.status === "Active"
+                            ? "action-btn"
+                            : "action-btn",
                       }}
                     >
                       {club.status === "Active" ? "Deactivate" : "Activate"}

@@ -46,6 +46,7 @@ function EventDetails() {
 
         <div className="event-details">
           <div className="event-meta">
+            <h2>About Event</h2>
             <div>
               <FaCalendarAlt /> <strong>Date & Time:</strong> <br />
               {event.date}
@@ -54,11 +55,17 @@ function EventDetails() {
               <FaMapMarkerAlt /> <strong>Location:</strong> <br />
               {event.location}
             </div>
+            <div>
+              <FaClock /> <strong>Duration:</strong> 10 hours
+            </div>
+            <div>
+              <FaTicketAlt /> <strong>Ticket:</strong> Email Ticket
+            </div>
+            <p>{event.description}</p>
           </div>
 
           <div className="purchase-box">
             <p className="price-tag">{event.price}</p>
-
             <Link
               to={`/purchase/${event.title.toLowerCase().replace(/\s+/g, "-")}`}
             >
@@ -66,30 +73,6 @@ function EventDetails() {
             </Link>
           </div>
         </div>
-
-        {/* About event */}
-        <div className="about-section">
-          <h2>About Event</h2>
-          <div className="about-meta">
-            <div>
-              <FaClock /> <strong>Duration:</strong> 10 hours
-            </div>
-            <div>
-              <FaTicketAlt /> <strong>Ticket:</strong> Email Ticket
-            </div>
-          </div>
-          <p>{event.description}</p>
-        </div>
-
-        {/* Event album */}
-        {/* <div className="album-section">
-          <h2>The latest event's album</h2>
-          <div className="album-grid">
-            {(event.albumImages || [1, 2, 3, 4, 5]).map((img, i) => (
-              <div key={i} className="album-image" />
-            ))}
-          </div>
-        </div> */}
 
         {/* Similar Events */}
         <div className="similar-section">

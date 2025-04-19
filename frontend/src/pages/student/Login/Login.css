@@ -14,9 +14,9 @@
 .login-card {
   background-color: var(--bg);
   padding: 40px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 400px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -35,7 +35,6 @@
   font-weight: 500;
   color: var(--text-primary);
 }
-
 .login-card input {
   width: 100%;
   padding: 10px;
@@ -46,6 +45,7 @@
   background-color: var(--bg);
   color: var(--text-primary);
 }
+
 
 .role-buttons {
   display: flex;

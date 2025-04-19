@@ -8,11 +8,11 @@ function Navbar() {
   const location = useLocation();
 
   const handleLoginClick = () => {
-    navigate("/login", { state: { background: location } });
+    navigate("/login", { state: { backgroundLocation: location } });
   };
 
   const handleSignupClick = () => {
-    navigate("/signup", { state: { background: location } });
+    navigate("/signup", { state: { backgroundLocation: location } });
   };
 
   return (
