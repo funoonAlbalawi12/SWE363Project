@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./dashboard.css";
 import AdminNavbar from "../../../components/AdminNavbar";
 import { Search } from "lucide-react";
-
+import Footer from "../../../components/Footer";
 
 function AdminDashboard() {
   const summaryData = [
@@ -18,7 +18,7 @@ function AdminDashboard() {
   const initialClubs = [
     {
       id: 1,
-      name: "Club 1",
+      name: "Club1",
       category: "Technology",
       phone: "0565700135",
       email: "club1@example.com",
@@ -27,7 +27,7 @@ function AdminDashboard() {
     },
     {
       id: 2,
-      name: "Club 2",
+      name: "Club2",
       category: "Research",
       phone: "0565700136",
       email: "club2@example.com",
@@ -36,7 +36,7 @@ function AdminDashboard() {
     },
     {
       id: 3,
-      name: "Club 3",
+      name: "Club3",
       category: "Art",
       phone: "0565700137",
       email: "club3@example.com",
@@ -45,7 +45,7 @@ function AdminDashboard() {
     },
     {
       id: 4,
-      name: "Club 4",
+      name: "Club4",
       category: "Innovation",
       phone: "0565700138",
       email: "club4@example.com",
@@ -54,7 +54,7 @@ function AdminDashboard() {
     },
     {
       id: 5,
-      name: "Club 5",
+      name: "Club5",
       category: "Technology",
       phone: "0565700139",
       email: "club5@example.com",
@@ -63,7 +63,7 @@ function AdminDashboard() {
     },
     {
       id: 6,
-      name: "Club 6",
+      name: "Club6",
       category: "Sport",
       phone: "0565700140",
       email: "club6@example.com",
@@ -82,7 +82,7 @@ function AdminDashboard() {
     <div className="dashboard-container">
       <AdminNavbar />
       <div className="page-content">
-        <h1>System Dashboard</h1>
+        <h1>Hello Khulud!</h1>
 
         <div className="summary-cards">
           {summaryData.map((item, idx) => (
@@ -119,7 +119,6 @@ function AdminDashboard() {
           </div>
         </div>
 
-
         <h2>All Clubs</h2>
         <table className="clubs-table">
           <thead>
@@ -134,43 +133,50 @@ function AdminDashboard() {
             </tr>
           </thead>
           <tbody>
-            {filteredClubs.map((club) => (
-              <tr key={club.id}>
-                <td>{club.name}</td>
-                <td>{club.category}</td>
-                <td>{club.phone}</td>
-                <td>{club.email}</td>
-                <td>{club.members}</td>
-                <td>
-                  <span
-                    className={`status-badge ${club.status === "Active"
-                        ? "status-active"
-                        : "status-inactive"
+            {filteredClubs.length > 0 ? (
+              filteredClubs.map((club) => (
+                <tr key={club.id}>
+                  <td>{club.name}</td>
+                  <td>{club.category}</td>
+                  <td>{club.phone}</td>
+                  <td>{club.email}</td>
+                  <td>{club.members}</td>
+                  <td>
+                    <span
+                      className={`status-badge ${
+                        club.status === "Active"
+                          ? "status-active"
+                          : "status-inactive"
                       }`}
-                  >
-                    {club.status}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    className="action-btn"
-                    style={{
-                      backgroundColor:
-                        club.status === "Active" ? "action-btn" : "action-btn",
-                    }}
-                  >
-                    {club.status === "Active" ? "Deactivate" : "Activate"}
-                  </button>
+                    >
+                      {club.status}
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      className="action-btn"
+                      style={{
+                        backgroundColor:
+                          club.status === "Active" ? "action-btn" : "action-btn",
+                      }}
+                    >
+                      {club.status === "Active" ? "Deactivate" : "Activate"}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" style={{ textAlign: "center" }}>
+                  Club not found
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
 
-      <footer className="footer">
-        <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
