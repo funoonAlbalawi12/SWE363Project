@@ -1,7 +1,6 @@
 .page-content {
   margin: 2rem;
 
-<<<<<<< Updated upstream
 }
 
 /* Summary Cards Section */
@@ -150,7 +149,6 @@
   font-size: 0.875rem;
   color: var(--text-primary);
 }
-=======
   
   .summary-cards {
     display: flex;
@@ -213,4 +211,3 @@
     opacity: 0.9;
   }
   
->>>>>>> Stashed changes
