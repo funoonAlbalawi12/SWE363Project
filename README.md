@@ -47,7 +47,7 @@ Make sure you have the following installed:
    ```
 
 5. **Open in your browser**:  
-   Visit [http://localhost:3000](http://localhost:3000) to see the app in action.
+   Visit [http://localhost:3000](http://localhost:3000/) to see the app in action.
 
 ---
 
