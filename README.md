@@ -5,7 +5,45 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Project Description:
 The KFUPM Activity Network is a web platform designed to help students discover clubs, events, and activities happening at KFUPM. It enables students to register for events, join clubs, and engage with the university's social and academic communities. The platform provides a seamless and intuitive user interface with functionalities like social media links, registration for events, dark mode, and user-friendly dashboards for club administrators and students.
 
-# Setup and installation instructions: 
+## Setup and Installation Instructions
+
+### Prerequisites
+Make sure you have the following installed:
+
+- **Node.js**: To run the front-end and back-end server. Download it from [nodejs.org](https://nodejs.org/).
+- **Git**: A version control system to manage code changes and push updates to repositories.
+
+### Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-repository-url.git
+    cd your-project-directory
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+    This command installs all the required node modules defined in the `package.json` file.
+
+3. **Setup the environment**:
+    Create a `.env` file in the root of your project directory and set any necessary environment variables (like API keys, DB connection strings, etc.). Example:
+    ```bash
+    REACT_APP_API_URL=http://localhost:5000/api
+    ```
+
+4. **Start the server**:
+    To run the application in development mode:
+    ```bash
+    npm start
+    ```
+    This command launches the front-end on [http://localhost:3000](http://localhost:3000) by default. If applicable, it also starts the back-end server on the configured port.
+
+5. **Access the application**:
+    Open a web browser and visit [http://localhost:3000](http://localhost:3000) to view the project in action.
+
+
 # Usage instructions and examples:
 # Team Members and Roles:
 
