@@ -201,7 +201,7 @@ body {
   transform: translateX(28px);
 }
 
-/* Optional: Dark background toggle */
+/* Dark background toggle */
 .toggle-switch input:checked + .slider {
   background-color: #111;
 }
