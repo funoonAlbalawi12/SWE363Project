@@ -1,16 +1,16 @@
 import React from "react";
 import "./Signup.css";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
 function Signup() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation || location;
 
   const handleCloseClick = () => {
     navigate("/");
   };
-  const handleSubmitClick = () => {
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
     navigate("/dashboard");
   };
 
@@ -20,8 +20,10 @@ function Signup() {
         <button className="close-btn" onClick={handleCloseClick}>
           ×
         </button>
+
         <h2>Create Account</h2>
-        <form>
+
+        <form onSubmit={handleSubmitClick}>
           <label>Full Name</label>
           <input type="text" placeholder="Enter your full name" />
 
@@ -31,21 +33,14 @@ function Signup() {
           <label>Password</label>
           <input type="password" placeholder="Create a password" />
 
-          <button
-            type="submit"
-            className="signup-btn"
-            onClick={handleSubmitClick}
-          >
+          <button type="submit" className="signup-btn">
             Sign Up
           </button>
         </form>
+
         <p className="login-redirect">
           Already have an account?{" "}
-          <Link
-            to="/login"
-            state={{ backgroundLocation }}
-            className="signup-link"
-          >
+          <Link to="/login" className="signup-link">
             Log in
           </Link>
         </p>

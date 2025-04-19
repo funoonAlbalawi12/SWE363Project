@@ -29,7 +29,7 @@ function TicketDetails() {
     <>
       <DashNavbar />
       <div className="ticket-details-page">
-        <button className="back-btn" onClick={() => window.history.back()}>
+        <button className="back-btn" onClick={() => navigate("/tickets")}>
           ←
         </button>
 

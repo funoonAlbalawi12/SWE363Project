@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./Profile.css";
 import { FiUser } from "react-icons/fi";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Profile() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [formData, setFormData] = useState({
     firstName: "Khulud",
     lastName: "Alotaibi",

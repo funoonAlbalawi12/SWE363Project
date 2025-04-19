@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './index.css';
+import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/student/LandingPage/LandingPage";
 import Login from "./pages/student/Login/Login";
@@ -18,12 +18,11 @@ import EventPage from "./pages/admin/eventpage/eventpage";
 import ExploreEvents from "./pages/student/ExploreEvents/ExploreEvents";
 import Tickets from "./pages/student/Tickets/Tickets";
 
-
 import SendMessagePage from "./pages/clubAdmin/Messaging/SendMessagePage";
 import ClubAdminDashboard from "./pages/clubAdmin/Dashboard/ClubAdminDashboard";
 import EditProfile from "./pages/clubAdmin/Profile/EditProfile";
 import AnnouncementsEvents from "./pages/clubAdmin/Announcements/AnnouncementsEvents";
-import EventsPage from "./pages/clubAdmin/Events/ClubAdminEvent.js"
+import EventsPage from "./pages/clubAdmin/Events/ClubAdminEvent.js";
 import MembersPage from "./pages/clubAdmin/Members/Members.js";
 
 import EventDetails from "./pages/student/EventDetails/EventDetails";
@@ -33,16 +32,15 @@ import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
 
 function AppRoutes({ setDarkMode }) {
   const location = useLocation();
-  const state = location.state;
+  const background = location.state?.background;
 
   return (
     <>
-      <Routes location={state?.backgroundLocation || location}>
+      <Routes location={background || location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/Dashboard" element={<Dashboard />} />
@@ -53,7 +51,10 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
         {/* Club Admin Routes */}
-        <Route path="/clubadmin/announcements-events" element={<AnnouncementsEvents />}/>
+        <Route
+          path="/clubadmin/announcements-events"
+          element={<AnnouncementsEvents />}
+        />
         <Route path="/clubadmin/messages" element={<SendMessagePage />} />
         <Route path="/clubadmin/members" element={<MembersPage />} />
         <Route path="/clubadmin/Profile" element={<EditProfile />} />
@@ -63,13 +64,10 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/clubpage" element={<ClubsPage />} />
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
 
-        
-        
         <Route
           path="/settings"
           element={<Settings setDarkMode={setDarkMode} />}
         />
-
         <Route path="/clubs/:clubId" element={<ClubProfile />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/explore-events" element={<ExploreEvents />} />
@@ -85,11 +83,8 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/ticket-success" element={<TicketSuccess />} />
         <Route path="ticket/:id" element={<TicketDetails />} />
       </Routes>
-
-      {state?.backgroundLocation && (
+      {background && (
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/settings"
