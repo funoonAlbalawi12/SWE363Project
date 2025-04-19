@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
-import AdminNavbar2 from "../../../components/AdminNavbar2";
-import { Plus, Bell, Trash2, Pencil } from "lucide-react";
+import AdminNavbar from "../../../components/AdminNavbar";
+import { Plus, Trash2, Pencil } from "lucide-react";
 import clubsData from "../../../data/ClubData";
 
 const ClubsPage = () => {
@@ -31,7 +31,7 @@ const ClubsPage = () => {
 
   return (
     <div className="clubs-page">
-      <AdminNavbar2 />
+      <AdminNavbar />
       <div className="page-content">
         <div className="greeting">
           <h1>Hello Admin!</h1>

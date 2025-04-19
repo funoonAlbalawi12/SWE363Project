@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./eventpage.css";
-import AdminNavbar2 from "../../../components/AdminNavbar2";
+import AdminNavbar from "../../../components/AdminNavbar";
 import eventsData from "../../../data/EventData";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
@@ -28,18 +28,18 @@ const EventsPage = () => {
 
   const handleEdit = (e, id) => {
     e.stopPropagation();
-    alert(`Edit club with ID: ${id}`); // <-- تم تعديل الصيغة
+    alert(`Edit event with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   const handleRemove = (e, id) => {
     e.stopPropagation();
-    alert(`Remove club with ID: ${id}`); // <-- تم تعديل الصيغة
+    alert(`Remove event with ID: ${id}`); // <-- تم تعديل الصيغة
   };
 
   return (
     <div className="events-page">
       {/* Admin Navigation */}
-      <AdminNavbar2 />
+      <AdminNavbar />
       <div className="page-content">
         {/* Greeting */}
         <div className="greeting">
@@ -49,7 +49,7 @@ const EventsPage = () => {
         {/* Add New Club */}
         <div className="add-event">
           <button className="add-button">
-            <span>Add new club</span>
+            <span>Add new event</span>
             <Plus className="icon" />
           </button>
         </div>

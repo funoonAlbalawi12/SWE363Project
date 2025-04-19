@@ -1,78 +1,89 @@
-/* clubpage.css */
-
-.page-content{
+.page-content {
   margin: 2rem;
 }
-  
-  .greeting {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-  }
-  
-  .add-event {
-    margin-bottom: 2rem;
-  }
-  
-  .add-button {
-    background-color: #374151;
-    color: white;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .eventcard-grid {
-    display: grid;
-    gap: 4rem;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 
-  }
+.greeting {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
 
-  .event-card {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .event-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .card-image {
-    background-color: #e5e7eb;
-    height: 140px;
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-  }
-  
-  .card-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-  
-  
-  .btn-ghost-sm {
-    border: none;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-        color: white;
-    background-color: #374151;
-  }
-  
+.add-event {
+  margin-bottom: 2rem;
+}
+
+.add-button {
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: var(--hover);
+}
+
+.eventcard-grid {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.event-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: var(--text-secondary);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  background-color: var(--bg);
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-ghost-sm {
+  border: none;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--secondary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.btn-ghost-sm:hover {
+  background-color: var(--hover);
+}

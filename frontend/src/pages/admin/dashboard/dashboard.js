@@ -1,16 +1,21 @@
-import React from "react";
-import "./dashboard.css"; 
-import AdminNavbar2 from "../../../components/AdminNavbar2";
+import React, { useState } from "react";
+import "./dashboard.css";
+import AdminNavbar from "../../../components/AdminNavbar";
+import { Search } from "lucide-react";
 
 
 function AdminDashboard() {
   const summaryData = [
     { title: "Active Users", value: 100 },
     { title: "Club Registrations", value: 100 },
-    { title: "Uptime", value: "80%" },
+    {
+      title: "Uptime",
+      value: "80%",
+      isUptime: true, // flag to show progress bar
+    },
   ];
 
-  const clubsData = [
+  const initialClubs = [
     {
       id: 1,
       name: "Club 1",
@@ -67,59 +72,102 @@ function AdminDashboard() {
     },
   ];
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredClubs = initialClubs.filter((club) =>
+    club.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="dashboard-container">
-        <AdminNavbar2 />
+      <AdminNavbar />
+      <div className="page-content">
+        <h1>System Dashboard</h1>
 
-      <h1>System Dashboard</h1>
+        <div className="summary-cards">
+          {summaryData.map((item, idx) => (
+            <div
+              className={`card_admin ${item.isUptime ? "uptime-card" : ""}`}
+              key={idx}
+            >
+              <h3>{item.title}</h3>
+              <p>{item.value}</p>
+              {item.isUptime && (
+                <div className="progress-bar">
+                  <div
+                    className="progress-fill"
+                    style={{
+                      width: item.value,
+                    }}
+                  ></div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
 
-      <div className="summary-cards">
-        {summaryData.map((item, idx) => (
-          <div className="card" key={idx}>
-            <h3>{item.title}</h3>
-            <p>{item.value}</p>
+        {/* Search bar */}
+        <div className="search-bar">
+          <div className="search-input-wrapper">
+            <Search className="search-icon" size={18} />
+            <input
+              type="text"
+              placeholder="Search clubs..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
-        ))}
+        </div>
+
+
+        <h2>All Clubs</h2>
+        <table className="clubs-table">
+          <thead>
+            <tr>
+              <th>Club Name</th>
+              <th>Category</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Members Number</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredClubs.map((club) => (
+              <tr key={club.id}>
+                <td>{club.name}</td>
+                <td>{club.category}</td>
+                <td>{club.phone}</td>
+                <td>{club.email}</td>
+                <td>{club.members}</td>
+                <td>
+                  <span
+                    className={`status-badge ${club.status === "Active"
+                        ? "status-active"
+                        : "status-inactive"
+                      }`}
+                  >
+                    {club.status}
+                  </span>
+                </td>
+                <td>
+                  <button
+                    className="action-btn"
+                    style={{
+                      backgroundColor:
+                        club.status === "Active" ? "action-btn" : "action-btn",
+                    }}
+                  >
+                    {club.status === "Active" ? "Deactivate" : "Activate"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      <h2>All Clubs</h2>
-      <table className="clubs-table">
-        <thead>
-          <tr>
-            <th>Club Name</th>
-            <th>Category</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Members Number</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clubsData.map((club) => (
-            <tr key={club.id}>
-              <td>{club.name}</td>
-              <td>{club.category}</td>
-              <td>{club.phone}</td>
-              <td>{club.email}</td>
-              <td>{club.members}</td>
-              <td>{club.status}</td>
-              <td>
-                <button
-                  className="action-btn"
-                  style={{
-                    backgroundColor: club.status === "Active" ? "#059669" : "#ef4444",
-                  }}
-                >
-                  {club.status === "Active" ? "Deactivate" : "Activate"}
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Footer */}
       <footer className="footer">
         <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
       </footer>
