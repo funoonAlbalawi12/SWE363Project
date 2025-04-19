@@ -17,7 +17,7 @@ function ClubAdminNavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-      <div onClick={() => navigate("/dashboard")}>
+      <div onClick={() => navigate("/clubadmin/dashboard")}>
         <div className="navbar-logo">KAN</div>
       </div>
       </div>
