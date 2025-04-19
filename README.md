@@ -87,7 +87,7 @@ Students can:
 This project leverages the following technologies to build a responsive, interactive, and user-friendly platform:
 
 - ⚛️ **React.js** – Front-end JavaScript library for building user interfaces
-- 🎨 **CSS & Sass** – For custom styling and responsive design
+- 🎨 **CSS** – For custom styling and responsive design
 - 🌐 **HTML5** – Markup language used to structure web content
 - 📦 **Node.js & npm** – JavaScript runtime and package manager for server-side logic and dependency management
 - 🧩 **React Router** – Handles routing between different pages and dashboards
