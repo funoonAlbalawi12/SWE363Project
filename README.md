@@ -17,9 +17,8 @@ Make sure you have the following installed:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/funoonAlbalawi12/SWE363Project.git
-
-    cd 
+    git clone https://github.com/your-repository-url.git
+    cd SWE363Project
     ```
 
 2. **Install dependencies**:
@@ -29,7 +28,11 @@ Make sure you have the following installed:
     This command installs all the required node modules defined in the `package.json` file.
 
 3. **Setup the environment**:
-    Create a `.env` file in the root of your project directory and set any necessary environment variables (like API keys, DB connection strings, etc.). Example:
+    Install `react-interactions` and other dependencies:
+    ```bash
+    npm install react-interactions
+    ```
+    - Also, create a `.env` file in the root of your project directory and define any necessary environment variables (e.g., API keys, DB connection strings). Example:
     ```bash
     REACT_APP_API_URL=http://localhost:5000/api
     ```
