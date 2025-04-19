@@ -32,10 +32,6 @@ Make sure you have the following installed:
     ```bash
     npm install react-interactions
     ```
-    - Also, create a `.env` file in the root of your project directory and define any necessary environment variables (e.g., API keys, DB connection strings). Example:
-    ```bash
-    REACT_APP_API_URL=http://localhost:5000/api
-    ```
 
 4. **Start the server**:
     To run the application in development mode:
