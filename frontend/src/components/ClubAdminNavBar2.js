@@ -68,7 +68,7 @@ function ClubAdminNavBar() {
           <div className="avatar">
             <FiUser />
           </div>
-          <span className="username">Admin</span>
+          <span className="username">Khulud</span>
           <span className="dropdown">▾</span>
 
           {showDropdown && (
