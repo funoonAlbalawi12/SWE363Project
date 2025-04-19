@@ -5,7 +5,7 @@ import AdminNavbar from "../../../components/AdminNavbar";
 import eventsData from "../../../data/EventData";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { Plus, Trash2, Pencil } from "lucide-react";
-
+import Footer from "../../../components/Footer";
 const EventsPage = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
@@ -60,7 +60,7 @@ const EventsPage = () => {
       <AdminNavbar />
       <div className="page-content">
         <div className="greeting">
-          <h1>Hello Admin!</h1>
+          <h1>Hello Khulud!</h1>
         </div>
 
         <div className="add-event">
@@ -130,9 +130,7 @@ const EventsPage = () => {
         </div>
       </div>
 
-      <footer className="footer">
-        <p>© 2025 KFUPM Activity Network. All rights reserved.</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };
