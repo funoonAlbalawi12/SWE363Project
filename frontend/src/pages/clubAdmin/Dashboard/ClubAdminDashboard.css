@@ -212,3 +212,36 @@
   background-color: var(--hover);
 }
 
+@media (max-width: 480px) {
+    .greeting {
+      font-size: 1.4rem;
+    }
+  
+    .club-logo {
+      width: 72px;
+      height: 72px;
+    }
+  
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+  
+    .tool-card,
+    .card {
+      width: 100%;
+      padding: 2rem;
+    }
+  
+    .tool-card button,
+    .section-header button {
+      font-size: 15px;
+      padding: 10px 16px;
+    }
+  
+    .section {
+      padding: 1rem;
+    }
+  }
+  

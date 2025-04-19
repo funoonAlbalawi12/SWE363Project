@@ -78,7 +78,7 @@ function ClubAdminDashboard() {
         <div className="section">
           <div className="section-header">
             <h3>Members</h3>
-            <button onClick={() => navigate("/clubadmin/club-members")}>View all</button>
+            <button onClick={() => navigate("/clubadmin/members")}>View all</button>
           </div>
 
           <div className="card-list">

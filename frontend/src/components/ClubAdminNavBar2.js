@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiBell, FiUser } from "react-icons/fi";
 import DarkModeToggle from "./DarkModeToggle";
+import "./ClubAdminNavBar2.css"
 
 
 function ClubAdminNavBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const [navOpen, setNavOpen] = useState(false);
+  const toggleNav = () => {setNavOpen(!navOpen);};
   const toggleDropdown = () => setShowDropdown(!showDropdown);
   const handleLogout = () => {
     navigate("/");
@@ -22,35 +24,35 @@ function ClubAdminNavBar() {
       </div>
       </div>
 
-      <div className="nav-tabs">
+      <div>
+      <button className="hamburger" onClick={toggleNav}>
+        ☰
+      </button>
+      <div className={`nav-tabs ${navOpen ? 'show' : ''}`}>
         <button
           className={location.pathname === "/clubadmin/dashboard" ? "active" : ""}
           onClick={() => navigate("/clubadmin/dashboard")}
         >
           Dashboard
         </button>
-
         <button
           className={location.pathname.startsWith("/clubadmin/Events") ? "active" : ""}
           onClick={() => navigate("/clubadmin/Events")}
         >
           Events
         </button>
-
         <button
           className={location.pathname.startsWith("/clubadmin/members") ? "active" : ""}
           onClick={() => navigate("/clubadmin/members")}
         >
           Members
         </button>
-
         <button
           className={location.pathname === "/clubadmin/messages" ? "active" : ""}
           onClick={() => navigate("/clubadmin/messages")}
         >
           Announcements / Messaging
         </button>
-
         <button
           className={location.pathname === "/clubadmin/profile/edit" ? "active" : ""}
           onClick={() => navigate("/clubadmin/profile/edit")}
@@ -58,6 +60,7 @@ function ClubAdminNavBar() {
           Club Profile
         </button>
       </div>
+    </div>
 
       <div className="navbar-right">
         <FiBell className="icon bell" />
