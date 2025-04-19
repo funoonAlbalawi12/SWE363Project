@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ClubAdminNavbar from '../../../components/ClubAdminNavBar2';
 import Footer from '../../../components/Footer';
 import './Events.css';
 import { getEvents } from '../../../data/ClubEvents';
 import AnnouncementsEvents from '../Announcements/AnnouncementsEvents';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
 
 function EventsPage() {
-  const events = getEvents();
+  const [events, setEvents] = useState(getEvents()); 
   const location = useLocation();
   const manageRef = useRef(null);
 
@@ -18,16 +17,19 @@ function EventsPage() {
     }
   }, [location]);
 
+  
+  const handleAddEvent = (newEvent) => {
+    setEvents((prev) => [newEvent, ...prev]);
+  };
+
   return (
-
-
     <div className="events-page-wrapper">
       <ClubAdminNavbar />
 
       <div className="events-main-content">
         {/* Section 1: Upcoming Events */}
         <section className="events-section">
-          <h2 className="section-title">🎉 Upcoming Events</h2>
+          <h2 className="section-title">Upcoming Events</h2>
 
           {events.length === 0 ? (
             <p className="empty-msg">No upcoming events yet.</p>
@@ -36,7 +38,7 @@ function EventsPage() {
               {events.map(event => (
                 <div key={event.id} className="event-card">
                   <h4>{event.title}</h4>
-                  <p className="event-sub">📅 {event.date} | 📍 {event.location}</p>
+                  <p className="event-sub">{event.date} | {event.location}</p>
                   <p>{event.description}</p>
                 </div>
               ))}
@@ -49,11 +51,10 @@ function EventsPage() {
 
         {/* Section 2: Create/Announce Event */}
         <div ref={manageRef}>
-
-        <section className="announce-section">
-          <h2 className="section-title">📢 Create New Event</h2>
-          <AnnouncementsEvents />
-        </section>
+          <section className="announce-section">
+            <h2 className="section-title">Create New Event</h2>
+            <AnnouncementsEvents onAddEvent={handleAddEvent} />
+          </section>
         </div>
       </div>
 

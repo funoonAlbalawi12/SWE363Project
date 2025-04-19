@@ -27,7 +27,7 @@ function EventsPage() {
         {events.map(event => (
           <div key={event.id} className="event-card">
             <h4>{event.title}</h4>
-            <p className="event-sub">{event.date} | 📍 {event.location}</p>
+            <p className="event-sub">{event.date} |  {event.location}</p>
             <p>{event.description}</p>
           </div>
         ))}

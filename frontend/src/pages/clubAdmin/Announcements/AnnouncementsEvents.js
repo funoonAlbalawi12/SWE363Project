@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AnnouncementsEvents.css';
 import { addEvent } from '../../../data/ClubEvents';
 
-function AnnouncementsEvents() {
+function AnnouncementsEvents({ onAddEvent }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -33,8 +33,12 @@ function AnnouncementsEvents() {
       location,
     };
 
-    addEvent(newEvent);
-    setMessage('✅ Event scheduled successfully!');
+    addEvent(newEvent); 
+    if (onAddEvent) {
+      onAddEvent(newEvent); 
+    }
+
+    setMessage('Event scheduled successfully!');
     setTitle('');
     setDescription('');
     setDate('');
@@ -46,16 +50,32 @@ function AnnouncementsEvents() {
       <h2>Create New Event</h2>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Event Title"
+        />
 
         <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="What's the event about?"
+        />
 
         <label>Date:</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
 
         <label>Location:</label>
-        <input value={location} onChange={(e) => setLocation(e.target.value)} />
+        <input
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Building 4, Room 101"
+        />
 
         <button type="submit">Publish</button>
       </form>

@@ -1,76 +1,85 @@
 .announcements-events {
-    max-width: 700px;
-    margin: 3rem auto;
-    padding: 2rem;
-  }
-  
-  .announcements-events h2 {
-    margin-bottom: 20px;
-  }
-  
-  .announcements-events form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .announcements-events label {
-    font-weight: bold;
-    margin: 10px 0 5px;
-  }
-  
-  .announcements-events input,
-  .announcements-events textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #345e5e;
-    font-size: 14px;
-  }
-  
-  .announcements-events button {
-    margin-top: 10px;
-    background-color: #345e5e;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .announcements-events button:hover {
-    background-color: #2a4c4c;
-  }
-  
-  .announcements-events .message {
-    margin-top: 10px;
-    font-weight: bold;
-    color: green;
-  }
-  
-  .clubAdmin-event-card {
-    background-color: #2a4c4c;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-top: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    color: white;
-  }
-  
-  .clubAdmin-event-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-    color:white;
-  }
-  
-  .clubAdmin-event-card p {
-    margin: 0.2rem 0;
-    
-  }
-  
-  .clubAdmin-event-card p strong {
-    font-weight: 600;
-  }
-  
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: var(--bg);
+}
+
+.announcements-events h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.announcements-events form {
+  display: flex;
+  flex-direction: column;
+}
+
+.announcements-events label {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: var(--primary);
+}
+
+.announcements-events input,
+.announcements-events textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.announcements-events input::placeholder,
+.announcements-events textarea::placeholder {
+  color: var(--success);
+}
+
+.announcements-events button {
+  margin-top: 10px;
+  background-color: var(--hover);
+  color: var(--text-secondary);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.announcements-events button:hover {
+  background-color: var(--secondary);
+}
+
+.announcements-events .message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--success);
+}
+
+/* Previously created event card */
+.clubAdmin-event-card {
+  background-color: var(--surface);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.clubAdmin-event-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: var(--text-secondary);
+}
+
+.clubAdmin-event-card p {
+  margin: 0.2rem 0;
+}
+
+.clubAdmin-event-card p strong {
+  font-weight: 600;
+}
