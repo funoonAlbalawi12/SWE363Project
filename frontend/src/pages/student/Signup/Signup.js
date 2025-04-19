@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,6 +13,10 @@ function Signup() {
     e.preventDefault();
     navigate("/dashboard");
   };
+  useEffect(() => {
+    const dark = localStorage.getItem("darkMode") === "true";
+    document.body.classList.toggle("dark", dark);
+  }, []);
 
   return (
     <div className="signup-wrapper">

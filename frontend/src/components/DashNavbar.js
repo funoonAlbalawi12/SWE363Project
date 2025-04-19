@@ -13,14 +13,11 @@ function DashNavbar() {
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
   const toggleMobileMenu = () => setShowMobileMenu((prev) => !prev);
+  const handleLogout = () => navigate("/");
 
   const handleNavigate = (path) => {
     setShowMobileMenu(false);
     navigate(path);
-  };
-
-  const handleLogout = () => {
-    navigate("/");
   };
 
   const [darkMode, setDarkMode] = useState(() => {
@@ -32,7 +29,7 @@ function DashNavbar() {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  // Close sidebar when clicking outside
+  // Close mobile menu on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -53,7 +50,7 @@ function DashNavbar() {
     };
   }, [showMobileMenu]);
 
-  // Hide sidebar on resize (>= 769px)
+  // Auto-close on large screen
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -73,82 +70,55 @@ function DashNavbar() {
         </div>
         <div
           className="navbar-logo"
-          onClick={() => handleNavigate("/dashboard")}
+          onClick={() => handleNavigate("/admin-dashboard")}
         >
           KAN
         </div>
       </div>
 
-      {/* Desktop Center Tabs */}
       <div className="nav-tabs desktop-tabs">
         <button
-          className={location.pathname === "/home" ? "active" : ""}
-          onClick={() => handleNavigate("/home")}
-        >
-          Home
-        </button>
-        <button
-          className={location.pathname === "/dashboard" ? "active" : ""}
-          onClick={() => handleNavigate("/dashboard")}
+          className={location.pathname === "/admin-dashboard" ? "active" : ""}
+          onClick={() => handleNavigate("/admin-dashboard")}
         >
           Dashboard
         </button>
         <button
           className={
-            location.pathname === "/explore-clubs" ||
+            location.pathname === "/clubpage" ||
             location.pathname.startsWith("/clubs")
               ? "active"
               : ""
           }
-          onClick={() => handleNavigate("/explore-clubs")}
+          onClick={() => handleNavigate("/clubpage")}
         >
-          Explore Clubs
+          Clubs
         </button>
         <button
           className={
-            location.pathname === "/explore-events" ||
-            location.pathname.startsWith("/events") ||
-            location.pathname.startsWith("/purchase")
+            location.pathname === "/eventpage" ||
+            location.pathname.startsWith("/events")
               ? "active"
               : ""
           }
-          onClick={() => handleNavigate("/explore-events")}
+          onClick={() => handleNavigate("/eventpage")}
         >
-          Explore Events
-        </button>
-        <button
-          className={
-            location.pathname === "/tickets" ||
-            location.pathname.startsWith("/ticket")
-              ? "active"
-              : ""
-          }
-          onClick={() => handleNavigate("/tickets")}
-        >
-          My Tickets
+          Events
         </button>
       </div>
 
-      {/* Mobile Sidebar */}
       {showMobileMenu && (
         <div className="sidebar-tabs" ref={sidebarRef}>
-          <button onClick={() => handleNavigate("/home")}>Home</button>
-          <button onClick={() => handleNavigate("/dashboard")}>
+          <button onClick={() => handleNavigate("/admin-dashboard")}>
             Dashboard
           </button>
-          <button onClick={() => handleNavigate("/explore-clubs")}>
-            Explore Clubs
-          </button>
-          <button onClick={() => handleNavigate("/explore-events")}>
-            Explore Events
-          </button>
-          <button onClick={() => handleNavigate("/tickets")}>My Tickets</button>
+          <button onClick={() => handleNavigate("/clubpage")}>Clubs</button>
+          <button onClick={() => handleNavigate("/eventpage")}>Events</button>
         </div>
       )}
 
-      {/* Right Side */}
       <div className="navbar-right">
-        <FiBell className="icon bell" />
+        <FiBell className="icon-bell" />
         <div className="profile" onClick={toggleDropdown}>
           <div className="avatar">
             <FiUser />
@@ -160,18 +130,14 @@ function DashNavbar() {
             <div className="dropdown-menu">
               <button
                 onClick={() =>
-                  navigate("/profile", {
-                    state: { background: location },
-                  })
+                  navigate("/profile", { state: { background: location } })
                 }
               >
                 Profile
               </button>
               <button
                 onClick={() =>
-                  navigate("/settings", {
-                    state: { background: location },
-                  })
+                  navigate("/settings", { state: { background: location } })
                 }
               >
                 Settings

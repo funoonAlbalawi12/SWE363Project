@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4); 
+  background-color: var(--login-overlay);
   padding: 2rem;
   box-sizing: border-box;
 }

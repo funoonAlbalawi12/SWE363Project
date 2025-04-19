@@ -13,6 +13,7 @@
   --success: #A6B1C3; /* extra color for text */
   --info: #a4a4a4;
   --error: #FF6B6B;
+  --login-overlay: rgba(255, 255, 255, 0.4);
 }
 
 body.dark {
@@ -30,6 +31,7 @@ body.dark {
   --success: #A6B1C3; /* extra color for text */
   --info: #3d4140; 
   --error: #FF8F8F;
+  --login-overlay: rgba(0, 0, 0, 0.6);
 }
 
 body {
