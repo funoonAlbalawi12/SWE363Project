@@ -10,19 +10,20 @@ The KFUPM Activity Network is a web platform designed to help students discover 
 # Team Members and Roles:
 
 - **Funoon Albalawi**  
-  Responsible for implementing the flow and functionality of the Admin user role. This includes ensuring that the admin interface, dashboard, and management tools are fully integrated and meet the required user experience expectations for the main admin user of the website.
+  Responsible for implementing the flow of the **Admin** user, who is considered the main user of the website. Funoon focuses on the admin dashboard and tools that allow efficient management of users, content, and settings.
 
 - **Budoor Alshehri**  
-  Focused on developing the Admin user flow, ensuring seamless navigation, and providing necessary backend interactions to manage content, users, and site settings. Her work includes streamlining the admin's access to key website features and ensuring efficient user and content management.
+  Takes the role of implementing the flow of the **Admin** user, who is considered the main user of the website. Budoor ensures smooth integration of admin functionalities, improving navigation and user interface for the admin role.
 
 - **Khulud Alotaibi**  
-  In charge of implementing the student user flow and the homepage design. This includes developing an intuitive, engaging student experience by ensuring easy access to important features, such as event registration, club exploration, and profile management. Khulud works on ensuring the website meets the needs of students, the primary users of the platform.
+  Implements the flow for the **Student** user and the **homepage** of the website, which is considered the main user interface for students. Khulud focuses on making the student experience intuitive and user-friendly, ensuring easy access to events, clubs, and user profiles.
 
 - **Zahra Alhadab**  
-  Leading the implementation of the Club Admin user flow. Zahra focuses on providing the necessary tools for club admins to manage their clubs efficiently. This includes the creation of event posts, club member management, and integrating notifications. Her work ensures that Club Admins have the appropriate tools to maintain and engage with their clubs.
+  Takes the role of implementing the flow for the **Club Admin** user, who is considered an essential user of the website. Zahra focuses on providing Club Admins with tools for managing clubs, posting announcements, and engaging with members.
 
 - **Rahf Altwairqi**  
-  Works alongside Zahra in implementing the Club Admin user flow. Rahf’s role emphasizes enhancing the admin experience by developing intuitive club management features, improving event creation processes, and supporting communication tools for club members and stakeholders. Her focus is on optimizing the experience for Club Admins, ensuring smooth, efficient usage of their administrative functions.
+  Implements the flow for the **Club Admin** user, who is a main user of the website. Rahf works alongside Zahra to ensure Club Admins have the necessary tools for managing events, announcements, and members effectively.
+
 
 
 
