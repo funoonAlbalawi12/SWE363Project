@@ -1,5 +1,6 @@
 .page-content {
   margin: 2rem;
+
 }
 
 /* Summary Cards Section */
@@ -73,6 +74,10 @@
   color: white;
   background-color: var(--secondary);
   transition: background-color 0.3s;
+  font-size: 1rem; /* Ensure consistent font size */
+  text-align: center; /* Center text */
+  display: inline-block; /* Ensure it's inline */
+  width: 120px; /* Set a fixed width for consistency */
 }
 
 .action-btn:hover {
@@ -82,7 +87,7 @@
 /* Search Bar */
 .search-bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -118,12 +123,13 @@
 
 /* Status Badge */
 .status-badge {
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1rem; /* Ensures same padding for both active and inactive buttons */
   border-radius: 12px;
   font-size: 0.875rem;
   font-weight: 600;
   display: inline-block;
   text-align: center;
+  min-width: 120px; /* Ensures both buttons are the same width */
 }
 
 .status-active {
@@ -135,7 +141,6 @@
   background-color: var(--error);
   color: #ffffff;
 }
-
 
 /* Footer */
 .footer {
