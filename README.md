@@ -10,7 +10,7 @@ The KFUPM Activity Network is a web platform designed to help students discover 
 # Team Members and Roles:
 
 - **Funoon Albalawi**  
-  Responsible for implementing the flow of the **Admin** user, who is considered the main user of the website. Funoon focuses on the admin dashboard and tools that allow efficient management of users, content, and settings.
+  Responsible for implementing the flow of the **Admin** user, who is considered the main user of the website. Funoon focuses on the admin dashboard and tools that allow efficient management of clubs, clubs Admin, and events.
 
 - **Budoor Alshehri**  
   Takes the role of implementing the flow of the **Admin** user, who is considered the main user of the website. Budoor ensures smooth integration of admin functionalities, improving navigation and user interface for the admin role.
