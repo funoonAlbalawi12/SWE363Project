@@ -1,74 +1,77 @@
-.send-message-container {
-    max-width: 700px;
-    margin: 3rem auto;
-    padding: 2rem;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .send-message-container h2 {
-    margin-bottom: 1.5rem;
-  }
-  
-  .member-list {
-    margin-bottom: 1rem;
-  }
-  
-  .checkbox-item {
-    display: block;
-    margin: 6px 0;
-    font-size: 15px;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 120px;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  button {
-    background-color: #345e5e;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #2a4c4c;
-  }
-  
-  .confirmation {
-    margin-top: 15px;
-    font-weight: bold;
-    color: green;
-  }
+.send-message-page {
+  padding: 2rem;
+  background-color: var(--bg);
+  min-height: 100vh;
+}
 
-  .send-message-page {
-    padding: 2rem;
-    background-color: #f9fafb;
-    min-height: 100vh;
-  }
-  
-  .page-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .page-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    color: #1e3a5f;
-  }
-  
-  .page-header p {
-    font-size: 1.1rem;
-    color: #4b5563;
-  }
-  
-  
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: var(--info);
+}
+
+.send-message-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border-radius: 12px;
+  color: var(--text-secondary);
+}
+
+.send-message-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+}
+
+.member-list {
+  margin-bottom: 1rem;
+}
+
+.checkbox-item {
+  display: block;
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+button {
+  background-color: var(--hover);
+  color: var(--text-secondary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary);
+}
+
+.confirmation {
+  margin-top: 15px;
+  font-weight: bold;
+  color: white;
+}

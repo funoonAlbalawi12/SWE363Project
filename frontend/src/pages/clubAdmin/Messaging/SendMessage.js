@@ -32,8 +32,7 @@ function SendMessageForm({ members }) {
       return;
     }
 
-    // Simulate sending...
-    setConfirmation('✅ Message sent successfully!');
+    setConfirmation(' Message sent successfully!');
     setMessage('');
     setSelectedMembers([]);
     setSelectAll(false);
