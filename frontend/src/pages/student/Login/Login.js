@@ -1,17 +1,16 @@
 import React from "react";
 import "./Login.css";
-
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const background = location.state?.background || location;
 
   const handleCloseClick = () => {
     navigate("/");
   };
-  const handleSubmitClick = () => {
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
     navigate("/dashboard");
   };
 
@@ -29,8 +28,10 @@ function Login() {
         <button className="close-btn" onClick={handleCloseClick}>
           ×
         </button>
+
         <h2>Welcome Back</h2>
-        <form>
+
+        <form onSubmit={handleSubmitClick}>
           <label>Email</label>
           <input type="email" placeholder="Enter email" />
 
@@ -46,17 +47,14 @@ function Login() {
             </button>
           </div>
 
-          <button
-            type="submit"
-            className="login-btn"
-            onClick={handleSubmitClick}
-          >
+          <button type="submit" className="login-btn">
             Login
           </button>
         </form>
+
         <p className="create-account">
           No account?{" "}
-          <Link to="/signup" className="signup-link" state={{ background }}>
+          <Link to="/signup" className="signup-link">
             Create One!
           </Link>
         </p>

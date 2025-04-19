@@ -1,18 +1,17 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 import "./Navbar.css";
 
 function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleLoginClick = () => {
-    navigate("/login", { state: { background: location } });
+    navigate("/login");
   };
 
   const handleSignupClick = () => {
-    navigate("/signup", { state: { background: location } });
+    navigate("/signup");
   };
 
   return (

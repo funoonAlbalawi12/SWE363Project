@@ -85,8 +85,6 @@ function AppRoutes({ setDarkMode }) {
       </Routes>
       {background && (
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/settings"

@@ -10,6 +10,7 @@ import EventCard from "../../../components/EventCard";
 function ClubProfile() {
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
+  const [showSubscribeModal, setShowSubscribeModal] = useState(false);
 
   const handleBack = () => navigate(-1); // to go back to previous page
 
@@ -40,7 +41,12 @@ function ClubProfile() {
             To receive our latest updates and announcements please click
             subscribe.
           </p>
-          <button className="subscribe-btn">Subscribe</button>
+          <button
+            className="subscribe-btn"
+            onClick={() => setShowSubscribeModal(true)}
+          >
+            Subscribe
+          </button>
         </div>
 
         <div className="club-info-section">
@@ -119,6 +125,26 @@ function ClubProfile() {
                   Submit Application
                 </button>
               </form>
+            </div>
+          </div>
+        )}
+        {showSubscribeModal && (
+          <div className="application-form-overlay">
+            <div className="application-form">
+              <button
+                className="close-btn"
+                onClick={() => setShowSubscribeModal(false)}
+              >
+                ×
+              </button>
+              <h3>Subscribed Successfully!</h3>
+              <p>You are now subscribed to {club.name}'s updates.</p>
+              <button
+                className="submit-btn"
+                onClick={() => setShowSubscribeModal(false)}
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
