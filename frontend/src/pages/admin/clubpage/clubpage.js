@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
-import { Plus, Bell, Trash2, Pencil } from "lucide-react";
+import { Plus, Trash2, Pencil } from "lucide-react";
 import clubsData from "../../../data/ClubData";
 import Footer from "../../../components/Footer";
 
