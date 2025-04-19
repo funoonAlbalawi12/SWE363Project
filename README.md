@@ -97,6 +97,12 @@ This project leverages the following technologies to build a responsive, interac
 
 ---
 
+## 🖌️ Figma Design
+
+You can explore the full design prototype of the KFUPM Activity Network on Figma:
+
+👉 [View on Figma](https://www.figma.com/proto/qtgg5Tq9rN33B2dAEuZiSH/swe363-project-KAN-?node-id=0-1&t=ii6pirTXHxPRfdzG-1)
+
 ## 👥 Team Members and Roles
 
 ### 👩‍💻 Funoon Albalawi  
