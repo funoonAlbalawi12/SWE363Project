@@ -37,7 +37,7 @@
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
-.event-card {
+.event-cardAdmin {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -63,6 +63,13 @@
   color: var(--text-secondary);
   overflow: hidden;
 }
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 
 .card-actions {
   display: flex;
@@ -87,3 +94,55 @@
 .btn-ghost-sm:hover {
   background-color: var(--hover);
 }
+
+.event-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.event-form {
+  background-color: var(--bg);
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  color: var(--text-primary);
+}
+
+.event-form h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.event-form label {
+  font-weight: 500;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.event-form input,
+.event-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+.event-form .form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+

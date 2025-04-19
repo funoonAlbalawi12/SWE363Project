@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
@@ -7,17 +7,21 @@ import clubsData from "../../../data/ClubData";
 
 const ClubsPage = () => {
   const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    img: null,
+    description: "",
+  });
 
-  const clubs = Object.entries(clubsData).map(([key, club], index) => ({
+  const clubs = Object.entries(clubsData).map(([key, club]) => ({
     id: key,
     title: club.name,
     description: club.description,
     img: club.img,
   }));
 
-  const handleCardClick = (id) => {
-    navigate(`/club/${id}`);
-  };
+  const handleCardClick = (id) => navigate(`/club/${id}`);
 
   const handleEdit = (e, id) => {
     e.stopPropagation();
@@ -29,6 +33,24 @@ const ClubsPage = () => {
     alert(`Remove club with ID: ${id}`);
   };
 
+  const toggleForm = () => setShowForm(!showForm);
+
+  const handleFormChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === "file") {
+      setFormData({ ...formData, img: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Club submitted:", formData);
+    setFormData({ name: "", img: null, description: "" });
+    setShowForm(false);
+  };
+
   return (
     <div className="clubs-page">
       <AdminNavbar />
@@ -38,11 +60,47 @@ const ClubsPage = () => {
         </div>
 
         <div className="add-club">
-          <button className="add-button">
+          <button className="add-button" onClick={toggleForm}>
             <span>Add new club</span>
             <Plus className="icon" />
           </button>
         </div>
+
+        {showForm && (
+          <div className="event-form-overlay">
+            <form className="event-form" onSubmit={handleSubmit}>
+              <h2>Add Club</h2>
+              <label>Club Name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                onChange={handleFormChange}
+              />
+
+              <label>Club Logo</label>
+              <input
+                type="file"
+                accept="image/*"
+                name="img"
+                onChange={handleFormChange}
+              />
+
+              <label>Description</label>
+              <textarea
+                name="description"
+                required
+                rows="4"
+                onChange={handleFormChange}
+              />
+
+              <div className="form-actions">
+                <button type="submit" className="login-btn">Submit</button>
+                <button type="button" className="login-btn" onClick={toggleForm}>Cancel</button>
+              </div>
+            </form>
+          </div>
+        )}
 
         <div className="card-grid">
           {clubs.map((club) => (
