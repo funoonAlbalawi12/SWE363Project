@@ -64,7 +64,10 @@
 .icon-bell {
   font-size: 18px;
   cursor: pointer;
+
 }
+
+
 
 .avatar {
   background-color: var(--secondary);
