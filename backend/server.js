@@ -20,7 +20,6 @@ import clubRoutes from "./routes/clubRoutes.js";
 import clubMembershipRoutes from "./routes/clubMembershipRoutes.js";
 import eventRegistrationRoutes from "./routes/eventRegistrationRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
-import joinRequestRoutes from "./routes/joinRequestRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -53,10 +52,7 @@ app.use("/api/clubs", clubRoutes);
 app.use("/api/clubmemberships", clubMembershipRoutes);
 app.use("/api/eventregistrations", eventRegistrationRoutes);
 app.use("/api/payments", paymentRoutes);
-app.use("/api/join-requests", joinRequestRoutes);
 
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
