@@ -1,35 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
 import QRCode from "react-qr-code";
 import { FiUser } from "react-icons/fi";
+import API from "../../../axios";
 import "./Tickets.css";
 
 function Tickets() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("upcoming");
+  const [tickets, setTickets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const user = {
-    name: "Khulud Alotaibi",
-    email: "khulud@gmail.com",
-    id: "202168730",
-  };
+  const userId = localStorage.getItem("userId");
 
-  const storedEvents = JSON.parse(localStorage.getItem("my_events")) || [];
+  useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        const res = await API.get(`/api/tickets?userId=${userId}`);
+        setTickets(res.data);
+      } catch (err) {
+        console.error("Failed to fetch tickets:", err);
+      }
+    };
 
-  const filteredTickets = storedEvents.filter(
-    (event) => event.status === activeTab && event.email === user.email
-  );
+    fetchTickets();
+  }, [userId]);
 
-  const handleTicketClick = (event) => {
-    navigate(`/ticket/${event.id}`, { state: { event } });
+  const filteredTickets = tickets
+    .filter((ticket) =>
+      ticket.eventId?.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter(
+      (ticket) => ticket.status === activeTab || activeTab === "upcoming"
+    );
 
-    navigate(`/ticket/${event.id}`, {
+  const handleTicketClick = (ticket) => {
+    const event = ticket.eventId;
+    const codeBase = ticket._id?.slice(-6);
+    navigate(`/ticket/${ticket._id}`, {
       state: {
-        event,
-        attendees: event.attendees,
-        codeBase: event.codeBase,
+        event: {
+          ...event,
+          id: ticket._id,
+        },
+        attendees: ticket.attendees,
+        codeBase,
       },
     });
   };
@@ -43,21 +60,21 @@ function Tickets() {
             <div className="profile-avatar">
               <FiUser />
             </div>
-            <h3>{user.name}</h3>
-            <p>{user.email}</p>
+            <h3>Tickets</h3>
           </div>
 
           <div className="ticket-list">
             <div className="ticket-list-header">
-              <p className="ticket-count">{filteredTickets.length} events</p>
+              <p className="ticket-count">{filteredTickets.length} tickets</p>
               <input
                 className="search-ticket"
                 type="text"
-                placeholder="Search by name"
+                placeholder="Search by event name"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
 
-            <h2>My Tickets</h2>
             <div className="ticket-tabs">
               <button
                 className={activeTab === "upcoming" ? "active" : ""}
@@ -74,27 +91,26 @@ function Tickets() {
             </div>
 
             <div className="tickets-card-grid">
-              {filteredTickets.map((event, idx) => (
+              {filteredTickets.map((ticket, idx) => (
                 <div
                   className="success-ticket-card"
-                  key={event.id || idx}
-                  onClick={() => handleTicketClick(event)}
+                  key={ticket._id || idx}
+                  onClick={() => handleTicketClick(ticket)}
                 >
                   <img
-                    src={event.img}
-                    alt={event.title}
+                    src={ticket.eventId?.img}
+                    alt={ticket.eventId?.title}
                     className="ticket-img"
                   />
                   <div className="ticket-details">
-                    <h3>{event.title}</h3>
-                    <p>{event.date}</p>
-                    <p>{event.location}</p>
-                    {event.qrCode && <QRCode value={event.qrCode} size={64} />}
-                    {event.id && (
-                      <p>
-                        <strong>ID:</strong> {event.id}
-                      </p>
-                    )}
+                    <h3>{ticket.eventId?.title}</h3>
+                    <p>{ticket.eventId?.date}</p>
+                    <p>{ticket.eventId?.location}</p>
+
+                    <QRCode value={`MRCE-${ticket._id}`} size={64} />
+                    <p>
+                      <strong>ID:</strong> {ticket._id}
+                    </p>
                   </div>
                 </div>
               ))}
