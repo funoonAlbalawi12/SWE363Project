@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import events from "../../../data/EventData";
+import axios from "axios";
 import "./PurchaseTicket.css";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
+import { loadStripe } from "@stripe/stripe-js";
 
 function PurchaseTicket() {
-  const { id } = useParams();
-  const event = events.find(
-    (e) => e.title.toLowerCase().replace(/\s+/g, "-") === id.toLowerCase()
-  );
-
-  const [showModal, setShowModal] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const { title } = useParams(); 
   const navigate = useNavigate();
+  const stripePromise = loadStripe(
+    "pk_test_51Qo4GD2akrE2h9Zmul6Js8VIseQujd8EmzsTcj7e2xkaL9F74865HHyjh527O0usIRiiAvq7KNjh5Xmechb9mtGf009Jn3kUtE"
+  );
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
-
   const [quantity, setQuantity] = useState(1);
   const [contactInfo, setContactInfo] = useState({
     name: "",
@@ -24,22 +25,19 @@ function PurchaseTicket() {
     phone: "",
   });
   const [attendees, setAttendees] = useState([{ name: "", email: "" }]);
-
-  const isFree = event.price.toLowerCase().includes("free");
-  const price = isFree ? 0 : parseFloat(event.price.match(/\d+/)?.[0] || "0");
-  const total = quantity * price;
   const [codeBase] = useState(() =>
     Math.floor(100000 + Math.random() * 900000)
   );
 
+  const userId = localStorage.getItem("userId");
+
   const handleQuantityChange = (val) => {
     const newQuantity = Math.max(1, quantity + val);
     setQuantity(newQuantity);
-    const updatedAttendees = [...attendees];
-    while (updatedAttendees.length < newQuantity)
-      updatedAttendees.push({ name: "", email: "" });
-    while (updatedAttendees.length > newQuantity) updatedAttendees.pop();
-    setAttendees(updatedAttendees);
+    const updated = [...attendees];
+    while (updated.length < newQuantity) updated.push({ name: "", email: "" });
+    while (updated.length > newQuantity) updated.pop();
+    setAttendees(updated);
   };
 
   const handleAttendeeChange = (index, field, value) => {
@@ -51,41 +49,80 @@ function PurchaseTicket() {
   const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const isFormValid = () => {
-    const { name, email, phone } = contactInfo;
-    const validContact = name && isEmailValid(email) && phone;
-
+    const validContact =
+      contactInfo.name && isEmailValid(contactInfo.email) && contactInfo.phone;
     const validAttendees = attendees.every(
       (a) => a.name && isEmailValid(a.email)
     );
-
     return validContact && validAttendees;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5001/api/events/title/${title}`
+        );
+        setEvent(res.data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Failed to load event:", err);
+        setLoading(false);
+      }
+    };
+    fetchEvent();
+  }, [title]);
+  useEffect(() => {
+    const checkEmails = async () => {
+      if (!event || !event._id) return;
+  
+      const duplicateEmails = [];
+  
+      for (let a of attendees) {
+        try {
+          const res = await axios.get(`http://localhost:5001/api/tickets/check`, {
+            params: {
+              eventId: event._id,
+              email: a.email,
+            },
+          });
+  
+          if (res.data.alreadyRegistered) {
+            duplicateEmails.push(a.email);
+          }
+        } catch (err) {
+          console.error("Error checking attendee:", err);
+        }
+      }
+  
+      if (duplicateEmails.length > 0) {
+        setAlreadyRegistered(true);
+        setRegisterMessage(
+          `${[...new Set(duplicateEmails)]
+            .map((email) => {
+              const match = attendees.find((a) => a.email === email);
+              return `${match?.name || email} is already registered`;
+            })
+            .join(", ")}`
+        );
+        
+      } else {
+        setAlreadyRegistered(false);
+        setRegisterMessage("");
+      }
+    };
+  
+    checkEmails();
+  }, [attendees, event]);
+  
+  
 
-  React.useEffect(() => {
-    const existing = JSON.parse(localStorage.getItem("my_events")) || [];
-    const alreadyExists = attendees.some((attendee) =>
-      existing.some(
-        (e) => e.title === event.title && e.email === attendee.email
-      )
-    );
-
-    if (alreadyExists) {
-      setAlreadyRegistered(true);
-      setRegisterMessage(
-        "One or more attendees are already registered for this event."
-      );
-    } else {
-      setAlreadyRegistered(false);
-      setRegisterMessage("");
-    }
-  }, [attendees, event.title]);
-
+  if (loading) return <p>Loading event...</p>;
   if (!event) return <p>Event not found</p>;
+
+  const isFree = event.price.toLowerCase().includes("free");
+  const price = isFree ? 0 : parseFloat(event.price.match(/\d+/)?.[0] || "0");
+  const total = quantity * price;
 
   return (
     <>
@@ -96,8 +133,7 @@ function PurchaseTicket() {
         </button>
 
         <div className="ticket-layout">
-          {/* Left: Form */}
-          <form className="ticket-form" onSubmit={handleSubmit}>
+          <form className="ticket-form" onSubmit={(e) => e.preventDefault()}>
             <h1>Purchase Ticket</h1>
 
             <div className="event-summary">
@@ -111,30 +147,27 @@ function PurchaseTicket() {
               type="text"
               placeholder="Full Name"
               value={contactInfo.name}
-              onChange={(e) => {
-                const value = e.target.value;
-                setContactInfo({ ...contactInfo, name: value });
-              }}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, name: e.target.value })
+              }
               required
             />
             <input
               type="email"
               placeholder="Email"
               value={contactInfo.email}
-              onChange={(e) => {
-                const value = e.target.value;
-                setContactInfo({ ...contactInfo, email: value });
-              }}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, email: e.target.value })
+              }
               required
             />
             <input
               type="tel"
               placeholder="Phone Number"
               value={contactInfo.phone}
-              onChange={(e) => {
-                const value = e.target.value;
-                setContactInfo({ ...contactInfo, phone: value });
-              }}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, phone: e.target.value })
+              }
               required
             />
 
@@ -157,20 +190,18 @@ function PurchaseTicket() {
                     type="text"
                     placeholder={`Name of Ticket ${index + 1}`}
                     value={attendee.name}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      handleAttendeeChange(index, "name", e.target.value);
-                    }}
+                    onChange={(e) =>
+                      handleAttendeeChange(index, "name", e.target.value)
+                    }
                     required
                   />
                   <input
                     type="email"
                     placeholder={`Email of Ticket ${index + 1}`}
                     value={attendee.email}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      handleAttendeeChange(index, "email", value);
-                    }}
+                    onChange={(e) =>
+                      handleAttendeeChange(index, "email", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -178,7 +209,6 @@ function PurchaseTicket() {
             </div>
           </form>
 
-          {/* Right: Summary */}
           <div className="ticket-summary">
             <h2>Summary</h2>
             <p>Price per ticket: {isFree ? "Free" : `${price} SR`}</p>
@@ -188,26 +218,8 @@ function PurchaseTicket() {
             <button
               className="submit-btn"
               onClick={() => {
-                if (!isFormValid()) return;
-
-                if (alreadyRegistered) return; // block if already registered
-
-                if (isFree) {
-                  navigate("/ticket-success", {
-                    state: {
-                      event,
-                      contactInfo,
-                      attendees,
-                      quantity,
-                      total,
-                      paymentMethod: "Free Registration",
-                      date: new Date().toLocaleDateString("en-GB"),
-                      codeBase,
-                    },
-                  });
-                } else {
-                  setShowModal(true);
-                }
+                if (!isFormValid() || alreadyRegistered) return;
+                setShowModal(true);
               }}
               disabled={!isFormValid() || alreadyRegistered}
             >
@@ -221,35 +233,90 @@ function PurchaseTicket() {
                   : registerMessage}
               </p>
             )}
+
+            
           </div>
         </div>
       </div>
+
+      {/* Modal */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>Confirm Payment</h2>
+            <h2>{isFree ? "Confirm Registration" : "Confirm Payment"}</h2>
             <p>
-              You are about to pay {total} SR for {quantity} ticket(s).
+              {isFree
+                ? `Register ${quantity} ticket(s) for free.`
+                : `You are about to pay ${total} SR for ${quantity} ticket(s).`}
             </p>
             <div className="modal-actions">
               <button
-                onClick={() => {
-                  navigate("/ticket-success", {
-                    state: {
-                      event,
-                      contactInfo,
+                onClick={async () => {
+                  if (!isFree) {
+                    try {
+                      const stripe = await stripePromise;
+                      const res = await axios.post(
+                        "http://localhost:5001/api/payments/checkout",
+                        {
+                          eventTitle: event.title,
+                          price,
+                          quantity,
+                        }
+                      );
+
+                      localStorage.setItem(
+                        "ticketInfo",
+                        JSON.stringify({
+                          event,
+                          contactInfo,
+                          attendees,
+                          quantity,
+                          total,
+                          paymentMethod: "Stripe Checkout",
+                          date: new Date().toLocaleDateString("en-GB"),
+                          codeBase,
+                        })
+                      );
+
+                      await stripe.redirectToCheckout({
+                        sessionId: res.data.id,
+                      });
+                    } catch (err) {
+                      console.error("Stripe error:", err);
+                      alert("Payment failed. Try again.");
+                    }
+                    return;
+                  }
+
+                  // If event is free, continue as usual
+                  try {
+                    await axios.post("http://localhost:5001/api/tickets", {
+                      userId,
+                      eventId: event._id,
                       attendees,
-                      quantity,
-                      total,
-                      paymentMethod: "Visa •••• 5987", // or a dynamic value
-                      date: new Date().toLocaleDateString("en-GB"),
-                      codeBase,
-                    },
-                  });
+                    });
+
+                    navigate("/ticket-success", {
+                      state: {
+                        event,
+                        contactInfo,
+                        attendees,
+                        quantity,
+                        total,
+                        paymentMethod: "Free Registration",
+                        date: new Date().toLocaleDateString("en-GB"),
+                        codeBase,
+                      },
+                    });
+                  } catch (err) {
+                    console.error("Error registering tickets:", err);
+                    alert("Registration failed. Try again.");
+                  }
                 }}
               >
                 Confirm
               </button>
+
               <button
                 className="cancel-btn"
                 onClick={() => setShowModal(false)}
