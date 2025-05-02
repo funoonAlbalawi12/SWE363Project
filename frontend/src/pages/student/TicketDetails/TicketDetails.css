@@ -1,6 +1,4 @@
-
-
-.ticket-details-page {
+ .ticket-details-page {
   padding: 32px;
   background: var(--bg);
   color: var(--text-primary);
@@ -185,7 +183,8 @@
 
 
 
-/* Print Styling */
+
+
 @media print {
   .back-btn,
   .print-btn,
@@ -245,3 +244,5 @@
     height: auto;
   }
 }
+
+

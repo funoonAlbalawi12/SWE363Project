@@ -7,11 +7,11 @@ const eventSchema = new mongoose.Schema({
   description: String,
   location: String,
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
@@ -19,6 +19,10 @@ const eventSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Club', // Connect event to a club
 
+  },
+  img: {
+    type: String,
+   
   },
 }, { timestamps: true });
 

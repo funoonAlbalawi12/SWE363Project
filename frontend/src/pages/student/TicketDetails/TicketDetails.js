@@ -129,4 +129,3 @@ function TicketDetails() {
 }
 
 export default TicketDetails;
-

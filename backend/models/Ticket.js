@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 const ticketSchema = new mongoose.Schema({
   userId: {
@@ -10,14 +11,13 @@ const ticketSchema = new mongoose.Schema({
     required: true,
     ref: 'Event',
   },
-  attendeeName: {
-    type: String,
-    required: true,
-  },
-  attendeeEmail: {
-    type: String,
-    required: true,
-  },
+  attendees: [
+    {
+      name: { type: String, required: true },
+      email: { type: String, required: true },
+    }
+  ],
+  
 }, { timestamps: true });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);

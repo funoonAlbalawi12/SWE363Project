@@ -1,6 +1,10 @@
 .explore-events-page {
-    padding: 40px;
     background-color: var(--bg);
+  }
+
+  .main-explore-events {
+    padding: 40px;
+    font-family: 'Inter', sans-serif;
   }
   
   .page-title {

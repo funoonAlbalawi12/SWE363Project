@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ClubCard({ id, name, description, img }) {
+function ClubCard({ name, description, img }) {
   return (
-    <Link to={`/clubs/${id}`} className="custom-club-card-link">
+    <Link
+      to={`/clubs/${name.toLowerCase().replace(/\s+/g, "-")}`}
+      className="custom-club-card-link"
+    >
       <div className="custom-club-card">
         <div className="club-image">
           <img src={img} alt={name} />

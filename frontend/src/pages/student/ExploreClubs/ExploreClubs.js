@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ClubCard from "../../../components/ClubCard";
 import Footer from "../../../components/Footer";
 import "./ExploreClubs.css";
 import DashNavbar from "../../../components/DashNavbar";
-import clubs from "../../../data/ClubData";
+import API from "../../../axios"; 
 
 function ExploreClubs() {
-  const clubEntries = Object.entries(clubs);
+  const [clubs, setClubs] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchClubs = async () => {
+      try {
+        const response = await API.get("/api/clubs");
+        setClubs(response.data); 
+      } catch (error) {
+        console.error(error);
+        setError("Failed to load clubs.");
+      } 
+    };
+
+    fetchClubs();
+  }, []);
+
+  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -29,13 +46,13 @@ function ExploreClubs() {
         </div>
 
         <div className="clubs-grid">
-          {clubEntries.map(([id, club]) => (
+          {clubs.map((club) => (
             <ClubCard
-              key={id}
-              id={id}
+              key={club._id}
+              id={club._id}
               name={club.name}
               description={club.description}
-              img={club.img}
+              img={club.image} 
               className="custom-club-card"
             />
           ))}

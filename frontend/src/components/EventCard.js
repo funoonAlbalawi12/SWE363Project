@@ -2,12 +2,16 @@ import React from "react";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function EventCard({ title, subtitle, price, date, location, img }) {
+function EventCard({ id, title, subtitle, price, date, location, img }) {
+  const toUrlSafeTitle = (text) =>
+    text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-") 
+      .replace(/[^a-z0-9\-]/g, ""); 
+
   return (
-    <Link
-      to={`/events/${title.toLowerCase().replace(/\s+/g, "-")}`}
-      className="main-event-card-link"
-    >
+    <Link to={`/event/${toUrlSafeTitle(title)}`} className="main-event-card-link">
       <div className="main-event-card">
         <div className="main-event-image">
           <img src={img} alt="Event" />
