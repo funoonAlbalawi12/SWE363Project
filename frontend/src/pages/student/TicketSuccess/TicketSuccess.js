@@ -1,59 +1,52 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+
+
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DashNavbar from "../../../components/DashNavbar";
 import Footer from "../../../components/Footer";
 import QRCode from "react-qr-code";
-import { addEventToMyEvents } from "../../../data/MyEvents";
+import axios from "axios";
 import "./TicketSuccess.css";
 
 function TicketSuccess() {
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const {
-    event,
-    contactInfo,
-    attendees,
-    quantity,
-    total,
-    paymentMethod,
-    date,
-    codeBase,
-  } = state || {};
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    if (!state || !attendees || !event) return;
+    const fetchTickets = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5001/api/tickets?userId=${userId}`);
+        const allTickets = res.data;
 
-    const existing = JSON.parse(localStorage.getItem("my_events")) || [];
+        if (allTickets.length === 0) {
+          setLoading(false);
+          return;
+        }
 
-    attendees.forEach((attendee, index) => {
-      const ticketId = `${event.title.toLowerCase().replace(/\s+/g, "-")}-${
-        codeBase + index
-      }`;
-
-      const alreadyExists = existing.some((e) => e.id === ticketId);
-      if (!alreadyExists) {
-        const ticketData = {
-          id: ticketId,
-          title: event.title,
-          price: event.price || "Free",
-          date: event.date,
-          location: event.location,
-          img: event.img,
-          status: "upcoming",
-          qrCode: `MRCE-${codeBase + index}`,
-          name: attendee.name,
-          email: attendee.email,
-          codeBase: codeBase,
-          attendees: attendees,
-        };
-
-        addEventToMyEvents(ticketData);
+        const latest = allTickets[allTickets.length - 1];
+        setTickets([latest]); // show most recent ticket
+      } catch (err) {
+        console.error("Failed to load tickets:", err);
+      } finally {
+        setLoading(false);
       }
-    });
-  }, [state]);
+    };
 
-  if (!state) return <p>Missing ticket information.</p>;
+    fetchTickets();
+  }, [userId]);
+
+  if (loading) return <p>Loading...</p>;
+  if (tickets.length === 0) return <p>No ticket found.</p>;
+
+  const ticket = tickets[0];
+  const event = ticket.eventId;
+  const attendees = ticket.attendees;
+  const codeBase = ticket._id.slice(-6); // mock code
+  const total = attendees.length * (event.price.toLowerCase().includes("free") ? 0 : parseFloat(event.price));
+  const date = new Date(ticket.createdAt).toLocaleDateString("en-GB");
 
   return (
     <>
@@ -65,64 +58,43 @@ function TicketSuccess() {
         <div className="info-sections">
           <div className="ticket-info">
             <h2>Ticket Information</h2>
-            <div>
-              <strong>Date and Time:</strong> {event.date}
-            </div>
-            <div>
-              <strong>Place:</strong> {event.location}
-            </div>
-            <div>
-              <strong>Tickets:</strong> {quantity} Email Ticket(s)
-            </div>
+            <div><strong>Date and Time:</strong> {event.date}</div>
+            <div><strong>Place:</strong> {event.location}</div>
+            <div><strong>Tickets:</strong> {attendees.length} Email Ticket(s)</div>
           </div>
 
           <section className="purchase-summary">
             <h2>Purchase Information</h2>
-            <div>
-              <strong>Code:</strong> #{codeBase}
-            </div>
-            <div>
-              <strong>Date:</strong> {date}
-            </div>
-            <div>
-              <strong>Total:</strong> {total} SR
-            </div>
-            <div>
-              <strong>Payment Method:</strong> {paymentMethod}
-            </div>
+            <div><strong>Code:</strong> #{codeBase}</div>
+            <div><strong>Date:</strong> {date}</div>
+            <div><strong>Total:</strong> {total} SR</div>
+            <div><strong>Payment Method:</strong> Stripe Checkout</div>
           </section>
 
           <section className="contact-info">
             <h2>Contact Information</h2>
-            <div>
-              <strong>Name:</strong> {contactInfo.name}
-            </div>
-            <div>
-              <strong>Email:</strong> {contactInfo.email}
-            </div>
-            <div>
-              <strong>Phone:</strong> {contactInfo.phone}
-            </div>
+            <div><strong>Name:</strong> {attendees[0].name}</div>
+            <div><strong>Email:</strong> {attendees[0].email}</div>
+            <div><strong>Phone:</strong> [Hidden]</div>
           </section>
         </div>
+
         <section className="tickets-list">
-          <h2>
-            ({quantity}) Ticket with Total: {total} SR
-          </h2>
+          <h2>({attendees.length}) Ticket with Total: {total} SR</h2>
 
           <div className="success-tickets-container">
             {attendees.map((attendee, idx) => {
               const qr = `MRCE-${codeBase + idx}`;
-              const ticketId = `${event.title
-                .toLowerCase()
-                .replace(/\s+/g, "-")}-${codeBase + idx}`;
+              const ticketId = `${event.title.toLowerCase().replace(/\s+/g, "-")}-${codeBase + idx}`;
 
               return (
                 <div
                   className="success-ticket-card"
                   key={ticketId}
                   onClick={() =>
-                    navigate(`/ticket/${event.id}`, { state: { event } })
+                    navigate(`/ticket/${ticketId}`, {
+                      state: { event, attendees, codeBase }
+                    })
                   }
                 >
                   <img
@@ -135,9 +107,7 @@ function TicketSuccess() {
                     <p>{event.date}</p>
                     <p>{event.location}</p>
                     <QRCode value={qr} size={64} />
-                    <p>
-                      <strong>ID:</strong> {ticketId}
-                    </p>
+                    <p><strong>ID:</strong> {ticketId}</p>
                   </div>
                 </div>
               );
