@@ -69,15 +69,18 @@ const ClubsPage = () => {
 
   // Function to handle the removal of a club
   const handleRemove = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this club?");
+    if (!confirmed) return;
+  
     try {
       const response = await axios.delete(`http://localhost:5001/api/clubs/${id}`);
       console.log("Club removed:", response.data);
-      // Remove the club from the list after successful deletion
       setClubs(clubs.filter(club => club._id !== id));
     } catch (error) {
       console.error("Error removing club:", error);
     }
   };
+  
 
   // Function to handle the editing of a club
   const handleEdit = (id) => {
