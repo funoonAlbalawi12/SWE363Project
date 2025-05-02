@@ -145,3 +145,26 @@
   justify-content: space-between;
   gap: 12px;
 }
+/* Add this style for the effect */
+.event-cardAdmin {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: var(--text-secondary);
+  cursor: pointer;  /* Ensure cursor is a pointer on hover */
+}
+
+/* Add hover effect */
+.event-cardAdmin:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Add active class for click effect */
+.event-cardAdmin:active {
+  transform: translateY(-8px);  /* Move up more when clicked */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
