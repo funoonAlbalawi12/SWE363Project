@@ -1,7 +1,9 @@
 .club-profile {
+background-color: var(--bg);
+
+}
+.club-profile-main{
   padding: 40px 80px;
-  background-color: var(--bg);
-  font-family: "Segoe UI", sans-serif;
 }
 
 .club-header-actions {
