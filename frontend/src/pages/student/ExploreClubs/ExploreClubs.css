@@ -1,6 +1,4 @@
 .explore-clubs-page {
-  padding: 40px 80px;
-  font-family: "Segoe UI", sans-serif;
   background-color: var(--bg);
 }
 
@@ -95,7 +93,7 @@
 }
 
 .club-image img {
-  background-color: #e5e7eb;
+  background-color: transparent;
   height: 160px;
   width: 100%;
   object-fit: cover;
