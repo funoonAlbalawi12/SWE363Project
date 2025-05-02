@@ -1,30 +1,47 @@
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import API from "../../../axios"; // Import axios instance
 
 function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const dark = localStorage.getItem("darkMode") === "true";
+    document.body.classList.toggle("dark", dark);
+  }, []);
 
   const handleCloseClick = () => {
     navigate("/");
   };
 
-  const handleSubmitClick = (e) => {
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
-  };
+    try {
+      const response = await API.post("/api/users/login", { email, password });
+      const { token, role, user } = response.data;
 
-  const handleAdminClick = () => {
-    navigate("/admin-dashboard");
-  };
+      // Save token to localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("userId", user._id);
 
-  const handleAdminClubClick = () => {
-    navigate("/admin-club-dashboard");
+      // Navigate based on role
+      if (role === "admin") {
+        navigate("/admin-dashboard");
+      } else if (role === "clubadmin") {
+        navigate("/admin-club-dashboard");
+      } else {
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(error.response?.data?.message || error.message);
+      alert("Login failed. Please check your credentials.");
+    }
   };
-  useEffect(() => {
-    const dark = localStorage.getItem("darkMode") === "true";
-    document.body.classList.toggle("dark", dark);
-  }, []);
 
   return (
     <div className="login-wrapper">
@@ -37,19 +54,20 @@ function Login() {
 
         <form onSubmit={handleSubmitClick}>
           <label>Email</label>
-          <input type="email" placeholder="Enter email" />
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
           <label>Password</label>
-          <input type="password" placeholder="Enter password" />
-
-          <div className="role-buttons">
-            <button type="button" onClick={handleAdminClick}>
-              Admin
-            </button>
-            <button type="button" onClick={handleAdminClubClick}>
-              Admin Club
-            </button>
-          </div>
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <button type="submit" className="login-btn">
             Login
