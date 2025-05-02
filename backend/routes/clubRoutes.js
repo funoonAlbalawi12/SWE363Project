@@ -1,4 +1,6 @@
 import express from "express";
+import multer from "multer";
+
 import {
   createClub,
   getClubs,
@@ -10,16 +12,17 @@ import {
 
 const router = express.Router();
 
+// Configure multer to handle file uploads
+const upload = multer({ dest: "uploads/" }); // You can change this path
+
+// Create a club with image upload
+router.post("/", upload.single("image"), createClub);
+
+
 // Public routes (no auth needed)
 router.get("/", getClubs);
 router.get("/:id", getClubById);
 
-
-
-router.post(
-  "/",
-  createClub
-); 
 
 
 router.put("/:id", updateClub); 

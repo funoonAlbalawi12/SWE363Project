@@ -1,14 +1,14 @@
 import Club from "../models/Club.js";
+import path from "path";
 
 // Create new club
 export const createClub = async (req, res) => {
   try {
-    const { name, description, adminId, image } = req.body;
+    const { name, description, adminId } = req.body;
+    const image = req.file ? path.join("uploads", req.file.filename) : null;
 
     if (!name || !adminId) {
-      return res
-        .status(400)
-        .json({ message: "Name and Admin ID are required" });
+      return res.status(400).json({ message: "Name and Admin ID are required" });
     }
 
     const club = new Club({

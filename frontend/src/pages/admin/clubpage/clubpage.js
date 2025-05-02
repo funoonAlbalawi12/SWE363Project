@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./clubpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
@@ -15,27 +16,23 @@ const ClubsPage = () => {
     description: "",
   });
 
-  const clubs = Object.entries(clubsData).map(([key, club]) => ({
-    id: key,
-    title: club.name,
-    description: club.description,
-    img: club.img,
-  }));
+  const [clubs, setClubs] = useState([]);
 
-  const handleCardClick = (id) => navigate(`/club/${id}`);
+  // Fetch all clubs when the component mounts
+  useEffect(() => {
+    const fetchClubs = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/api/clubs");
+        setClubs(response.data);
+      } catch (error) {
+        console.error("Error fetching clubs:", error);
+      }
+    };
 
-  const handleEdit = (e, id) => {
-    e.stopPropagation();
-    alert(`Edit club with ID: ${id}`);
-  };
+    fetchClubs();
+  }, []);
 
-  const handleRemove = (e, id) => {
-    e.stopPropagation();
-    alert(`Remove club with ID: ${id}`);
-  };
-
-  const toggleForm = () => setShowForm(!showForm);
-
+  // Handle form changes for creating a new club
   const handleFormChange = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
@@ -45,11 +42,48 @@ const ClubsPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Club submitted:", formData);
-    setFormData({ name: "", img: null, description: "" });
-    setShowForm(false);
+
+    try {
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append("name", formData.name);
+      formDataToSubmit.append("description", formData.description);
+      formDataToSubmit.append("image", formData.img);
+
+      const response = await axios.post("http://localhost:5001/api/clubs", formDataToSubmit, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Club created:", response.data);
+      setClubs([...clubs, response.data]); // Add the new club to the clubs list
+      setFormData({ name: "", img: null, description: "" });
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error creating club:", error);
+    }
+  };
+
+  // Function to handle the removal of a club
+  const handleRemove = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:5001/api/clubs/${id}`);
+      console.log("Club removed:", response.data);
+      // Remove the club from the list after successful deletion
+      setClubs(clubs.filter(club => club._id !== id));
+    } catch (error) {
+      console.error("Error removing club:", error);
+    }
+  };
+
+  // Function to handle the editing of a club
+  const handleEdit = (id) => {
+    console.log(`Edit club with ID: ${id}`);
+    // Navigate to the edit page or show an edit form if you have one
+    navigate(`/edit-club/${id}`);
   };
 
   return (
@@ -61,7 +95,7 @@ const ClubsPage = () => {
         </div>
 
         <div className="add-club">
-          <button className="add-button" onClick={toggleForm}>
+          <button className="add-button" onClick={() => setShowForm(!showForm)}>
             <span>Add new club</span>
             <Plus className="icon" />
           </button>
@@ -75,6 +109,7 @@ const ClubsPage = () => {
               <input
                 type="text"
                 name="name"
+                value={formData.name}
                 required
                 onChange={handleFormChange}
               />
@@ -90,6 +125,7 @@ const ClubsPage = () => {
               <label>Description</label>
               <textarea
                 name="description"
+                value={formData.description}
                 required
                 rows="4"
                 onChange={handleFormChange}
@@ -102,7 +138,7 @@ const ClubsPage = () => {
                 <button
                   type="button"
                   className="login-btn"
-                  onClick={toggleForm}
+                  onClick={() => setShowForm(false)}
                 >
                   Cancel
                 </button>
@@ -114,35 +150,41 @@ const ClubsPage = () => {
         <div className="card-grid">
           {clubs.map((club) => (
             <div
-              key={club.id}
+              key={club._id}
               className="club-card clickable"
-              onClick={() => handleCardClick(club.id)}
+              onClick={() => navigate(`/club/${club._id}`)}
             >
               <div className="card-image">
-                {club.img ? (
+                {club.image ? (
                   <img
-                    src={club.img}
-                    alt={club.title}
+                    src={`http://localhost:5001/${club.image}`} // Assuming your backend serves the image files
+                    alt={club.name}
                     className="club-thumbnail"
                   />
                 ) : (
                   <div className="no-image">No Image</div>
                 )}
               </div>
-              <h2>{club.title}</h2>
+              <h2>{club.name}</h2>
               <p className="club-description">{club.description}</p>
 
               <div className="card-actions">
                 <button
                   className="btn-ghost-sm"
-                  onClick={(e) => handleRemove(e, club.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemove(club._id);
+                  }}
                 >
                   <Trash2 className="icon-sm" />
                   <span>Remove</span>
                 </button>
                 <button
                   className="btn-ghost-sm"
-                  onClick={(e) => handleEdit(e, club.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleEdit(club._id);
+                  }}
                 >
                   <Pencil className="icon-sm" />
                   <span>Edit</span>
