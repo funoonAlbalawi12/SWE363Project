@@ -140,6 +140,7 @@ export const getClubEvents = async (req, res) => {
   }
 };
 
+
 // Add this to your clubController.js
 export const getClubByName = async (req, res) => {
   try {

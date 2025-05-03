@@ -43,6 +43,7 @@ export const createEvent = async (req, res) => {
 };
 
 
+
 // @desc    Get all events
 export const getEvents = async (req, res) => {
   const events = await Event.find();
