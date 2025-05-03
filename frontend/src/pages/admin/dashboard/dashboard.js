@@ -45,7 +45,7 @@ function AdminDashboard() {
     <div className="dashboard-container">
       <AdminNavbar />
       <div className="page-content">
-        <h1>Hello Khulud!</h1>
+        <h1>Hello Admin!</h1>
 
         <div className="summary-cards">
           {summaryData.map((item, idx) => (
