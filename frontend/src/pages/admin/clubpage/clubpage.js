@@ -140,7 +140,18 @@ const ClubsPage = () => {
             Add new club <Plus className="icon inside-button" />
           </button>
         </div>
-
+        
+        {showConfirmation && (
+          <div className="popup-overlay">
+            <div className="popup">
+              <h3>Are you sure you want to add this club?</h3>
+              <div className="popup-actions">
+                <button onClick={handleConfirmSubmit}>Confirm</button>
+                <button onClick={() => setShowConfirmation(false)}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {showForm && (
           <div className="event-form-overlay">
@@ -208,7 +219,6 @@ const ClubsPage = () => {
           ))}
         </div>
       </div>
-      
       <Footer />
     </div>
   );
