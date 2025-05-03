@@ -24,22 +24,7 @@ body {
   margin-left: -23px;
 }
 
-.events-clubs-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-bottom: 50px;
-  align-items: flex-start;
-}
 
-.your-events {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex: 2;
-  order: 1;
-  justify-content: flex-start;
-}
 
 @media (min-width: 768px) {
   .your-events {
@@ -65,6 +50,22 @@ body {
   font-weight: bold;
 }
 
+.events-clubs-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.your-events {
+  flex: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
 .your-clubs {
   flex: 1;
   background-color: var(--surface);
@@ -74,12 +75,35 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   height: fit-content;
   min-width: 260px;
-  color:var(--text-secondary) ;
+  color: var(--text-secondary);
 }
 
 .your-clubs h3 {
   font-size: 18px;
   margin-bottom: 16px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.filter-buttons button.active {
+  background-color: var(--secondary);
+  color: var(--text-secondary);
 }
 
 .user-club-card {
@@ -90,6 +114,9 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s;
   color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .user-club-card:hover {
@@ -105,11 +132,16 @@ body {
 .user-club-role {
   font-size: 14px;
   color: var(--text-primary);
+  font-weight: 500;
 }
 
+
 .similar-carousel .carousel .slide {
-  background: none;
+  background: transparent !important;
   display: flex;
+}
+.similar-carousel .slide {
+  background-color: transparent !important;
 }
 
 .similar-carousel .carousel-slide {
