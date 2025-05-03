@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import Stripe from "stripe";
+import path from 'path'; // Import path module
 
 import connectDB from './config/db.js';
 
@@ -28,6 +29,7 @@ app.get('/api/test-direct', (req, res) => {
   res.status(200).json({ message: '✅ Direct backend route working' });
 });
 
+// Routes
 app.use('/api/users', userRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/tickets', ticketRoutes);
@@ -36,6 +38,9 @@ app.use('/api/clubmemberships', clubMembershipRoutes);
 app.use('/api/eventregistrations', eventRegistrationRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/clubadmin', clubAdminApiRoutes);
+
+// Serve static files from "uploads" folder for image file serving
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

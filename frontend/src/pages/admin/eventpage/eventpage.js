@@ -55,19 +55,39 @@ const EventsPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Event submitted:", formData);
-    setFormData({
-      title: "",
-      date: "",
-      location: "",
-      priceType: "free",
-      price: "",
-      img: null,
-    });
-    setShowForm(false);
+  
+    try {
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("date", formData.date);
+      data.append("location", formData.location);
+      data.append("priceType", formData.priceType);
+      data.append("price", formData.priceType === "paid" ? formData.price : "Free");
+      if (formData.img) data.append("img", formData.img);
+  
+      const response = await axios.post("http://localhost:5001/api/events", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      setEvents([...events, response.data]);  // Add new event to list
+      setFormData({
+        title: "",
+        date: "",
+        location: "",
+        priceType: "free",
+        price: "",
+        img: null,
+      });
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error adding event:", error);
+    }
   };
+  
 
   return (
     <div className="events-page">

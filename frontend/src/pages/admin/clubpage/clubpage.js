@@ -21,7 +21,6 @@ const ClubsPage = () => {
   });
 
   const [clubs, setClubs] = useState([]);
-  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchClubs = async () => {
@@ -36,88 +35,81 @@ const ClubsPage = () => {
     fetchClubs();
   }, []);
 
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      img: null,
+      description: "",
+      overview: "",
+      vision: "",
+      mission: "",
+      adminId: "",
+      socialLinks: [{ name: "", icon: "", url: "" }],
+    });
+  };
+
   const handleFormChange = (e) => {
     const { name, value, type, files } = e.target;
-    if (type === "file") {
-      setFormData({ ...formData, img: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "file" ? files[0] : value,
+    }));
   };
 
   const handleSocialLinkChange = (index, field, value) => {
     const updatedLinks = [...formData.socialLinks];
     updatedLinks[index][field] = value;
-    setFormData({ ...formData, socialLinks: updatedLinks });
+    setFormData((prevData) => ({
+      ...prevData,
+      socialLinks: updatedLinks,
+    }));
   };
 
   const handleAddSocialLink = () => {
-    setFormData({
-      ...formData,
-      socialLinks: [...formData.socialLinks, { name: "", icon: "", url: "" }],
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      socialLinks: [...prevData.socialLinks, { name: "", icon: "", url: "" }],
+    }));
   };
 
   const handleRemoveSocialLink = (index) => {
-    const updatedLinks = [...formData.socialLinks];
-    updatedLinks.splice(index, 1);
-    setFormData({ ...formData, socialLinks: updatedLinks });
+    setFormData((prevData) => {
+      const updatedLinks = [...prevData.socialLinks];
+      updatedLinks.splice(index, 1);
+      return { ...prevData, socialLinks: updatedLinks };
+    });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleConfirmSubmit = async () => {
-    console.log("Submitting club form...");
-  
     try {
       const formDataToSubmit = new FormData();
-      formDataToSubmit.append("name", formData.name);
-      formDataToSubmit.append("description", formData.description);
-      formDataToSubmit.append("overview", formData.overview);
-      formDataToSubmit.append("vision", formData.vision);
-      formDataToSubmit.append("mission", formData.mission);
-      formDataToSubmit.append("adminId", formData.adminId);
-      formDataToSubmit.append("image", formData.img);
-      formDataToSubmit.append("socialLinks", JSON.stringify(formData.socialLinks));
-  
-      // Debug: log content
-      for (let [key, value] of formDataToSubmit.entries()) {
-        console.log(key, value);
+      for (const key of ["name", "description", "overview", "vision", "mission", "adminId"]) {
+        formDataToSubmit.append(key, formData[key]);
       }
-  
-      const response = await axios.post("http://localhost:5001/api/clubs", formDataToSubmit);
-  
-      console.log("Club created:", response.data);
-      setClubs([...clubs, response.data]);
-      setFormData({
-        name: "",
-        img: null,
-        description: "",
-        overview: "",
-        vision: "",
-        mission: "",
-        adminId: "",
-        socialLinks: [{ name: "", icon: "", url: "" }],
+      if (formData.img) {
+        formDataToSubmit.append("image", formData.img);
+      }
+      formDataToSubmit.append("socialLinks", JSON.stringify(formData.socialLinks));
+
+      const response = await axios.post("http://localhost:5001/api/clubs", formDataToSubmit, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
+
+      setClubs((prev) => [...prev, response.data]);
+      resetForm();
       setShowForm(false);
-      setShowConfirmation(false);
     } catch (error) {
-      console.error("Error creating club:", error);
+      console.error("Error creating club:", error.response?.data || error.message);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowConfirmation(true);
-  };
-  
   const handleRemove = async (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete this club?");
-    if (!confirmed) return;
-
+    if (!window.confirm("Are you sure you want to delete this club?")) return;
     try {
-      const response = await axios.delete(`http://localhost:5001/api/clubs/${id}`);
-      console.log("Club removed:", response.data);
-      setClubs(clubs.filter(club => club._id !== id));
+      await axios.delete(`http://localhost:5001/api/clubs/${id}`);
+      setClubs((prev) => prev.filter((club) => club._id !== id));
     } catch (error) {
       console.error("Error removing club:", error);
     }
@@ -136,59 +128,73 @@ const ClubsPage = () => {
         </div>
 
         <div className="add-club">
-          <button className="add-button" onClick={() => setShowForm(!showForm)}>
-            Add new club <Plus className="icon inside-button" />
+          <button className="add-button" onClick={() => {
+            setShowForm(!showForm);
+            if (showForm) resetForm();
+          }}>
+            +    Add new club
           </button>
         </div>
-        
-        {showConfirmation && (
-          <div className="popup-overlay">
-            <div className="popup">
-              <h3>Are you sure you want to add this club?</h3>
-              <div className="popup-actions">
-                <button onClick={handleConfirmSubmit}>Confirm</button>
-                <button onClick={() => setShowConfirmation(false)}>Cancel</button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {showForm && (
           <div className="event-form-overlay">
             <form className="event-form" onSubmit={handleSubmit}>
               <h2>Add Club</h2>
-              <label>Club Name</label>
-              <input type="text" name="name" value={formData.name} required onChange={handleFormChange} />
 
-              <label>Club Logo</label>
-              <input type="file" accept="image/*" name="img" onChange={handleFormChange} />
+              <label htmlFor="name">Club Name</label>
+              <input type="text" name="name" id="name" value={formData.name} required onChange={handleFormChange} />
 
-              <label>Description</label>
-              <input name="description" value={formData.description} onChange={handleFormChange} />
+              <label htmlFor="img">Club Logo</label>
+              <input type="file" accept="image/*" name="img" id="img" onChange={handleFormChange} />
 
-              <label>Overview</label>
-              <input name="overview" value={formData.overview} onChange={handleFormChange} />
+              <label htmlFor="description">Description</label>
+              <input name="description" id="description" value={formData.description} onChange={handleFormChange} />
 
-              <label>Vision</label>
-              <input name="vision" value={formData.vision} onChange={handleFormChange} />
+              <label htmlFor="overview">Overview</label>
+              <input name="overview" id="overview" value={formData.overview} onChange={handleFormChange} />
 
-              <label>Mission</label>
-              <input name="mission" value={formData.mission} onChange={handleFormChange} />
+              <label htmlFor="vision">Vision</label>
+              <input name="vision" id="vision" value={formData.vision} onChange={handleFormChange} />
+
+              <label htmlFor="mission">Mission</label>
+              <input name="mission" id="mission" value={formData.mission} onChange={handleFormChange} />
 
               <label>Social Links</label>
               {formData.socialLinks.map((link, index) => (
                 <div key={index} className="social-link-inputs">
-                  <input type="text" placeholder="Name" value={link.name} onChange={(e) => handleSocialLinkChange(index, "name", e.target.value)} />
-                  <input type="text" placeholder="Icon" value={link.icon} onChange={(e) => handleSocialLinkChange(index, "icon", e.target.value)} />
-                  <input type="url" placeholder="URL" value={link.url} onChange={(e) => handleSocialLinkChange(index, "url", e.target.value)} />
-                  <button type="button" onClick={() => handleRemoveSocialLink(index)}>Remove</button>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    value={link.name}
+                    onChange={(e) => handleSocialLinkChange(index, "name", e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Icon"
+                    value={link.icon}
+                    onChange={(e) => handleSocialLinkChange(index, "icon", e.target.value)}
+                  />
+                  <input
+                    type="url"
+                    placeholder="URL"
+                    value={link.url}
+                    onChange={(e) => handleSocialLinkChange(index, "url", e.target.value)}
+                  />
+                  <button type="button" className="btn-remove-link" onClick={() => handleRemoveSocialLink(index)}>
+                    Remove
+                  </button>
                 </div>
               ))}
-              <button type="button" onClick={handleAddSocialLink}>Add Social Link</button>
+              <button type="button" className="btn-add-link" onClick={handleAddSocialLink}>
+                + Add Social Link
+              </button>
 
               <div className="form-actions">
-                <button type="submit" className="login-btn">Submit</button>
-                <button type="button" className="login-btn" onClick={() => setShowForm(false)}>Cancel</button>
+                <button type="submit" className="login-btn" onClick={handleSubmit}>Submit</button>
+                <button type="button" className="login-btn" onClick={() => {
+                  resetForm();
+                  setShowForm(false);
+                }}>Cancel</button>
               </div>
             </form>
           </div>
@@ -208,10 +214,16 @@ const ClubsPage = () => {
               <p className="club-description">{club.description}</p>
 
               <div className="card-actions">
-                <button className="btn-ghost-sm" onClick={(e) => { e.stopPropagation(); handleRemove(club._id); }}>
+                <button className="btn-ghost-sm" onClick={(e) => {
+                  e.stopPropagation();
+                  handleRemove(club._id);
+                }}>
                   <Trash2 className="icon-sm" /> <span>Remove</span>
                 </button>
-                <button className="btn-ghost-sm" onClick={(e) => { e.stopPropagation(); handleEdit(club._id); }}>
+                <button className="btn-ghost-sm" onClick={(e) => {
+                  e.stopPropagation();
+                  handleEdit(club._id);
+                }}>
                   <Pencil className="icon-sm" /> <span>Edit</span>
                 </button>
               </div>

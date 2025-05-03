@@ -7,14 +7,13 @@ export const createEvent = async (req, res) => {
   if (!title || !date) {
     return res.status(400).json({ message: "Title and Date are required" });
   }
+
   try {
-    // Check if club exists
     const clubExists = await Club.findById(club);
     if (!clubExists) {
       return res.status(404).json({ message: "Club not found" });
     }
 
-    // If user is clubadmin, check if the club belongs to him
     if (
       req.user.role === "clubadmin" &&
       clubExists.adminId.toString() !== req.user._id.toString()
@@ -24,20 +23,25 @@ export const createEvent = async (req, res) => {
         .json({ message: "You can only create events for your own club" });
     }
 
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+
     const event = await Event.create({
       title,
       description,
       location,
       date,
       price,
+      club,
+      img: imagePath,
     });
 
     res.status(201).json(event);
   } catch (error) {
-    console.error(error);
+    console.error("Error creating event:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 // @desc    Get all events
 export const getEvents = async (req, res) => {
