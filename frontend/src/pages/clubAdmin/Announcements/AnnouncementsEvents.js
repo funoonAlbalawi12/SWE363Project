@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './AnnouncementsEvents.css';
-import { addEvent } from '../../../data/ClubEvents';
 
 function AnnouncementsEvents({ onAddEvent }) {
   const [title, setTitle] = useState('');
@@ -9,7 +8,7 @@ function AnnouncementsEvents({ onAddEvent }) {
   const [location, setLocation] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title || !description || !date || !location) {
@@ -19,30 +18,45 @@ function AnnouncementsEvents({ onAddEvent }) {
 
     const selectedDate = new Date(date);
     const now = new Date();
-
     if (selectedDate <= now) {
       setMessage('Event date must be in the future.');
       return;
     }
 
-    const newEvent = {
-      id: Date.now(),
-      title,
-      description,
-      date,
-      location,
-    };
-
-    addEvent(newEvent); 
-    if (onAddEvent) {
-      onAddEvent(newEvent); 
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setMessage("Authentication error: No token found.");
+      return;
     }
 
-    setMessage('Event scheduled successfully!');
-    setTitle('');
-    setDescription('');
-    setDate('');
-    setLocation('');
+    try {
+      const response = await fetch("http://localhost:5001/api/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ title, description, date, location }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage("✅ Event scheduled successfully!");
+        if (onAddEvent) {
+          onAddEvent(data); // Updates UI in ClubAdminEvent.js
+        }
+        setTitle('');
+        setDescription('');
+        setDate('');
+        setLocation('');
+      } else {
+        setMessage(`❌ Failed: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Error submitting event:", error);
+      setMessage("❌ Server error. Please check your console.");
+    }
   };
 
   return (
