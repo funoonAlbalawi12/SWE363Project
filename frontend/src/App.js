@@ -51,7 +51,7 @@ function AppRoutes({ setDarkMode }) {
 
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/clubpage" element={<ClubsPage />} />
-        <Route path="/events" element={<EventPage />} />
+        <Route path="/eventpage" element={<EventPage />} />
 
         <Route path="/admin-club-dashboard" element={<ClubAdminDashboard />} />
         <Route
