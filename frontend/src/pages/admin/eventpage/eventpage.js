@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";  // Import Axios
 import { useNavigate } from "react-router-dom";
 import "./eventpage.css";
 import AdminNavbar from "../../../components/AdminNavbar";
-import eventsData from "../../../data/EventData";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { Plus, Trash2, Pencil } from "lucide-react";
 import Footer from "../../../components/Footer";
+
 const EventsPage = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [events, setEvents] = useState([]);  // State to store events
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -18,14 +20,19 @@ const EventsPage = () => {
     img: null,
   });
 
-  const events = Object.entries(eventsData).map(([key, event]) => ({
-    id: key,
-    title: event.title,
-    date: event.date,
-    location: event.location,
-    img: event.img,
-    price: event.price,
-  }));
+  // Fetch events from the backend
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/api/events");
+        setEvents(response.data);  // Set events to state
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();  // Call the function to fetch events
+  }, []);
 
   const handleCardClick = (id) => navigate(`/club/${id}`);
   const handleEdit = (e, id) => {
@@ -48,26 +55,46 @@ const EventsPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Event submitted:", formData);
-    setFormData({
-      title: "",
-      date: "",
-      location: "",
-      priceType: "free",
-      price: "",
-      img: null,
-    });
-    setShowForm(false);
+  
+    try {
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("date", formData.date);
+      data.append("location", formData.location);
+      data.append("priceType", formData.priceType);
+      data.append("price", formData.priceType === "paid" ? formData.price : "Free");
+      if (formData.img) data.append("img", formData.img);
+  
+      const response = await axios.post("http://localhost:5001/api/events", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      setEvents([...events, response.data]);  // Add new event to list
+      setFormData({
+        title: "",
+        date: "",
+        location: "",
+        priceType: "free",
+        price: "",
+        img: null,
+      });
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error adding event:", error);
+    }
   };
+  
 
   return (
     <div className="events-page">
       <AdminNavbar />
       <div className="page-content">
         <div className="greeting">
-          <h1>Hello Khulud!</h1>
+          <h1>Hello Admin!</h1>
         </div>
 
         <div className="add-event">
@@ -144,13 +171,13 @@ const EventsPage = () => {
         <div className="eventcard-grid">
           {events.map((event) => (
             <div
-              key={event.id}
+              key={event._id}  // Use _id from MongoDB
               className="event-cardAdmin"
-              onClick={() => handleCardClick(event.id)}
+              onClick={() => handleCardClick(event._id)}  // Use _id from MongoDB
             >
               <div className="card-image">
                 <img src={event.img} alt={event.title} />
-              </div>{" "}
+              </div>
               <h2>{event.title}</h2>
               <p className="price">{event.price || "Free"}</p>
               <p>
@@ -162,14 +189,14 @@ const EventsPage = () => {
               <div className="card-actions">
                 <button
                   className="btn-ghost-sm"
-                  onClick={(e) => handleRemove(e, event.id)}
+                  onClick={(e) => handleRemove(e, event._id)}
                 >
                   <Trash2 className="icon-sm" />
                   <span>Remove</span>
                 </button>
                 <button
                   className="btn-ghost-sm"
-                  onClick={(e) => handleEdit(e, event.id)}
+                  onClick={(e) => handleEdit(e, event._id)}
                 >
                   <Pencil className="icon-sm" />
                   <span>Edit</span>

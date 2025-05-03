@@ -121,7 +121,7 @@ function DashNavbar() {
           <div className="avatar">
             <FiUser />
           </div>
-          <span className="username">Khulud</span>
+          <span className="username">admin</span>
           <span className="dropdown">▾</span>
 
           {showDropdown && (

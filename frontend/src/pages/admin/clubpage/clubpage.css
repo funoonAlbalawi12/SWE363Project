@@ -104,3 +104,43 @@
 .btn-ghost-sm:hover {
   background-color: var(--hover);
 }
+
+
+
+/* Popup confirmation should be higher */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2000; /* higher than form */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure form overlay is below confirmation popup */
+.event-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* lower than popup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}

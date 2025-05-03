@@ -1,0 +1,232 @@
+/* General Container for Pages */
+.page-container {
+    padding: 20px;
+    background-color: var(--bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header of Pages */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    position: relative; /* To properly position the back arrow */
+}
+
+.page-header .back-arrow {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    position: absolute;
+    left: 20px; /* Moves arrow to the left */
+}
+
+.page-header h2 {
+    margin: 0;
+    text-align: center;
+}
+
+/* Page Actions */
+.page-actions {
+    margin-left: auto;
+}
+
+.page-actions .view-new-messages,
+.page-actions .view-tasks {
+    padding: 6px 14px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.page-actions .view-new-messages:hover,
+.page-actions .view-tasks:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Individual Message Card */
+.message-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-card .message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-card .message-sender {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.message-card .message-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.message-card .message-content {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Actions Buttons */
+.message-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.message-actions .action-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--secondary);
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 120px;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.message-actions .action-btn:hover {
+    background-color: var(--hover);
+}
+
+.message-actions .action-btn svg {
+    margin-right: 5px;
+}
+
+.message-actions .action-btn:active {
+    transform: scale(0.98);
+}
+
+/* No messages found message */
+.no-messages {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-actions {
+        margin-top: 10px;
+    }
+
+    .message-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] {
+    --bg: #121212;
+    --text-primary: #fff;
+    --text-secondary: #bbb;
+    --surface: #1e1e1e;
+    --border: #444;
+    --secondary: #388e3c;
+    --hover: #00600f;
+    --primary: #1e40af;
+    --primary-dark: #007bff;
+}
+
+[data-theme="dark"] .page-container {
+    background-color: var(--bg);
+}
+
+[data-theme="dark"] .page-header {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .message-card {
+    background-color: var(--surface);
+}
+
+[data-theme="dark"] .message-actions .action-btn {
+    background-color: var(--secondary);
+}
+
+[data-theme="dark"] .message-actions .action-btn:hover {
+    background-color: var(--hover);
+}
+
+[data-theme="dark"] .no-messages {
+    color: var(--text-secondary);
+}
+
+/* Hover Effect for Cards */
+.card_admin {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    width: 32%;
+    color: var(--text-secondary);
+}
+
+.card_admin:hover {
+    transform: translateY(-5px);  /* Moves the card up when hovered */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect for Buttons */
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background-color: var(--secondary);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    width: 100%;  /* Make buttons fill the container */
+    text-align: center;
+}
+
+.action-btn:hover {
+    background-color: var(--hover);
+    transform: translateY(-3px);  /* Move the button up slightly when hovered */
+}
+
+.action-btn:active {
+    transform: translateY(1px);  /* Button moves back down when clicked */
+}

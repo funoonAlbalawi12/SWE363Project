@@ -4,12 +4,15 @@ import AdminNavbar from "../../../components/AdminNavbar";
 import { Search } from "lucide-react";
 import Footer from "../../../components/Footer";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
+import { useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
   const summaryData = [
-    { title: "Messages", value: "120 New", icon: "📩", action: "View Messages" },
-    { title: "Remaining Tasks", value: 30, icon: "✔️", action: "View Tasks" },
-    { title: "Requests", value: "5 New, 2 Pending", icon: "📋", action: "Process All Requests" },
+    { title: "Messages", value: "120 New", icon: "📩", action: "View Messages", route: "/messages" },
+    { title: "Remaining Tasks", value: 30, icon: "✔️", action: "View Tasks", route: "/tasks" },
+    { title: "Requests", value: "5 New, 2 Pending", icon: "📋", action: "Process All Requests", route: "/requests" },
   ];
 
   const initialClubs = [
@@ -45,7 +48,7 @@ function AdminDashboard() {
     <div className="dashboard-container">
       <AdminNavbar />
       <div className="page-content">
-        <h1>Hello Khulud!</h1>
+        <h1>Hello Admin!</h1>
 
         <div className="summary-cards">
           {summaryData.map((item, idx) => (
@@ -53,7 +56,9 @@ function AdminDashboard() {
               <h3>{item.icon} {item.title}</h3>
               <p>{item.value}</p>
               {/* Button for navigating to specific functionality */}
-              <button className="action-btn">{item.action}</button>
+              <button className="action-btn" onClick={() => navigate(item.route)}>
+                {item.action}
+              </button>
             </div>
           ))}
         </div>

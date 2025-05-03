@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import API from "../../../axios"; // Import axios instance
+import API from "../../../axios"; 
 
 function Login() {
   const navigate = useNavigate();
@@ -24,17 +24,16 @@ function Login() {
       const response = await API.post("/api/users/login", { email, password });
       const { token, role, user } = response.data;
 
-      // Save token to localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
       localStorage.setItem("userId", user._id);
 
-      // Navigate based on role
+
       if (role === "admin") {
         navigate("/admin-dashboard");
       } else if (role === "clubadmin") {
         navigate("/admin-club-dashboard");
-      } else {
+      } else if (role === "student") {
         navigate("/dashboard");
       }
     } catch (error) {
