@@ -44,10 +44,6 @@ userSchema.pre("save", async function(next){
 userSchema.methods.comparePassword = async function(password){
     return await bcrypt.compare(password, this.password);
 };
-// Static method to manually implement findOne
-userSchema.statics.findOne = async function(query) {
-  return await this.find(query).limit(1).then(results => results[0] || null);
-};
 
 const User = mongoose.model("User", userSchema);
 
