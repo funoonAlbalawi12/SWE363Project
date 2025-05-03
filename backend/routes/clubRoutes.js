@@ -28,10 +28,6 @@ router.get("/name/:clubName", getClubByName);
 
 // Protected routes (admin OR clubadmin can update, but only admin can delete/create)
 
-<<<<<<< HEAD
-router.put("/:id", updateClub); 
-router.delete("/:id", deleteClub); 
-=======
 router.post(
   "/", // handle file upload
   createClub
@@ -39,6 +35,5 @@ router.post(
 
 router.put("/:id", updateClub); // Admin and ClubAdmin can update
 router.delete("/:id", deleteClub); // Only Admin can delete
->>>>>>> 30946667a595f5aa1e081e2567a149a69f3ffcba
 
 export default router;

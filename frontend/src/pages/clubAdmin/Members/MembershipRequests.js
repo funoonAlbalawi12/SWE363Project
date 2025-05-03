@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MembershipRequests.css';
+import axios from 'axios';
 
 function MembershipRequests() {
-  const [requests, setRequests] = useState([
-    { id: 1, name: 'Sarah Almutairi', major: 'Software Engineering', status: 'pending' },
-    { id: 2, name: 'Mohammed Alqahtani', major: 'Computer Science', status: 'pending' },
-    { id: 3, name: 'Laila Alsaud', major: 'IT', status: 'pending' },
-  ]);
-
+  useEffect(() => {
+    axios
+      .get('http://localhost:5001/api/club-membership?club=IEOM%20KFUPM%20Chapter')
+      .then((res) => {
+        setRequests(res.data);
+      })
+      .catch((err) => {
+        console.error('Error fetching membership requests:', err);
+      });
+  }, []);
+  
   const handleAction = (id, action) => {
-    setRequests((prev) =>
-      prev.map((req) =>
-        req.id === id ? { ...req, status: action } : req
-      )
-    );
+    axios
+      .patch(`http://localhost:5001/api/club-membership/${id}`, { status: action })
+      .then(() => {
+        setRequests((prev) =>
+          prev.map((req) =>
+            req._id === id ? { ...req, status: action } : req
+          )
+        );
+      })
+      .catch((err) => {
+        console.error('Failed to update request status:', err);
+      });
   };
+
+
 
   return (
     <div className="membership-requests">
