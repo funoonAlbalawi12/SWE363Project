@@ -1,0 +1,186 @@
+/* General Container for Remaining Tasks Page */
+.page-container {
+    padding: 20px;
+    background-color: var(--bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header of Remaining Tasks Page */
+.page-header {
+    display: flex;
+    justify-content: center;  /* Centers the title horizontally */
+    align-items: center;
+    font-size: 2rem;  /* Increased for emphasis */
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 40px; /* Adjusted this for better positioning */
+    color: var(--text-primary);
+    position: relative;
+}
+
+.page-header .back-arrow {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    position: absolute;
+    left: 20px;  /* Moves arrow to the left */
+}
+
+.page-header h2 {
+    margin: 0;
+    text-align: center;  /* Ensures the text is centered */
+    position: absolute;
+    left: 50%;  /* Moves title to the center */
+    transform: translateX(-50%);  /* Centers the title */
+}
+
+/* Page Actions */
+.page-actions {
+    margin-left: auto;
+}
+
+.page-actions .view-tasks {
+    padding: 6px 14px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.page-actions .view-tasks:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Table Section for Remaining Tasks */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background-color: var(--bg);
+    color: var(--text-primary);
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+}
+
+.table td {
+    border-bottom: 1px solid var(--border);
+}
+
+/* Action Button Styles */
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--secondary);
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+    background-color: var(--hover);
+}
+
+.action-btn:focus {
+    outline: none; /* Remove focus outline */
+}
+
+/* No tasks found message */
+.no-tasks {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-actions {
+        margin-top: 10px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] {
+    --bg: #121212;
+    --text-primary: #fff;
+    --text-secondary: #bbb;
+    --surface: #1e1e1e;
+    --border: #444;
+    --secondary: #388e3c;
+    --hover: #00600f;
+    --primary: #1e40af;
+    --primary-dark: #007bff;
+}
+
+[data-theme="dark"] .page-container {
+    background-color: var(--bg);
+}
+
+[data-theme="dark"] .page-header {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .table th {
+    background-color: var(--surface);
+}
+
+[data-theme="dark"] .action-btn {
+    background-color: var(--secondary);
+}
+
+[data-theme="dark"] .action-btn:hover {
+    background-color: var(--hover);
+}
+
+/* Back Arrow Style */
+.back-arrow {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    margin-right: 20px;
+}
+
+.back-arrow:hover {
+    color: var(--hover);
+}
