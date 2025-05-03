@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
+import API from "../../../axios";
+
 
 function Settings({ setDarkMode }) {
   const navigate = useNavigate();
@@ -21,14 +23,32 @@ function Settings({ setDarkMode }) {
     navigate(-1);
   };
 
-  const handleSave = () => {
-    console.log("Saved settings:", {
-      darkMode,
-      notifications,
-      newPassword,
-    });
-    navigate(-1);
+  const handleSave = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const updates = {};
+  
+
+      localStorage.setItem("darkMode", darkMode);
+      setDarkModeStorage(darkMode);
+  
+
+      updates.notifications = notifications;
+  
+   
+      if (newPassword && newPassword === confirmPassword) {
+        updates.password = newPassword;
+      }
+  
+
+      await API.put(`/api/users/${userId}`, updates);
+      navigate(-1);
+    } catch (err) {
+      console.error("Failed to save settings:", err);
+      alert("Failed to update settings.");
+    }
   };
+  
 
   return (
     <div className="modal-overlay">

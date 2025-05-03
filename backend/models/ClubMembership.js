@@ -17,7 +17,10 @@ const clubMembershipSchema = new mongoose.Schema(
       enum: ["pending", "accepted", "rejected"],
       default: "pending",
     },
-    // Extended join request fields
+    role: {
+      type: String, 
+      default: "", 
+    },
     fullName: String,
     email: String,
     phone: String,

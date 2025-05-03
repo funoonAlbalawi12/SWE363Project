@@ -44,3 +44,18 @@ export const getMemberships = async (req, res) => {
   res.json(memberships);
 };
 
+
+export const getMembershipByUser = async (req, res) => {
+  const { clubId, userId } = req.query;
+
+  if (!clubId && !userId) {
+    return res.status(400).json({ message: 'Club ID or User ID is required' });
+  }
+
+  const filter = {};
+  if (clubId) filter.clubId = clubId;
+  if (userId) filter.userId = userId;
+
+  const memberships = await ClubMembership.find(filter).populate('clubId');
+  res.json(memberships);
+};

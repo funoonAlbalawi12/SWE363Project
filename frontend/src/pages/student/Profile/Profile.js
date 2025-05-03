@@ -1,28 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import API from "../../../axios";
+
 function Profile() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: "Khulud",
-    lastName: "Alotaibi",
-    email: "khulud@gmail.com",
+    name: "",
+    email: "",
     address: "",
     phone: "",
     city: "",
     state: "",
-    password: "",
   });
+  const [error, setError] = useState("");
+
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await API.get(`/api/users/${userId}`);
+        setFormData({
+          name: res.data.name || "",
+          email: res.data.email || "",
+          address: res.data.address || "",
+          phone: res.data.phone || "",
+          city: res.data.city || "",
+          state: res.data.state || "",
+        });
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        setError("Failed to load profile.");
+      }
+    };
+
+    if (userId) fetchUser();
+  }, [userId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    console.log("Saved:", formData);
-    navigate(-1);
+  const handleSave = async () => {
+    try {
+      await API.put(`/api/users/${userId}`, formData);
+      navigate(-1);
+    } catch (err) {
+      console.error("Error saving profile:", err);
+      setError("Failed to save profile.");
+    }
   };
 
   const handleCancel = () => {
@@ -41,18 +70,10 @@ function Profile() {
 
           <div className="form-fields">
             <div className="form-group">
-              <label>First Name</label>
+              <label>Full Name</label>
               <input
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Last Name</label>
-              <input
-                name="lastName"
-                value={formData.lastName}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
               />
             </div>
@@ -98,15 +119,8 @@ function Profile() {
                 />
               </div>
             </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-            </div>
+
+            {error && <p className="error-message">{error}</p>}
 
             <div className="button-group">
               <button className="cancel-btn" onClick={handleCancel}>
