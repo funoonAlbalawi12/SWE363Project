@@ -99,6 +99,66 @@ Users are redirected based on their roles:
 
 ---
 
+
+## 📡 API Endpoints
+
+| Method | Endpoint                          | Description                              |
+|--------|-----------------------------------|------------------------------------------|
+| GET    | `/api/users/test`                 | Test API connectivity                    |
+| POST   | `/api/users/register`             | Register a user                          |
+| POST   | `/api/users/login`                | Log in a user                            |
+| GET    | `/api/events`                     | Fetch all events                         |
+| POST   | `/api/events`                     | Create a new event (Club Admin)          |
+| GET    | `/api/tickets/:userId`            | Get all tickets for a user               |
+| POST   | `/api/tickets/register`           | Register for a ticket                    |
+| GET    | `/api/clubs`                      | Get all clubs                            |
+| POST   | `/api/clubs`                      | Create a new club                        |
+| POST   | `/api/clubmemberships/apply`      | Student applies to join a club           |
+| GET    | `/api/clubmemberships/:clubId`    | Get all club membership requests         |
+| POST   | `/api/eventregistrations`         | Register a student for an event          |
+| POST   | `/api/payments/checkout-session`  | Create Stripe checkout session           |
+
+---
+
+## 📁 Project Structure
+
+```
+SWE363Project/
+│
+├── frontend/               # React frontend
+│   ├── src/
+│   └── public/
+│
+├── backend/                # Node.js backend
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── config/
+│   └── server.js
+```
+
+---
+
+
+## 🌍 Deployment
+
+🌐  [View on Netlify](https://kanx.netlify.app)
+
+---
+
+## 🧪 Demo User Accounts
+
+Use the following credentials to log in for testing purposes:
+
+| Role    | Email               | Password   |
+|---------|---------------------|------------|
+| Student | khulud@outlook.com  | 12345678   |
+| Admin   | budoor@outlook.com  | admin123   |
+| Club Admin | rahf@outlook.com   | clubadmin   |
+
+> ⚠️ These accounts are for demo/testing only. Do **not** use real passwords or emails in production.
+---
+
 ## 👥 Team Members
 
 | Name              | Role Description |
@@ -108,3 +168,5 @@ Users are redirected based on their roles:
 | **Khulud Alotaibi** | Student dashboard, homepage, and event registration |
 | **Zahra Alhadab** | Club Admin interface: event & announcement control |
 | **Rahf Altwairqi** | Club Admin interface: member & event management |
+---
+
