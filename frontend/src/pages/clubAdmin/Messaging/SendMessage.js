@@ -1,42 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function SendMessageForm({ members }) {
+
+function SendMessageForm({ clubId }) {
+const [members, setMembers] = useState([]);
   const [selectedMembers, setSelectedMembers] = useState([]);
   const [message, setMessage] = useState('');
   const [confirmation, setConfirmation] = useState('');
   const [selectAll, setSelectAll] = useState(false);
 
-  const handleCheckboxChange = (id) => {
-    setSelectedMembers((prev) =>
-      prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
-    );
+  useEffect(() => {
+  const fetchMembers = async () => {
+    try {
+      const response = await axios.get(`/api/members?clubId=${clubId}`);
+      setMembers(response.data);
+    } catch (error) {
+      console.error('Error fetching members:', error);
+    }
   };
 
-  const handleSelectAll = () => {
-    if (selectAll) {
-      setSelectedMembers([]);
-    } else {
-      setSelectedMembers(members.map((m) => m.id));
-    }
-    setSelectAll(!selectAll);
-  };
+  fetchMembers();
+}, [clubId]);
 
-  const handleSend = () => {
-    if (selectedMembers.length === 0) {
-      setConfirmation('⚠️ Please select at least one recipient.');
-      return;
-    }
+const handleCheckboxChange = (id) => {
+  setSelectedMembers((prev) =>
+    prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
+  );
+};
 
-    if (message.trim() === '') {
-      setConfirmation('⚠️ Message cannot be empty.');
-      return;
-    }
-
-    setConfirmation(' Message sent successfully!');
-    setMessage('');
+const handleSelectAll = () => {
+  if (selectAll) {
     setSelectedMembers([]);
-    setSelectAll(false);
-  };
+  } else {
+    setSelectedMembers(members.map((m) => m._id));
+  }
+  setSelectAll(!selectAll);
+};
+
+const handleSend = () => {
+  if (selectedMembers.length === 0) {
+    setConfirmation('⚠️ Please select at least one recipient.');
+    return;
+  }
+
+  if (message.trim() === '') {
+    setConfirmation('⚠️ Message cannot be empty.');
+    return;
+  }
+
+  // TODO: Send message via backend here (not implemented yet)
+
+  setConfirmation('✅ Message sent successfully!');
+  setMessage('');
+  setSelectedMembers([]);
+  setSelectAll(false);
+};
 
   return (
     <div className="send-message-container">

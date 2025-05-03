@@ -3,6 +3,7 @@ import './MembershipRequests.css';
 import axios from 'axios';
 
 function MembershipRequests() {
+  const [requests, setRequests] = useState([]);
   useEffect(() => {
     axios
       .get('http://localhost:5001/api/club-membership?club=IEOM%20KFUPM%20Chapter')
@@ -13,7 +14,7 @@ function MembershipRequests() {
         console.error('Error fetching membership requests:', err);
       });
   }, []);
-  
+
   const handleAction = (id, action) => {
     axios
       .patch(`http://localhost:5001/api/club-membership/${id}`, { status: action })
