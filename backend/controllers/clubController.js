@@ -37,6 +37,21 @@ export const getClubById = async (req, res) => {
   }
 };
 
+// Get a club by name (added method)
+export const getClubByName = async (req, res) => {
+  const { name } = req.params;
+  try {
+    const club = await Club.findOne({ name });
+    if (!club) {
+      return res.status(404).json({ message: 'Club not found' });
+    }
+    res.json(club);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 // Update club info
 export const updateClub = async (req, res) => {
   const { name, description, image } = req.body;
@@ -82,7 +97,7 @@ export const getMyClub = async (req, res) => {
   }
 };
 
-// ✅ Get recent club members
+// Get recent club members
 export const getRecentMembers = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -102,7 +117,7 @@ export const getRecentMembers = async (req, res) => {
   }
 };
 
-// ✅ Get events for this admin's club
+// Get events for this admin's club
 export const getClubEvents = async (req, res) => {
   try {
     const userId = req.user.id;
