@@ -1,6 +1,9 @@
-# Node modules (main project + frontend)
+# Node modules
 node_modules/
-frontend/node_modules/
+
+# Build output
+dist/
+build/
 
 # Logs
 *.log
@@ -8,20 +11,29 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment variables
-.env
-frontend/.env
-
-# Build outputs (optional, in case you have builds)
-dist/
-build/
-frontend/build/
-
-# macOS system files
+# OS-specific
 .DS_Store
 
-# VSCode settings (optional)
-.vscode/
+# Env files
+.env
+.env.local
 
-# Backups or generated files
+# Editor/IDE
+.vscode/
+.idea/
+
+# React
+frontend/.env
+frontend/.env.local
+frontend/node_modules/
+frontend/build/
+
+# Backend
+backend/.env
+backend/.env.local
+backend/node_modules/
+
+# Backups
+*.bak
 *.backup
+*.swp
