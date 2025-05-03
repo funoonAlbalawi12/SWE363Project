@@ -24,6 +24,9 @@ import EventDetails from "./pages/student/EventDetails/EventDetails";
 import PurchaseTicket from "./pages/student/PurchaseTicket/PurchaseTicket";
 import TicketSuccess from "./pages/student/TicketSuccess/TicketSuccess";
 import TicketDetails from "./pages/student/TicketDetails/TicketDetails";
+import MessagesPage from "./pages/admin/dashboard/MessagesPage";
+import TasksPage from "./pages/admin/dashboard/TasksPage";
+import RequestsPage from "./pages/admin/dashboard/RequestsPage";
 
 function AppRoutes({ setDarkMode }) {
   return (
@@ -63,6 +66,9 @@ function AppRoutes({ setDarkMode }) {
         <Route path="/clubadmin/profile/edit" element={<EditProfile />} />
         <Route path="/clubadmin/dashboard" element={<ClubAdminDashboard />} />
         <Route path="/clubadmin/Events" element={<EventsPage />} />
+        <Route path="/messages" element={<MessagesPage />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/requests" element={<RequestsPage />} />
       </Routes>
     </>
   );
