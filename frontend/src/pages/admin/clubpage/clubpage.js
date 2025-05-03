@@ -94,7 +94,7 @@ const ClubsPage = () => {
       <AdminNavbar />
       <div className="page-content">
         <div className="greeting">
-          <h1>Hello Khulud!</h1>
+          <h1>Hello Admin!</h1>
         </div>
 
         <div className="add-club">
