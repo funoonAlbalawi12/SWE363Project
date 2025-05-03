@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../../../components/Footer";
 import "./ClubProfile.css";
 import DashNavbar from "../../../components/DashNavbar";
-import EventCard from "../../../components/EventCard";
+import ClubEventCard from "../../../components/ClubEventCard";
 import API from "../../../axios";
 
 function ClubProfile() {
@@ -50,9 +50,15 @@ function ClubProfile() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await API.post("/api/club-memberships", {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        alert("User not logged in.");
+        return;
+      }
+      await API.post("/api/clubmemberships", {
         ...formData,
         clubId: club._id,
+        userId,
         status: "pending",
       });
       setShowForm(false);
@@ -121,14 +127,14 @@ function ClubProfile() {
             <div className="events-carousel">
               {club.events.length > 0 ? (
                 club.events.map((event, idx) => (
-                  <EventCard
+                  <ClubEventCard
                     key={idx}
+                    id={event._id}
                     title={event.title}
                     subtitle={event.subtitle}
                     price={event.price}
                     date={event.date}
                     location={event.location}
-                    img={event.img}
                   />
                 ))
               ) : (
@@ -301,4 +307,3 @@ function ClubProfile() {
 }
 
 export default ClubProfile;
-
