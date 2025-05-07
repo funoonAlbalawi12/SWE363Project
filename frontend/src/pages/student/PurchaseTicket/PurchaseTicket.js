@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -8,7 +7,7 @@ import Footer from "../../../components/Footer";
 import { loadStripe } from "@stripe/stripe-js";
 
 function PurchaseTicket() {
-  const { title } = useParams(); 
+  const { title } = useParams();
   const navigate = useNavigate();
   const stripePromise = loadStripe(
     "pk_test_51Qo4GD2akrE2h9Zmul6Js8VIseQujd8EmzsTcj7e2xkaL9F74865HHyjh527O0usIRiiAvq7KNjh5Xmechb9mtGf009Jn3kUtE"
@@ -72,21 +71,25 @@ function PurchaseTicket() {
     };
     fetchEvent();
   }, [title]);
+
   useEffect(() => {
     const checkEmails = async () => {
       if (!event || !event._id) return;
-  
+
       const duplicateEmails = [];
-  
+
       for (let a of attendees) {
         try {
-          const res = await axios.get(`http://localhost:5001/api/tickets/check`, {
-            params: {
-              eventId: event._id,
-              email: a.email,
-            },
-          });
-  
+          const res = await axios.get(
+            `http://localhost:5001/api/tickets/check`,
+            {
+              params: {
+                eventId: event._id,
+                email: a.email,
+              },
+            }
+          );
+
           if (res.data.alreadyRegistered) {
             duplicateEmails.push(a.email);
           }
@@ -94,7 +97,7 @@ function PurchaseTicket() {
           console.error("Error checking attendee:", err);
         }
       }
-  
+
       if (duplicateEmails.length > 0) {
         setAlreadyRegistered(true);
         setRegisterMessage(
@@ -105,17 +108,14 @@ function PurchaseTicket() {
             })
             .join(", ")}`
         );
-        
       } else {
         setAlreadyRegistered(false);
         setRegisterMessage("");
       }
     };
-  
+
     checkEmails();
   }, [attendees, event]);
-  
-  
 
   if (loading) return <p>Loading event...</p>;
   if (!event) return <p>Event not found</p>;
@@ -233,8 +233,6 @@ function PurchaseTicket() {
                   : registerMessage}
               </p>
             )}
-
-            
           </div>
         </div>
       </div>
@@ -278,6 +276,14 @@ function PurchaseTicket() {
                         })
                       );
 
+                      localStorage.setItem(
+                        "ticketInfoToSave",
+                        JSON.stringify({
+                          userId,
+                          eventId: event._id,
+                          attendees,
+                        })
+                      );
                       await stripe.redirectToCheckout({
                         sessionId: res.data.id,
                       });
@@ -288,7 +294,6 @@ function PurchaseTicket() {
                     return;
                   }
 
-                  // If event is free, continue as usual
                   try {
                     await axios.post("http://localhost:5001/api/tickets", {
                       userId,

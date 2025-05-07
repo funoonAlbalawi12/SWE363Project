@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 
-import connectDB from './config/db.js';
+import connectDB from "./config/db.js";
 
 import userRoutes from "./routes/userRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
@@ -13,11 +13,9 @@ import eventRegistrationRoutes from "./routes/eventRegistrationRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import memberRoutes from "./routes/memberRoutes.js";
 
-
 dotenv.config();
 connectDB();
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
 app.use(cors());
@@ -35,7 +33,6 @@ app.use("/api/clubmemberships", clubMembershipRoutes);
 app.use("/api/eventregistrations", eventRegistrationRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/member", memberRoutes);
-
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
